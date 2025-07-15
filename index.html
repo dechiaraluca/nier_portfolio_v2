@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="assets/images/logo.svg" alt="Logo" class="logo">
+      <h1>Mon Portfolio</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre">☯</button>
+  </header>
+
+  <main>
+    <section id="accueil">
+      <h2>Bienvenue</h2>
+      <p>Venez découvrir mon univers</p>
+    </section>
+    <section id="apropos">
+      <h2>À propos</h2>
+      <p>Je suis Luca, Développeur Web et Web Mobile</p>
+    </section>
+    <section id="projets">
+      <h2>Mes Projets</h2>
+      <div class="grid">
+        <div class="card">Project 1</div>
+        <div class="card">Project 2</div>
+        <div class="card">Project 3</div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Contactez-moi à <a href="mailto:ton@email.com">l.dechiara.dev@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 De Chiara Luca</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>
