@@ -163,6 +163,11 @@ h2 {
   transition: all 0.3s ease-in-out;
   z-index: 1000;
   padding: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #scrollToTop.show {
@@ -178,12 +183,12 @@ h2 {
   width: 100px;
   height: 100px;
   transition: filter 0.3s ease;
+  display: block;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8)) 
-            drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+          drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
-.dark-mode #scrollToTop img,
-.in-footer #scrollToTop img {
+.dark-mode #scrollToTop img {
   filter: invert(1);
 }
 
