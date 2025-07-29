@@ -18,9 +18,9 @@ nier_portfolio/
 1. Télécharge ou clone le projet.
 2. Ouvre `index.html` dans ton navigateur.
 
-## 🌙 Activer le dark mode
+## ☯ Activer le dark mode
 
-Clique sur le petit bouton `🌙` en haut à droite pour basculer entre clair et sombre.
+Clique sur le petit bouton `☯` en haut à droite pour basculer entre clair et sombre.
 
 ## ✏ Personnalisation
 
