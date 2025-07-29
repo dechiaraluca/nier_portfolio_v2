@@ -178,13 +178,13 @@ h2 {
   width: 100px;
   height: 100px;
   transition: filter 0.3s ease;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8)) 
+            drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
-/* Quand on est en mode sombre OU dans le footer */
 .dark-mode #scrollToTop img,
 .in-footer #scrollToTop img {
   filter: invert(1);
-  /* Inverse les couleurs */
 }
 
 footer {
