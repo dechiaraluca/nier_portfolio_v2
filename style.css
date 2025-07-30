@@ -211,6 +211,67 @@ h2 {
   font-family: "Cinzel", serif;
   margin-bottom: 1rem;
   font-size: 2rem;
+  text-align: center;
+}
+
+
+.apropos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.bio {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.cv {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.cv img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-cv {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #1a1a1a;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-cv:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .apropos-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bio, .cv {
+    max-width: 100%;
+  }
 }
 
 /* PROJECTS */
