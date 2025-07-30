@@ -133,6 +133,7 @@ h1 {
   font-family: "Cinzel", serif;
   color: var(--color-text);
 }
+
 .hero-text h1 {
   font-size: 40px;
   font-weight: 700;
@@ -204,11 +205,15 @@ h1 {
   margin-bottom: 20px;
 } */
 
+/* ABOUT */
+
 h2 {
   font-family: "Cinzel", serif;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
+
+/* PROJECTS */
 
 .grid {
   display: grid;
