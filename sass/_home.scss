@@ -1,0 +1,33 @@
+header {
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--color-bg);
+  transition: background-color 0.3s, color 0.3s;
+  */
+
+
+  .logo {
+    width: 60px;
+    height: auto;
+    transition: filter 0.3s;
+  }
+
+
+
+  h1 {
+    content: '</>';
+    font-family: "Cinzel", serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: var(--color-text);
+    margin: 0.5rem 0;
+  }
+
+}

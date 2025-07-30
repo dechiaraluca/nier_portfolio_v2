@@ -9,13 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- HEADER -->
+
   <header>
     <div class="logo-container">
       <img src="assets/images/logo.svg" alt="Logo" class="logo">
        <h1 class="name"></div></h1>
     </div>
     <nav>
-      
       <ul>
         <li><a href="#accueil">Accueil</a></li>
         <li><a href="#apropos">À propos</a></li>
@@ -32,16 +34,49 @@
 
   </header>
 
+  <!-- HOME -->
+
   <main>
-    <section id="accueil">
-      <h2>Bienvenue</h2>
-      <p>Venez découvrir mon univers</p>
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        Bienvenue, je suis<br>
+                        Développeur Web
+                    </h1>
+                    <p>
+                        Je transforme des idées créatives en expériences web exceptionnelles. 
+                        Spécialisé dans React, Vue.js et les technologies modernes du frontend.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projets" class="btn-primary">Voir mes projets</a>
+                        <a href="#contact" class="btn-secondary">Me contacter</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                  <img src="assets/images/f7d2504e-9d96-4cae-9574-ba733e85f9da.png" width="500px" alt="avatar">
+                    <!-- <div class="profile-card">
+                        <div class="profile-name">Luca De Chiara</div>
+                        <div class="profile-title">Web Developer</div>
+                    </div> -->
+                    
+                </div>
+            </div>
+        </div>
     </section>
+    </section>
+
+    <!-- ABOUT -->
+
     <section id="apropos">
       <h2>À propos</h2>
       <p>Je suis Luca, Développeur Web et Web Mobile</p>
     </section>
     <section id="projets">
+
+    <!-- PROJECTS -->
+
       <h2>Mes Projets</h2>
       <div class="grid">
         <div class="card">Project 1</div>
@@ -53,6 +88,8 @@
       <h2>Contact</h2>
     </section>
   </main>
+
+  <!-- FOOTER -->
 
   <footer id="contact">
         <div class="container">
@@ -80,6 +117,8 @@
             </div>
         </div>
     </footer>
+
+  <!-- JAVASCRIPT -->
 
   <script>
     const toggle = document.getElementById('darkModeToggle');

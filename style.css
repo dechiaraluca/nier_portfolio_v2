@@ -16,9 +16,7 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-main {
-  padding-top: 100px;
-}
+/* HEADER */
 
 .dark-mode {
   --color-bg: #111;
@@ -28,9 +26,12 @@ main {
 
 header {
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* SI JE DECIDE UN HEADER FIXE */
+
   /* position: fixed;
   top: 0;
   left: 0;
@@ -53,17 +54,8 @@ body.dark-mode header {
   align-items: center;
 }
 
-header h1 {
-  content: '</>';
-  font-family: "Cinzel", serif;
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  color: var(--color-text);
-  margin: 0.5rem 0;
-}
-
 .logo {
-  width: 60px;
+  width: 70px;
   height: auto;
   transition: filter 0.3s;
 }
@@ -78,7 +70,7 @@ header h1 {
   right: 1rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   color: var(--color-text);
 }
@@ -88,7 +80,7 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 1rem;
+  margin-top: 0;
   padding: 0;
 }
 
@@ -116,10 +108,101 @@ nav a:hover::after {
   width: 100%;
 }
 
+/* HOME */
+
 main section {
   padding: 4rem 2rem;
-  text-align: center;
+
 }
+.hero {
+  margin-top: 0;
+  padding: 80px 0 120px;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  content: '</>';
+  font-family: "Cinzel", serif;
+  color: var(--color-text);
+}
+.hero-text h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary {
+  background: #1a1a1a;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #1a1a1a;
+  padding: 16px 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.profile-title {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 20px;
+} */
 
 h2 {
   font-family: "Cinzel", serif;
@@ -152,6 +235,7 @@ h2 {
 }
 
 /* BOUTON RETOUR EN HAUT */
+
 #scrollToTop {
   position: fixed;
   bottom: 30px;
@@ -185,13 +269,14 @@ h2 {
   height: 100px;
   transition: filter 0.3s ease;
   display: block;
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8)) 
-          drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
 .dark-mode #scrollToTop img {
   filter: invert(1);
 }
+
+/* FOOTER */
 
 footer {
   text-align: center;
