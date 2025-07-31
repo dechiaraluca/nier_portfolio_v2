@@ -192,19 +192,6 @@ h1 {
   align-items: center;
 }
 
-/* .profile-name {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #1a1a1a;
-}
-
-.profile-title {
-  font-size: 16px;
-  color: #6b7280;
-  margin-bottom: 20px;
-} */
-
 /* ABOUT */
 
 h2 {
@@ -213,7 +200,6 @@ h2 {
   font-size: 2rem;
   text-align: center;
 }
-
 
 .apropos-container {
   display: flex;
@@ -261,6 +247,10 @@ h2 {
 }
 
 /* PROJECTS */
+
+  #projets > p {
+    text-align: center;
+  }
 
  .grid {
     display: grid;
@@ -422,6 +412,10 @@ footer {
   background: #1a1a1a;
   color: white;
   padding: 1rem;
+}
+
+.dark-mode #foot {
+  box-shadow: 0 0 6px rgb(255, 220, 220);
 }
 
 .footer-content {
