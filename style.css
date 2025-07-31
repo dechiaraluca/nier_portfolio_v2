@@ -177,7 +177,7 @@ h1 {
   background: transparent;
   color: #1a1a1a;
   padding: 16px 32px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #1a1a1a;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
@@ -211,6 +211,10 @@ h2 {
   justify-content: center;
   gap: 2rem;
   align-items: flex-start;
+}
+
+.dark-mode .cv {
+  filter: invert(1);
 }
 
 .bio {
@@ -322,6 +326,10 @@ h2 {
     margin-bottom: 0.8rem;
 }
 
+.dark-mode .card-title {
+  filter: invert(1);
+}
+
 .card-description {
     color: #666;
     line-height: 1.6;
@@ -336,7 +344,7 @@ h2 {
 }
 
 .tech-tag {
-    background: var(--color-accent);
+    background: #1a1a1a;
     color: white;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
@@ -354,17 +362,28 @@ h2 {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
-    border: 2px solid var(--color-accent);
+    border: 2px solid #1a1a1a;
 }
 
 .card-link.primary {
-    background: var(--color-accent);
+    background: #1a1a1a;
     color: white;
+}
+
+.card-link.primary:hover {
+  background: #333;
+  transform: translateY(-2px);
 }
 
 .card-link.secondary {
     background: transparent;
-    color: var(--color-accent);
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+}
+
+.card-link.secondary:hover {
+  border-color: #1a1a1a;
+  transform: translateY(-2px);
 }
 
 /* BOUTON RETOUR EN HAUT */
