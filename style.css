@@ -198,12 +198,9 @@ h1 {
 
 @media (max-width: 768px) {
 
-  .nav {
-    font-size: 14px;
-  }
-
   nav ul {
-    gap: 12px; /* si tu utilises flex avec gap */
+    font-size: 12px;
+    gap: 12px;
   }
 
   nav a {
