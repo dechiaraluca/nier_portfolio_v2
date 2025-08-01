@@ -202,6 +202,14 @@ h1 {
     font-size: 14px;
   }
 
+  nav ul {
+    gap: 12px; /* si tu utilises flex avec gap */
+  }
+
+  nav a {
+    padding: 6px 10px;
+  }
+
   .hero-content {
     display: flex;
     flex-direction: column;
