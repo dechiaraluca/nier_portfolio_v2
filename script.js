@@ -35,3 +35,31 @@ window.addEventListener('scroll', function () {
         scrollToTopBtn.classList.remove('in-footer');
     }
 });
+
+// Animation scroll
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner toutes les sections
+    const sections = document.querySelectorAll('section');
+    
+    // Ajouter la classe d'animation initiale
+    sections.forEach(section => {
+        section.classList.add('fade-in');
+    });
+
+    // Observer pour détecter quand les sections entrent dans la vue
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1 // Déclenche quand 10% de la section est visible
+    });
+
+    // Observer chaque section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});

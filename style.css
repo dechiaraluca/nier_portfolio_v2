@@ -518,3 +518,16 @@ footer {
   text-align: center;
   color: #9ca3af;
 }
+
+/* ANIMATION SCROLL */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
