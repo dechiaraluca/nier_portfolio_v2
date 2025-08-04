@@ -29,9 +29,6 @@ header {
   padding: 1rem;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
 
   /* SI JE DECIDE UN HEADER FIXE */
 
