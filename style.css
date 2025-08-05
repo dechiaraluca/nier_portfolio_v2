@@ -252,10 +252,9 @@ h2 {
 
 .apropos-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  align-items: flex-start;
+  gap: 180px;
+  align-items: center;
 }
 
 .dark-mode .cv {
@@ -268,6 +267,7 @@ h2 {
   max-width: 500px;
   font-size: 1.1rem;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .btn-cv {
