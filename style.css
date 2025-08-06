@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -11,19 +7,6 @@ html {
   --color-text: #111;
   --color-accent: #888;
 }
-
-/* html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-} */
 
 body {
   font-family: "Raleway", sans-serif;
@@ -135,11 +118,6 @@ main section {
 
 .dark-mode .hero {
   filter: invert(1);
-}
-
-.hero {
-  margin-top: 0;
-  padding: 80px 0 120px;
 }
 
 .hero-content {
