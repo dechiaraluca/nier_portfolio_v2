@@ -70,12 +70,20 @@
             <h2>À propos</h2>
             <div class="apropos-container">
                 <div class="bio">
-                    <p>Je suis Luca, développeur Web et Web Mobile en formation. Né à Rome, en Italie, j’ai grandi dans un environnement où l’ordinateur faisait déjà partie de mon quotidien. Très jeune, j’ai été fasciné par le potentiel du numérique, ce qui m’a naturellement amené à explorer, tester, créer… et finalement me passionner pour le développement web.
-Installé en France depuis maintenant 7 ans, j’ai progressivement orienté mon parcours vers le monde du web, attiré par la richesse de cet univers en constante évolution. Curieux de nature, j’aime comprendre comment les choses fonctionnent, résoudre des problèmes, et surtout concevoir des solutions simples, accessibles et efficaces.
-Aujourd’hui, je me forme aux métiers du développement web et web mobile pour transformer cette passion en compétence professionnelle.</p>
+                    <p>Je suis Luca, développeur Web et Web Mobile en formation. Né à Rome, en Italie, j’ai grandi dans
+                        un environnement où l’ordinateur faisait déjà partie de mon quotidien. Très jeune, j’ai été
+                        fasciné par le potentiel du numérique, ce qui m’a naturellement amené à explorer, tester, créer…
+                        et finalement me passionner pour le développement web.
+                        Installé en France depuis maintenant 7 ans, j’ai progressivement orienté mon parcours vers le
+                        monde du web, attiré par la richesse de cet univers en constante évolution. Curieux de nature,
+                        j’aime comprendre comment les choses fonctionnent, résoudre des problèmes, et surtout concevoir
+                        des solutions simples, accessibles et efficaces.
+                        Aujourd’hui, je me forme aux métiers du développement web et web mobile pour transformer cette
+                        passion en compétence professionnelle.</p>
                 </div>
                 <div class="cv">
-                    <a href="documents/DEV WEB ET WEB MOBILE.pdf" download class="btn-cv">Télécharger mon CV</a>
+                    <a href="documents/DEV WEB ET WEB MOBILE.pdf" alt="cv" download class="btn-cv">Télécharger mon
+                        CV</a>
                 </div>
             </div>
         </section>
@@ -85,119 +93,202 @@ Aujourd’hui, je me forme aux métiers du développement web et web mobile pour
             <h2>Mes Projets</h2>
             <p>Ci-dessous, quelques exemples de réalisations effectuées durant la formation, le stage et plus encore :
             </p>
-            <div class="grid">
 
-                <!-- Projet 1 -->
+            <div class="carousel-container">
+                <button class="carousel-nav prev" onclick="prevSlide()">‹</button>
+                <button class="carousel-nav next" onclick="nextSlide()">›</button>
 
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/1.png" alt="Aperçu Projet 1" loading="lazy">
-                        <div class="card-overlay">
-                            <span>Voir le projet</span>
+                <div class="carousel-wrapper" id="carouselWrapper">
+
+                    <!-- Slide 1 - Vos projets actuels -->
+
+                    <div class="carousel-slide">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="assets/images/1.png" alt="Aperçu Projet 1" loading="lazy">
+                                <div class="card-overlay">
+                                    <span>Voir le projet</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Nelumbo Blooms</h3>
+                                <p class="card-description">Mon tout premier site vitrine! Site fleuriste avec un style
+                                    japonisant.</p>
+                                <div class="card-technologies">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">JS</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://nelumbosite.netlify.app/" class="card-link primary"
+                                        target="_blank">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/site-vitrine" class="card-link secondary"
+                                        target="_blank">Code source</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="assets/images/2.png" alt="Aperçu Projet 2">
+                                <div class="card-overlay">
+                                    <span>Voir le projet</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Detect</h3>
+                                <p class="card-description">Site évènementiel sur la détecetion de metaux.</p>
+                                <div class="card-technologies">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">JS</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://detectevent.netlify.app/" class="card-link primary"
+                                        target="_blank">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/Site-Event" class="card-link secondary"
+                                        target="_blank">Code source</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="assets/images/3.png" alt="Aperçu Projet 3" loading="lazy">
+                                <div class="card-overlay">
+                                    <span>Voir le projet</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Calculette</h3>
+                                <p class="card-description">Petite application pour tester les fonctionallités d'une
+                                    calculette.</p>
+                                <div class="card-technologies">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">JS</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="https://testcalculette.netlify.app" class="card-link primary"
+                                        target="_blank">Voir l'application</a>
+                                    <a href="https://github.com/dechiaraluca/test-calculette/"
+                                        class="card-link secondary" target="_blank">Code source</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Nelumbo Blooms</h3>
-                        <p class="card-description">Mon tout premier site vitrine! Site fleuriste avec un style
-                            japonisant.</p>
-                        <div class="card-technologies">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JS</span>
+
+                    <!-- Slide 2 - Futurs projets -->
+
+                    <div class="carousel-slide">
+
+                        <!-- VOS NOUVELLES CARTES ICI -->
+
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="assets/images/nouveau-projet.png" alt="Nouveau projet">
+                                <div class="card-overlay">
+                                    <span>Voir le projet</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Nouveau Projet</h3>
+                                <p class="card-description">Description du nouveau projet.</p>
+                                <div class="card-technologies">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="#" class="card-link primary" target="_blank">Voir le site</a>
+                                    <a href="#" class="card-link secondary" target="_blank">Code source</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-links">
-                            <a href="https://nelumbosite.netlify.app/" class="card-link primary" target="_blank">Voir le
-                                site</a>
-                            <a href="https://github.com/dechiaraluca/site-vitrine" class="card-link secondary"
-                                target="_blank">Code source</a>
+
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="assets/images/nouveau-projet.png" alt="Nouveau projet">
+                                <div class="card-overlay">
+                                    <span>Voir le projet</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Nouveau Projet</h3>
+                                <p class="card-description">Description du nouveau projet.</p>
+                                <div class="card-technologies">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="#" class="card-link primary" target="_blank">Voir le site</a>
+                                    <a href="#" class="card-link secondary" target="_blank">Code source</a>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="assets/images/nouveau-projet.png" alt="Nouveau projet">
+                                <div class="card-overlay">
+                                    <span>Voir le projet</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Nouveau Projet</h3>
+                                <p class="card-description">Description du nouveau projet.</p>
+                                <div class="card-technologies">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                </div>
+                                <div class="card-links">
+                                    <a href="#" class="card-link primary" target="_blank">Voir le site</a>
+                                    <a href="#" class="card-link secondary" target="_blank">Code source</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-
-                <!-- Projet 2 -->
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/2.png" alt="Aperçu Projet 1">
-                        <div class="card-overlay">
-                            <span>Voir le projet</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Detect</h3>
-                        <p class="card-description">Site évènementiel sur la détecetion de metaux.</p>
-                        <div class="card-technologies">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JS</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://detectevent.netlify.app/" class="card-link primary" target="_blank">Voir le
-                                site</a>
-                            <a href="https://github.com/dechiaraluca/Site-Event" class="card-link secondary"
-                                target="_blank">Code source</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet 3 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/images/3.png" alt="Aperçu Projet 1" loading="lazy">
-                        <div class="card-overlay">
-                            <span>Voir le projet</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Calculette</h3>
-                        <p class="card-description">Petite application pour tester les fonctionallités d'une calculette.
-                        </p>
-                        <div class="card-technologies">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JS</span>
-                        </div>
-                        <div class="card-links">
-                            <a href="https://testcalculette.netlify.app" class="card-link primary" target="_blank">Voir
-                                l'appiclation</a>
-                            <a href="https://github.com/dechiaraluca/test-calculette/" class="card-link secondary"
-                                target="_blank">Code source</a>
-                        </div>
-                    </div>
+                <div class="carousel-indicators">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
                 </div>
         </section>
 
         <!-- FOOTER -->
+
         <section id="contact">
             <h2>Contact</h2>
         </section>
     </main>
     <footer id="foot">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p><a href="mailto:ton@email.com">l.dechiara.dev@gmail.com</a></p>
-                    <p>+33 6 02 73 91 06</p>
-                    <p>Grenoble, France</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Réseaux</h4>
-                    <p><a href="#">LinkedIn</a></p>
-                    <p><a href="https://github.com/dechiaraluca">GitHub</a></p>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <p>Développement Frontend/Backend</p>
-                    <p>React</p>
-                    <p>Node.js</p>
-                    <p>UI/UX Design</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><a href="mailto:ton@email.com">l.dechiara.dev@gmail.com</a></p>
+                <p>+33 6 02 73 91 06</p>
+                <p>Grenoble, France</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 De Chiara Luca. Tous droits réservés.</p>
+            <div class="footer-section">
+                <h4>Réseaux</h4>
+                <p><a href="#">LinkedIn</a></p>
+                <p><a href="https://github.com/dechiaraluca">GitHub</a></p>
             </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <p>Développement Frontend/Backend</p>
+                <p>React</p>
+                <p>Node.js</p>
+                <p>UI/UX Design</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 De Chiara Luca. Tous droits réservés.</p>
+        </div>
     </footer>
     <script src="script.js"></script>
+    <script src="carousel.js"></script>
 </body>
 
 </html>
