@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   scroll-behavior: smooth;
 }
@@ -19,7 +20,6 @@ body {
 }
 
 /* HEADER */
-
 .dark-mode {
   --color-bg: #111;
   --color-text: #f6f6f6;
@@ -32,9 +32,7 @@ header {
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0;
-
   /* SI JE DECIDE UN HEADER FIXE */
-
   /* position: fixed;
   top: 0;
   left: 0;
@@ -112,7 +110,6 @@ nav a:hover::after {
 }
 
 /* HOME */
-
 main section {
   padding: 4rem 2rem;
 }
@@ -131,7 +128,7 @@ main section {
 }
 
 h1 {
-  content: '</>';
+  content: "</>";
   font-family: "Cinzel", serif;
   color: var(--color-text);
 }
@@ -195,7 +192,6 @@ h1 {
 }
 
 /* ABOUT */
-
 h2 {
   font-family: "Cinzel", serif;
   margin-bottom: 1rem;
@@ -241,15 +237,14 @@ h2 {
 }
 
 /* PROJECTS */
-
-#projets>p {
+#projets > p {
   text-align: center;
 }
 
 .carousel-container {
   position: relative;
   margin-top: 2rem;
-  padding: 10 80; /* Espace pour les flèches */  
+  padding: 10 80; /* Espace pour les flèches */
   overflow: hidden;
 }
 
@@ -452,7 +447,6 @@ h2 {
 }
 
 /* BOUTON RETOUR EN HAUT */
-
 #scrollToTop {
   position: fixed;
   bottom: 30px;
@@ -494,7 +488,6 @@ h2 {
 }
 
 /* FOOTER */
-
 footer {
   text-align: center;
   background: #1a1a1a;
@@ -539,7 +532,6 @@ footer {
 }
 
 /* ANIMATION SCROLL */
-
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -552,18 +544,14 @@ footer {
 }
 
 /* MEDIA */
-
 @media (max-width: 768px) {
-
   nav ul {
     font-size: 12px;
     gap: 12px;
   }
-
   nav a {
     padding: 6px 10px;
   }
-
   .hero-content {
     display: flex;
     flex-direction: column;
@@ -571,41 +559,36 @@ footer {
     gap: 40px;
     text-align: center;
   }
-
   .hero-text h1 {
     font-size: 28px;
   }
-
   .hero-text p {
     font-size: 16px;
     padding: 0 1rem;
   }
-
   .hero-buttons {
     flex-direction: column;
     align-items: center;
   }
-
   .hero-buttons a {
     width: 100%;
     max-width: 250px;
     text-align: center;
   }
-
   .hero-visual img {
     max-width: 80%;
     height: auto;
   }
-
   .apropos-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 0;
   }
-
   .bio,
   .cv {
     max-width: 100%;
   }
 }
+
+/*# sourceMappingURL=style.css.map */
