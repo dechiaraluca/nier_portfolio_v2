@@ -131,12 +131,11 @@ main section {
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 24px;
-  color: #1a1a1a;
 }
 
 .hero-text p {
   font-size: 18px;
-  color: #1a1a1a;
+  color: var(--color-text);
   margin-bottom: 32px;
   line-height: 1.6;
 }
