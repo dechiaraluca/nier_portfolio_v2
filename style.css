@@ -19,6 +19,12 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 3; /* largeur / hauteur */
+}
+
 /* HEADER */
 .dark-mode {
   --color-bg: #111;
@@ -128,7 +134,6 @@ main section {
 }
 
 h1 {
-  content: "</>";
   font-family: "Cinzel", serif;
   color: var(--color-text);
 }
@@ -143,7 +148,7 @@ h1 {
 
 .hero-text p {
   font-size: 18px;
-  color: #6b7280;
+  color: #1a1a1a;
   margin-bottom: 32px;
   line-height: 1.6;
 }
