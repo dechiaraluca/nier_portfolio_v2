@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 html {
   scroll-behavior: smooth;
 }
@@ -229,7 +230,7 @@ h2 {
 }
 
 /* PROJECTS */
-#projets > p {
+#projets>p {
   text-align: center;
 }
 
@@ -541,9 +542,11 @@ footer {
     font-size: 12px;
     gap: 12px;
   }
+
   nav a {
     padding: 6px 10px;
   }
+
   .hero-content {
     display: flex;
     flex-direction: column;
@@ -551,32 +554,39 @@ footer {
     gap: 40px;
     text-align: center;
   }
+
   .hero-text h1 {
     font-size: 28px;
   }
+
   .hero-text p {
     font-size: 16px;
     padding: 0 1rem;
   }
+
   .hero-buttons {
     flex-direction: column;
     align-items: center;
   }
+
   .hero-buttons a {
     width: 100%;
     max-width: 250px;
     text-align: center;
   }
+
   .hero-visual img {
     max-width: 80%;
     height: auto;
   }
+
   .apropos-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 0;
   }
+
   .bio,
   .cv {
     max-width: 100%;
