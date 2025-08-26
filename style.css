@@ -22,7 +22,7 @@ body {
 img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 3; /* largeur / hauteur */
+  aspect-ratio: 3 / 3;
 }
 
 /* HEADER */
@@ -38,20 +38,10 @@ header {
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0;
-  /* SI JE DECIDE UN HEADER FIXE */
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: var(--color-bg);
-  transition: background-color 0.3s, color 0.3s;
-  */
 }
 
 body.dark-mode header {
   box-shadow: 0 2px 6px rgb(255, 220, 220);
-  /* ombre blanche en mode sombre */
 }
 
 .logo-container {
@@ -133,12 +123,9 @@ main section {
   margin: 0 auto;
 }
 
-h1 {
+.hero-text h1 {
   font-family: "Cinzel", serif;
   color: var(--color-text);
-}
-
-.hero-text h1 {
   font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
@@ -249,7 +236,7 @@ h2 {
 .carousel-container {
   position: relative;
   margin-top: 2rem;
-  padding: 10 80; /* Espace pour les flèches */
+  padding: 10 80;
   overflow: hidden;
 }
 
