@@ -16,7 +16,6 @@ Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ```
 
-.
 nier_portfolio_v2/
 ├── index.html
 ├── style.css
