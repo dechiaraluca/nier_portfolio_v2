@@ -7,8 +7,7 @@ Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ## 📸 Aperçu
 
-![Aperçu du portfolio](./assets/images/screenshot-preview.png)  
-![Score Lighthouse](./assets/images/score-preview.png)
+![Aperçu du portfolio](./assets/images/screenshot-preview.png)
 
 ---
 
@@ -42,6 +41,12 @@ Performances optimisées
 
 Design NieR:Automata
 → Palette sombre, typographie inspirée, esthétique minimaliste.
+
+##  Score Lighthouse
+
+![Score Lighthouse](./assets/images/score-preview.png)
+
+---
 
 ##  Déploiement Netlify
 
