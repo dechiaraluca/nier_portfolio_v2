@@ -126,7 +126,7 @@ main section {
 
 .hero-text h1 {
   font-family: "Cinzel", serif;
-  color: var(--color-text);
+  color: #1a1a1a;
   font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
@@ -135,7 +135,7 @@ main section {
 
 .hero-text p {
   font-size: 18px;
-  color: var(--color-text);
+  color: #1a1a1a;
   margin-bottom: 32px;
   line-height: 1.6;
 }
