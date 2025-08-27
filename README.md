@@ -41,8 +41,7 @@ Design NieR:Automata
 
 ##  Déploiement Netlify
 
-[![Deploy Status](https://api.netlify.com/api/v1/badges/1e681023-b3a2-4774-a71e-1c7c3aa130c3/deploy-status)]
-
+[![Deploy Status](https://api.netlify.com/api/v1/badges/1e681023-b3a2-4774-a71e-1c7c3aa130c3/deploy-status)](https://app.netlify.com/sites/ldcportfolio/deploys)
 
 📜 Licence
 © 2025 - De Chiara Luca
