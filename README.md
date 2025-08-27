@@ -14,6 +14,9 @@ Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ## 📁 Structure du projet
 
+```
+
+.
 nier_portfolio_v2/
 ├── index.html
 ├── style.css
@@ -22,11 +25,13 @@ nier_portfolio_v2/
 └── assets/
 └── images
 
+```
+
 ---
 
 ## 🚀 Installation & Utilisation
 
-☯ Fonctionnalités
+Fonctionnalités
 Dark / Light mode
 → Bouton ☯ en haut à droite pour basculer entre les deux thèmes.
 
@@ -45,4 +50,5 @@ Design NieR:Automata
 
 📜 Licence
 © 2025 - De Chiara Luca
+
 Projet open-source, utilisation libre à des fins personnelles ou d’inspiration.
