@@ -1,29 +1,49 @@
-# Portfolio - Style NieR:Automata
+# <link rel="icon" type="image/png" href="assets/images/logo.webp" alt="Icon" loading="lazy"> Portfolio - Style *NieR:Automata*
 
-Petit site portfolio inspiré par NieR:Automata, avec dark mode et logo.
-
-## 📁 Structure du projet
-
-```
-nier_portfolio/
-├── index.html
-├── style.css
-└── assets/
-    └── images/
-        └── logo-blanc.svg
-```
-
-## 🚀 Comment l'utiliser
-
-1. Télécharge ou clone le projet.
-2. Ouvre `index.html` dans ton navigateur.
-
-## ☯ Activer le dark mode
-
-Clique sur le petit bouton `☯` en haut à droite pour basculer entre clair et sombre.
-
-## ✏ Personnalisation
+Petit site portfolio personnel inspiré par l’univers de *NieR:Automata*.  
+Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ---
 
-© 2025 De Chiara Luca.
+## 📸 Aperçu
+
+![Aperçu du portfolio](./assets/images/Capture d'écran 2025-08-27 114316.png)  
+![Score Lighthouse](./assets/images/Capture d'écran 2025-08-26 135112.png)
+
+---
+
+## 📁 Structure du projet
+
+nier_portfolio_v2/
+├── index.html
+├── style.css
+├── script.js
+├── carousel.js
+└── assets/
+└── images
+
+---
+
+## 🚀 Installation & Utilisation
+
+☯ Fonctionnalités
+Dark / Light mode
+→ Bouton ☯ en haut à droite pour basculer entre les deux thèmes.
+
+Responsive design
+→ Adapté aux mobiles, tablettes et écrans larges.
+
+Performances optimisées
+→ Chargement rapide, score Lighthouse élevé (voir capture).
+
+Design NieR:Automata
+→ Palette sombre, typographie inspirée, esthétique minimaliste.
+
+##  Déploiement Netlify
+
+[![Deploy Status](https://api.netlify.com/api/v1/badges/1e681023-b3a2-4774-a71e-1c7c3aa130c3/deploy-status)]
+
+
+📜 Licence
+© 2025 - De Chiara Luca
+Projet open-source, utilisation libre à des fins personnelles ou d’inspiration.
