@@ -1,4 +1,4 @@
-# <link rel="icon" type="image/png" href="assets/images/logo.webp" alt="Icon" loading="lazy"> Portfolio - Style *NieR:Automata*
+# Portfolio - Style *NieR:Automata*
 
 Petit site portfolio personnel inspiré par l’univers de *NieR:Automata*.  
 Design épuré, mode sombre/clair, responsive et optimisé en performance.
@@ -7,8 +7,8 @@ Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ## 📸 Aperçu
 
-![Aperçu du portfolio](./assets/images/Capture d'écran 2025-08-27 114316.png)  
-![Score Lighthouse](./assets/images/Capture d'écran 2025-08-26 135112.png)
+![Aperçu du portfolio](./assets/images/screenshot-preview.png)  
+![Score Lighthouse](./assets/images/score-preview.png)
 
 ---
 
