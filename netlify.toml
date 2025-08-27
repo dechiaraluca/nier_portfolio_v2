@@ -1,5 +1,16 @@
 [[plugins]]
-  package = "@netlify/plugin-lighthouse"
+package = "@netlify/plugin-lighthouse"
 
-  [plugins.inputs.audits]
-    output_path = "reports/lighthouse.html"
+[plugins.inputs]
+  # pour échouer le build si les scores sont trop bas
+  fail_deploy_on_score_thresholds = true
+
+[plugins.inputs.thresholds]
+  performance = 0.9
+  accessibility = 0.9
+  "best-practices" = 0.9
+  seo = 0.8
+
+[plugins.inputs.settings]
+  preset = "desktop"     # optionnel (mobile par défaut)
+  locale = "fr"          # optionnel (en par défaut)
