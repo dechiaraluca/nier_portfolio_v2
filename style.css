@@ -71,6 +71,11 @@ body.dark-mode header {
   font-size: 2rem;
   cursor: pointer;
   color: var(--color-text);
+  width: 100px;
+}
+
+.dark-mode #darkModeToggle {
+  filter: invert(1);
 }
 
 nav ul {
