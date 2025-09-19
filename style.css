@@ -69,8 +69,13 @@ body.dark-mode header {
   background: none;
   border: none;
   font-size: 2rem;
-  cursor: pointer;
   color: var(--color-text);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+#darkModeToggle:hover {
+  transform: rotate(360deg);
 }
 
 nav ul {
