@@ -71,7 +71,7 @@ body.dark-mode header {
   font-size: 2rem;
   cursor: pointer;
   color: var(--color-text);
-  width: 100px;
+  width: 60px;
 }
 
 .dark-mode #darkModeToggle {
