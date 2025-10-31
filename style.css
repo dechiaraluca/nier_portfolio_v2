@@ -8,6 +8,10 @@ html {
   --color-bg: #f6f6f6;
   --color-text: #111;
   --color-accent: #888;
+  --color-primary: #1a1a1a;
+  --color-secondary: #666;
+  --color-white: #ffffff;
+  --color-border: #374151;
 }
 
 body {
@@ -93,6 +97,7 @@ body.dark-mode header {
   border: none;
   font-size: 2rem;
   color: var(--color-text);
+  width: 60px;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
@@ -100,6 +105,32 @@ body.dark-mode header {
 #darkModeToggle:hover {
   transform: rotate(360deg);
 }
+
+.dark-mode #darkModeToggle {
+  filter: invert(1);
+}
+/*  FLOAT
+
+#darkModeToggle :hover {
+  animation: float 2s infinite linear;
+}
+  @keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+
+  50% {
+    transform: translatey(-10px);
+  }
+
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+.dark-mode #darkModeToggle {
+  filter: invert();
+} */
 
 nav ul {
   list-style: none;
@@ -130,8 +161,16 @@ nav a::after {
   left: 0;
 }
 
-nav a:hover::after {
+nav a:hover::after,
+nav a:focus-visible::after {
   width: 100%;
+}
+
+nav a:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
 }
 
 /* HOME */
@@ -154,7 +193,7 @@ main section {
 
 .hero-text h1 {
   font-family: "Cinzel", serif;
-  color: #1a1a1a;
+  color: var(--color-primary);
   font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
@@ -163,7 +202,7 @@ main section {
 
 .hero-text p {
   font-size: 18px;
-  color: #1a1a1a;
+  color: var(--color-primary);
   margin-bottom: 32px;
   line-height: 1.6;
 }
@@ -174,8 +213,8 @@ main section {
 }
 
 .btn-primary {
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 16px 32px;
   border-radius: 8px;
   text-decoration: none;
@@ -190,9 +229,9 @@ main section {
 
 .btn-secondary {
   background: transparent;
-  color: #1a1a1a;
+  color: var(--color-primary);
   padding: 16px 32px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--color-primary);
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
@@ -200,7 +239,7 @@ main section {
 }
 
 .btn-secondary:hover {
-  border-color: #1a1a1a;
+  border-color: var(--color-primary);
   transform: translateY(-2px);
 }
 
@@ -242,8 +281,8 @@ h2 {
 .btn-cv {
   display: inline-block;
   margin-top: 1rem;
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 16px 32px;
   border-radius: 8px;
   text-decoration: none;
@@ -264,7 +303,6 @@ h2 {
 .carousel-container {
   position: relative;
   margin-top: 2rem;
-  padding: 10 80;
   overflow: hidden;
 }
 
@@ -412,7 +450,7 @@ h2 {
 }
 
 .card-description {
-  color: #666;
+  color: var(--color-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -425,8 +463,8 @@ h2 {
 }
 
 .tech-tag {
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -443,12 +481,12 @@ h2 {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 2px solid #1a1a1a;
+  border: 2px solid var(--color-primary);
 }
 
 .card-link.primary {
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .card-link.primary:hover {
@@ -458,13 +496,56 @@ h2 {
 
 .card-link.secondary {
   background: transparent;
-  color: #1a1a1a;
-  border: 1px solid #1a1a1a;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
 }
 
 .card-link.secondary:hover {
-  border-color: #1a1a1a;
+  border-color: var(--color-primary);
   transform: translateY(-2px);
+}
+
+/* MODE MOBILE - Une card scrollable à la fois */
+@media (max-width: 768px) {
+  /* Masquer les contrôles */
+  .carousel-nav,
+  .carousel-indicators {
+    display: none;
+  }
+
+  .carousel-container {
+    padding: 10px 0;
+    overflow: hidden;
+  }
+
+  /* Transformer le wrapper en scroll horizontal */
+  .carousel-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .carousel-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Chaque slide devient une card unique */
+  .carousel-slide {
+    display: contents; /* Ignore le wrapper slide */
+  }
+
+  /* Chaque card prend 90% de la largeur de l'écran */
+  .card {
+    min-width: 80vw;
+    max-width: 80vw;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
 }
 
 /* BOUTON RETOUR EN HAUT */
@@ -511,8 +592,8 @@ h2 {
 /* FOOTER */
 footer {
   text-align: center;
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 1rem;
 }
 
@@ -542,12 +623,12 @@ footer {
 }
 
 .footer-section a:hover {
-  color: white;
+  color: var(--color-white);
 }
 
 .footer-bottom {
   padding-top: 40px;
-  border-top: 1px solid #374151;
+  border-top: 1px solid var(--color-border);
   text-align: center;
   color: #9ca3af;
 }

@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, {
-        threshold: 0.2 // Déclenche quand 10% de la section est visible
+        threshold: 0.2 // Déclenche quand 20% de la section est visible
     });
 
     // Observer chaque section
