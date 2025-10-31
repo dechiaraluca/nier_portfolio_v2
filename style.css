@@ -193,7 +193,7 @@ main section {
 
 .hero-text h1 {
   font-family: "Cinzel", serif;
-  color: #1a1a1a;
+  color: var(--color-primary);
   font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
@@ -202,7 +202,7 @@ main section {
 
 .hero-text p {
   font-size: 18px;
-  color: #1a1a1a;
+  color: var(--color-primary);
   margin-bottom: 32px;
   line-height: 1.6;
 }
@@ -213,8 +213,8 @@ main section {
 }
 
 .btn-primary {
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 16px 32px;
   border-radius: 8px;
   text-decoration: none;
@@ -229,9 +229,9 @@ main section {
 
 .btn-secondary {
   background: transparent;
-  color: #1a1a1a;
+  color: var(--color-primary);
   padding: 16px 32px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--color-primary);
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
@@ -239,7 +239,7 @@ main section {
 }
 
 .btn-secondary:hover {
-  border-color: #1a1a1a;
+  border-color: var(--color-primary);
   transform: translateY(-2px);
 }
 
@@ -281,8 +281,8 @@ h2 {
 .btn-cv {
   display: inline-block;
   margin-top: 1rem;
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 16px 32px;
   border-radius: 8px;
   text-decoration: none;
@@ -303,7 +303,6 @@ h2 {
 .carousel-container {
   position: relative;
   margin-top: 2rem;
-  padding: 10 80;
   overflow: hidden;
 }
 
@@ -451,7 +450,7 @@ h2 {
 }
 
 .card-description {
-  color: #666;
+  color: var(--color-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -464,8 +463,8 @@ h2 {
 }
 
 .tech-tag {
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -482,12 +481,12 @@ h2 {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 2px solid #1a1a1a;
+  border: 2px solid var(--color-primary);
 }
 
 .card-link.primary {
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .card-link.primary:hover {
@@ -497,12 +496,12 @@ h2 {
 
 .card-link.secondary {
   background: transparent;
-  color: #1a1a1a;
-  border: 1px solid #1a1a1a;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
 }
 
 .card-link.secondary:hover {
-  border-color: #1a1a1a;
+  border-color: var(--color-primary);
   transform: translateY(-2px);
 }
 
@@ -550,8 +549,8 @@ h2 {
 /* FOOTER */
 footer {
   text-align: center;
-  background: #1a1a1a;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 1rem;
 }
 
@@ -581,12 +580,12 @@ footer {
 }
 
 .footer-section a:hover {
-  color: white;
+  color: var(--color-white);
 }
 
 .footer-bottom {
   padding-top: 40px;
-  border-top: 1px solid #374151;
+  border-top: 1px solid var(--color-border);
   text-align: center;
   color: #9ca3af;
 }
