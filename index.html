@@ -87,8 +87,7 @@
                         passion en compétence professionnelle.</p>
                 </div>
                 <div class="cv">
-                    <a href="documents/DEV WEB ET WEB MOBILE.pdf" alt="cv" download class="btn-cv">Télécharger mon
-                        CV</a>
+                    <a href="documents/DEV WEB ET WEB MOBILE.pdf" download class="btn-cv">Télécharger mon CV</a>
                 </div>
             </div>
         </section>
@@ -99,14 +98,14 @@
             <p>Ci-dessous, quelques exemples de réalisations effectuées durant la formation, le stage et plus encore :
             </p>
 
-            <div class="carousel-container">
-                <button class="carousel-nav prev" onclick="prevSlide()">‹</button>
-                <button class="carousel-nav next" onclick="nextSlide()">›</button>
+            <div class="carousel-container" role="region" aria-label="Carrousel de projets">
+                <button class="carousel-nav prev" onclick="prevSlide()" aria-label="Projet précédent">‹</button>
+                <button class="carousel-nav next" onclick="nextSlide()" aria-label="Projet suivant">›</button>
 
-                <div class="carousel-wrapper" id="carouselWrapper">
+                <div class="carousel-wrapper" id="carouselWrapper" role="list">
 
                     <!-- Slide 1 - Vos projets actuels -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" role="group" aria-label="Slide 1 sur 2">
                         <div class="card">
                             <div class="card-image">
                                 <img src="assets/images/1.webp" width="600" height="400" alt="Aperçu Projet 1"
@@ -126,9 +125,9 @@
                                 </div>
                                 <div class="card-links">
                                     <a href="https://nelumbosite2.netlify.app/" class="card-link primary"
-                                        target="_blank">Voir le site</a>
+                                        target="_blank" rel="noopener noreferrer">Voir le site</a>
                                     <a href="https://github.com/dechiaraluca/ProjectFlower_v2"
-                                        class="card-link secondary" target="_blank">Code source</a>
+                                        class="card-link secondary" target="_blank" rel="noopener noreferrer">Code source</a>
                                 </div>
                             </div>
                         </div>
@@ -151,9 +150,9 @@
                                 </div>
                                 <div class="card-links">
                                     <a href="https://detectevent.netlify.app/" class="card-link primary"
-                                        target="_blank">Voir le site</a>
+                                        target="_blank" rel="noopener noreferrer">Voir le site</a>
                                     <a href="https://github.com/dechiaraluca/Site-Event" class="card-link secondary"
-                                        target="_blank">Code source</a>
+                                        target="_blank" rel="noopener noreferrer">Code source</a>
                                 </div>
                             </div>
                         </div>
@@ -177,16 +176,16 @@
                                 </div>
                                 <div class="card-links">
                                     <a href="https://testcalculette.netlify.app" class="card-link primary"
-                                        target="_blank">Voir l'application</a>
+                                        target="_blank" rel="noopener noreferrer">Voir l'application</a>
                                     <a href="https://github.com/dechiaraluca/test-calculette/"
-                                        class="card-link secondary" target="_blank">Code source</a>
+                                        class="card-link secondary" target="_blank" rel="noopener noreferrer">Code source</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Slide 2 - Futurs projets -->
-                    <div class="carousel-slide">
+                    <div class="carousel-slide" role="group" aria-label="Slide 2 sur 2">
 
                         <div class="card">
                             <div class="card-image">
@@ -205,8 +204,8 @@
                                     <span class="tech-tag">JS</span>
                                 </div>
                                 <div class="card-links">
-                                    <a href="https://bouncinglogo.netlify.app/" class="card-link primary" target="_blank">Voir le site</a>
-                                    <a href="https://github.com/dechiaraluca/BouncingLogo" class="card-link secondary" target="_blank">Code source</a>
+                                    <a href="https://bouncinglogo.netlify.app/" class="card-link primary" target="_blank" rel="noopener noreferrer">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/BouncingLogo" class="card-link secondary" target="_blank" rel="noopener noreferrer">Code source</a>
                                 </div>
                             </div>
                         </div>
@@ -228,8 +227,8 @@
                                     <span class="tech-tag">JS</span>
                                 </div>
                                 <div class="card-links">
-                                    <a href="https://feu-de-circulation.netlify.app/" class="card-link primary" target="_blank">Voir le site</a>
-                                    <a href="https://github.com/dechiaraluca/redLight" class="card-link secondary" target="_blank">Code source</a>
+                                    <a href="https://feu-de-circulation.netlify.app/" class="card-link primary" target="_blank" rel="noopener noreferrer">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/redLight" class="card-link secondary" target="_blank" rel="noopener noreferrer">Code source</a>
                                 </div>
                             </div>
                         </div>
@@ -252,17 +251,17 @@
                                     <span class="tech-tag">NoSQL</span>
                                 </div>
                                 <div class="card-links">
-                                    <a href="https://blog-g33k.web.app/" class="card-link primary" target="_blank">Voir le site</a>
-                                    <a href="https://github.com/Damota38/blog-g33k" class="card-link secondary" target="_blank">Code source</a>
+                                    <a href="https://blog-g33k.web.app/" class="card-link primary" target="_blank" rel="noopener noreferrer">Voir le site</a>
+                                    <a href="https://github.com/Damota38/blog-g33k" class="card-link secondary" target="_blank" rel="noopener noreferrer">Code source</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="carousel-indicators">
-                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
-                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                <div class="carousel-indicators" role="tablist" aria-label="Indicateurs de carousel">
+                    <button class="carousel-dot active" onclick="goToSlide(0)" role="tab" aria-label="Aller au slide 1" aria-selected="true"></button>
+                    <button class="carousel-dot" onclick="goToSlide(1)" role="tab" aria-label="Aller au slide 2" aria-selected="false"></button>
                 </div>
         </section>
 
