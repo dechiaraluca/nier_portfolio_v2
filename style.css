@@ -97,9 +97,13 @@ body.dark-mode header {
   border: none;
   font-size: 2rem;
   color: var(--color-text);
-  width: 60px;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #darkModeToggle:hover {
