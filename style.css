@@ -505,6 +505,49 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* MODE MOBILE - Une card scrollable à la fois */
+@media (max-width: 768px) {
+  /* Masquer les contrôles */
+  .carousel-nav,
+  .carousel-indicators {
+    display: none;
+  }
+
+  .carousel-container {
+    padding: 10px 0;
+    overflow: hidden;
+  }
+
+  /* Transformer le wrapper en scroll horizontal */
+  .carousel-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .carousel-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Chaque slide devient une card unique */
+  .carousel-slide {
+    display: contents; /* Ignore le wrapper slide */
+  }
+
+  /* Chaque card prend 90% de la largeur de l'écran */
+  .card {
+    min-width: 80vw;
+    max-width: 80vw;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+}
+
 /* BOUTON RETOUR EN HAUT */
 #scrollToTop {
   position: fixed;
