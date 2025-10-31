@@ -8,6 +8,10 @@ html {
   --color-bg: #f6f6f6;
   --color-text: #111;
   --color-accent: #888;
+  --color-primary: #1a1a1a;
+  --color-secondary: #666;
+  --color-white: #ffffff;
+  --color-border: #374151;
 }
 
 body {
