@@ -57,13 +57,71 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Support clavier (desktop uniquement)
+// Support clavier
 document.addEventListener('keydown', function(e) {
-    if (window.innerWidth > 768) {
-        if (e.key === 'ArrowLeft') {
+    if (e.key === 'ArrowLeft') {
+        if (window.innerWidth > 768) {
+            // Desktop : navigation par slides
             prevSlide();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
+        } else {
+            // Mobile : scroll vers la card précédente
+            const wrapper = document.getElementById('carouselWrapper');
+            const scrollAmount = wrapper.querySelector('.card').offsetWidth + 16; // card width + gap
+            wrapper.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
         }
+    } else if (e.key === 'ArrowRight') {
+        if (window.innerWidth > 768) {
+            // Desktop : navigation par slides
+            nextSlide();
+        } else {
+            // Mobile : scroll vers la card suivante
+            const wrapper = document.getElementById('carouselWrapper');
+            const scrollAmount = wrapper.querySelector('.card').offsetWidth + 16; // card width + gap
+            wrapper.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+});
+
+// ===== INDICATEURS MOBILE (détection scroll) =====
+if (window.innerWidth <= 768) {
+    const wrapper = document.getElementById('carouselWrapper');
+    const mobileDots = document.querySelectorAll('.mobile-dot');
+    let scrollTimeout;
+
+    wrapper.addEventListener('scroll', function() {
+        // Debounce pour éviter trop de calculs
+        clearTimeout(scrollTimeout);
+        
+        scrollTimeout = setTimeout(function() {
+            // Calculer quelle card est visible
+            const scrollLeft = wrapper.scrollLeft;
+            const cardWidth = wrapper.querySelector('.card').offsetWidth;
+            const gap = 16; // 1rem en pixels
+            
+            // Index de la card actuellement visible (arrondi)
+            const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+            
+            // Mettre à jour les dots
+            mobileDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        }, 100); // Attendre 100ms après le scroll
+    });
+}
+
+// Réinitialiser au resize
+window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+        // Réinitialiser le premier dot comme actif
+        const mobileDots = document.querySelectorAll('.mobile-dot');
+        mobileDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === 0);
+        });
     }
 });

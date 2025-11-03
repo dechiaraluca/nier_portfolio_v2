@@ -383,7 +383,20 @@ h2 {
   background: var(--color-accent);
   cursor: pointer;
   transition: all 0.3s ease;
+  /* Reset styles bouton */
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
+
+.carousel-dot:hover {
+  background: var(--color-text);
+  transform: scale(1.2);
+}
+
 
 .carousel-dot.active {
   background: var(--color-text);
@@ -549,6 +562,43 @@ h2 {
     max-width: 80vw;
     scroll-snap-align: center;
     flex-shrink: 0;
+  }
+}
+
+/* Indicateurs mobile - masqués par défaut */
+.carousel-indicators-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Masquer les indicateurs desktop */
+  .carousel-indicators {
+    display: none;
+  }
+
+  /* Afficher les indicateurs mobile */
+  .carousel-indicators-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+
+  .mobile-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    transition: all 0.3s ease;
+    opacity: 0.4;
+  }
+
+  .mobile-dot.active {
+    background: var(--color-text);
+    transform: scale(1.4);
+    opacity: 1;
   }
 }
 

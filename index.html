@@ -260,8 +260,18 @@
 
                 </div>
                 <div class="carousel-indicators" role="tablist" aria-label="Indicateurs de carousel">
-                    <div class="carousel-dot active" onclick="goToSlide(0)" role="tab" aria-label="Aller au slide 1" aria-selected="true"></div>
-                    <div class="carousel-dot" onclick="goToSlide(1)"role="tab" aria-label="Aller au slide 2" aria-selected="false"></div>
+                    <button class="carousel-dot active" onclick="goToSlide(0)" role="tab" aria-label="Aller au slide 1" aria-selected="true"></button>
+                    <button class="carousel-dot" onclick="goToSlide(1)" role="tab" aria-label="Aller au slide 2" aria-selected="false"></button>
+                </div>
+
+                <!-- Indicateurs mobile (6 dots pour 6 cards) -->
+                <div class="carousel-indicators-mobile" role="presentation" aria-hidden="true">
+                    <span class="mobile-dot active"></span>
+                    <span class="mobile-dot"></span>
+                    <span class="mobile-dot"></span>
+                    <span class="mobile-dot"></span>
+                    <span class="mobile-dot"></span>
+                    <span class="mobile-dot"></span>
                 </div>
         </section>
 
