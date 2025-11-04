@@ -44,7 +44,7 @@ Design NieR:Automata
 
 ##  Score Lighthouse
 
-![Score Lighthouse](./assets/images/score-preview.png)
+![Score Lighthouse](./assets/images/score-preview2.png)
 
 ---
 
