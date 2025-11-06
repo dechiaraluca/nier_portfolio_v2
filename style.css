@@ -24,6 +24,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Supprimer le tap highlight sur mobile pour tous les éléments interactifs */
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 img {
   width: 100%;
   height: auto;
@@ -104,6 +113,8 @@ body.dark-mode header {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Supprimer le tap highlight sur mobile (Safari, Chrome mobile) */
+  -webkit-tap-highlight-color: transparent;
 }
 
 #darkModeToggle:hover {
