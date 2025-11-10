@@ -46,15 +46,6 @@ img {
   --color-accent: #bbb;
 }
 
-/* Support préférence système dark mode */
-/* @media (prefers-color-scheme: dark) {
-  :root:not(.dark-mode) body {
-    --color-bg: #111;
-    --color-text: #f6f6f6;
-    --color-accent: #bbb;
-  }
-} */
-
 /* Respect des préférences d'animation réduite */
 @media (prefers-reduced-motion: reduce) {
   *,
