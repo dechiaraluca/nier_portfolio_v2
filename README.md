@@ -5,13 +5,13 @@ Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ---
 
-## 📸 Aperçu
+## Aperçu
 
 ![Aperçu du portfolio](./assets/images/screenshot-preview.png)
 
 ---
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 
@@ -27,11 +27,11 @@ nier_portfolio_v2/
 
 ---
 
-## 🚀 Installation & Utilisation
+## Installation & Utilisation
 
 Fonctionnalités
 Dark / Light mode
-→ Bouton ☯ en haut à droite pour basculer entre les deux thèmes.
+→ Bouton en haut à droite pour basculer entre les deux thèmes.
 
 Responsive design
 → Adapté aux mobiles, tablettes et écrans larges.
