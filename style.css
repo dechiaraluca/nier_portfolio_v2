@@ -131,6 +131,41 @@ body.dark-mode header {
 .dark-mode #darkModeToggle img {
   filter: invert(0);
 }
+
+/* BURGER MENU */
+.burger {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.burger-line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--color-text);
+  margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+.burger.active .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger.active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -546,6 +581,55 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* CONTACT FORM */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-family: "Cinzel", serif;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-text);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.contact-form .btn-primary {
+  border: none;
+  cursor: pointer;
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+}
+
 /* Indicateurs mobile - masqués par défaut */
 .carousel-indicators-mobile {
   display: none;
@@ -623,14 +707,32 @@ h2 {
     opacity: 1;
   }
 
-  /* Layout general mobile */
+  /* Burger menu mobile */
+  .burger {
+    display: block;
+  }
+
+  nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav.open {
+    max-height: 300px;
+  }
+
   nav ul {
-    font-size: 12px;
-    gap: 12px;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 20px;
+    padding: 0;
   }
 
   nav a {
-    padding: 6px 10px;
+    display: block;
+    padding: 12px 20px;
+    font-size: 14px;
   }
 
   .hero-content {

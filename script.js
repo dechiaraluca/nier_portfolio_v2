@@ -10,6 +10,24 @@ toggle.addEventListener('click', () => {
     localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
 });
 
+// Burger menu mobile
+const burgerBtn = document.getElementById('burgerBtn');
+const mainNav = document.getElementById('mainNav');
+
+burgerBtn.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    burgerBtn.classList.toggle('active');
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+});
+
+mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        burgerBtn.classList.remove('active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+});
+
 // Bouton retour en haut
 const scrollToTopBtn = document.getElementById('scrollToTop');
 

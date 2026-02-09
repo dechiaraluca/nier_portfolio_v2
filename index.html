@@ -21,13 +21,8 @@
     <title>Portfolio - De Chiara Luca</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fonts en async pour éviter le render-blocking -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;700&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;700&display=swap"
-            rel="stylesheet">
-    </noscript>
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="preload" href="assets/images/luca.webp" as="image" type="image/webp" fetchpriority="high">
 </head>
@@ -40,7 +35,12 @@
         <div class="logo-container">
             <img src="assets/images/logo.webp" width="105" height="105" alt="Logo Portfolio De Chiara Luca" class="logo">
         </div>
-        <nav>
+        <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        <nav id="mainNav">
             <ul>
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#apropos">À propos</a></li>
@@ -87,15 +87,15 @@
             <h2>À propos</h2>
             <div class="apropos-container">
                 <div class="bio">
-                    <p>Je suis Luca, développeur Web et Web Mobile en formation. Né à Rome, en Italie, j’ai grandi dans
-                        un environnement où l’ordinateur faisait déjà partie de mon quotidien. Très jeune, j’ai été
-                        fasciné par le potentiel du numérique, ce qui m’a naturellement amené à explorer, tester, créer…
-                        et finalement me passionner pour le développement web.
-                        Installé en France depuis maintenant 7 ans, j’ai progressivement orienté mon parcours vers le
+                    <p>Je suis Luca, développeur Web et Web Mobile en formation. Né à Rome, en Italie, j'ai grandi dans
+                        un environnement où l'ordinateur faisait déjà partie de mon quotidien. Très jeune, j'ai été
+                        fasciné par le potentiel du numérique, ce qui m'a naturellement amené à explorer, tester, créer…
+                        et finalement me passionner pour le développement web.</p>
+                    <p>Installé en France depuis maintenant 7 ans, j'ai progressivement orienté mon parcours vers le
                         monde du web, attiré par la richesse de cet univers en constante évolution. Curieux de nature,
-                        j’aime comprendre comment les choses fonctionnent, résoudre des problèmes, et surtout concevoir
-                        des solutions simples, accessibles et efficaces.
-                        Aujourd’hui, je me forme aux métiers du développement web et web mobile pour transformer cette
+                        j'aime comprendre comment les choses fonctionnent, résoudre des problèmes, et surtout concevoir
+                        des solutions simples, accessibles et efficaces.</p>
+                    <p>Aujourd'hui, je me forme aux métiers du développement web et web mobile pour transformer cette
                         passion en compétence professionnelle.</p>
                 </div>
                 <div class="cv">
@@ -287,10 +287,31 @@
                 </div>
             </div>
         </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>Me contacter</h2>
+            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                <input type="hidden" name="form-name" value="contact">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Envoyer</button>
+            </form>
+        </section>
     </main>
-    
+
     <!-- FOOTER -->
-    <footer id="contact">
+    <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact</h3>
