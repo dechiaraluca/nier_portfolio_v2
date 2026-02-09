@@ -457,8 +457,9 @@ h2 {
 }
 
 .dark-mode .card {
-  background: rgba(30, 30, 30, 0.9);
-  border-color: #444;
+  background: rgba(40, 40, 40, 0.95);
+  border-color: rgba(255, 220, 220, 0.2);
+  box-shadow: 0 2px 8px rgba(255, 220, 220, 0.1);
 }
 
 .dark-mode .card-title {
@@ -467,6 +468,26 @@ h2 {
 
 .dark-mode .card-description {
   color: var(--color-accent);
+}
+
+.dark-mode .card-link.primary {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+}
+
+.dark-mode .card-link.primary:hover {
+  background: #ddd;
+}
+
+.dark-mode .card-link.secondary {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.dark-mode .tech-tag {
+  background: var(--color-white);
+  color: var(--color-primary);
 }
 
 .card-description {
@@ -705,6 +726,10 @@ footer {
   background: var(--color-primary);
   color: var(--color-white);
   padding: 1rem;
+}
+
+body.dark-mode footer {
+  box-shadow: 0 -2px 6px rgba(255, 220, 220, 0.3);
 }
 
 
