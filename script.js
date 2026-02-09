@@ -1,11 +1,18 @@
+// Dark mode avec persistance localStorage
 const toggle = document.getElementById('darkModeToggle');
+
+if (localStorage.getItem('dark-mode') === 'true') {
+    document.body.classList.add('dark-mode');
+}
+
 toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-})
+    localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+});
 
+// Bouton retour en haut
 const scrollToTopBtn = document.getElementById('scrollToTop');
 
-// Afficher/masquer le bouton selon le scroll
 window.addEventListener('scroll', function () {
     if (window.scrollY > 100) {
         scrollToTopBtn.classList.add('show');
@@ -14,7 +21,6 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Retour en haut avec animation fluide
 scrollToTopBtn.addEventListener('click', function () {
     window.scrollTo({
         top: 0,
