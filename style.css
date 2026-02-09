@@ -499,6 +499,11 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* Indicateurs mobile - masqués par défaut */
+.carousel-indicators-mobile {
+  display: none;
+}
+
 /* MODE MOBILE - Une card scrollable à la fois */
 @media (max-width: 768px) {
   /* Masquer les contrôles */
@@ -541,6 +546,11 @@ h2 {
     flex-shrink: 0;
   }
 
+  /* Désactiver le zoom image au hover sur mobile (tactile) */
+  .card:hover .card-image img {
+    transform: none;
+  }
+
   /* Afficher les indicateurs mobile */
   .carousel-indicators-mobile {
     display: flex;
@@ -565,11 +575,6 @@ h2 {
     transform: scale(1.4);
     opacity: 1;
   }
-}
-
-/* Indicateurs mobile - masqués par défaut */
-.carousel-indicators-mobile {
-  display: none;
 }
 
 /* BOUTON RETOUR EN HAUT */
