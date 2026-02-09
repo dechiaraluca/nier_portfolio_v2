@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 html {
   scroll-behavior: smooth;
 }
@@ -34,9 +32,8 @@ textarea {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  aspect-ratio: 1;
 }
 
 /* DARK MODE */
@@ -106,12 +103,16 @@ body.dark-mode header {
   justify-content: center;
 }
 
+#darkModeToggle img {
+  filter: invert(1);
+}
+
 #darkModeToggle:hover {
   transform: rotate(360deg);
 }
 
-.dark-mode #darkModeToggle {
-  filter: invert(1);
+.dark-mode #darkModeToggle img {
+  filter: invert(0);
 }
 nav ul {
   list-style: none;
@@ -590,8 +591,8 @@ h2 {
   transition: all 0.3s ease-in-out;
   z-index: 1000;
   padding: 0;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
