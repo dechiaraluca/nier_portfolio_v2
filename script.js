@@ -62,7 +62,7 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const data = new FormData(contactForm);
-        fetch('/', {
+        fetch(contactForm.getAttribute('action') || location.pathname, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(data).toString()
