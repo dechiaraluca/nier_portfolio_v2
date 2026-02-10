@@ -312,8 +312,31 @@ main section {
   padding: 4rem 2rem;
 }
 
-.dark-mode .hero {
-  filter: invert(1);
+.dark-mode .hero-text h1,
+.dark-mode .hero-text p {
+  color: var(--color-text);
+}
+
+.dark-mode .btn-primary {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.dark-mode .btn-secondary {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.hero-img-dark {
+  display: none;
+}
+
+.dark-mode .hero-img-light {
+  display: none;
+}
+
+.dark-mode .hero-img-dark {
+  display: block;
 }
 
 .hero-content {
