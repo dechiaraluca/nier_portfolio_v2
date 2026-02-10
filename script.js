@@ -1,13 +1,30 @@
 // Dark mode avec persistance localStorage
 const toggle = document.getElementById('darkModeToggle');
+const heroLight = document.querySelector('.hero-img-light');
+const heroDark = document.querySelector('.hero-img-dark');
 
 if (localStorage.getItem('dark-mode') === 'true') {
     document.body.classList.add('dark-mode');
+    heroLight.classList.add('hidden');
+    heroDark.classList.add('visible');
 }
 
 toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('dark-mode', isDark);
+
+    if (isDark) {
+        heroLight.classList.add('glitch-out');
+        heroLight.addEventListener('animationend', () => {
+            heroLight.classList.add('hidden');
+            heroLight.classList.remove('glitch-out');
+            heroDark.classList.add('visible');
+        }, { once: true });
+    } else {
+        heroDark.classList.remove('visible');
+        heroLight.classList.remove('hidden');
+    }
 });
 
 // Burger menu mobile

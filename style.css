@@ -328,15 +328,46 @@ main section {
 }
 
 .hero-img-dark {
-  display: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  object-fit: contain;
+  margin: auto;
 }
 
-.dark-mode .hero-img-light {
-  display: none;
+.hero-img-dark.visible {
+  opacity: 1;
+  position: static;
+  pointer-events: auto;
 }
 
-.dark-mode .hero-img-dark {
-  display: block;
+.hero-img-light.hidden {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Glitch easter egg */
+@keyframes glitch {
+  0%   { clip-path: inset(0); transform: translate(0); opacity: 1; }
+  8%   { clip-path: inset(40% 0 20% 0); transform: translate(-5px, 2px) skewX(2deg); }
+  12%  { clip-path: inset(0); transform: translate(3px, -1px); }
+  20%  { clip-path: inset(80% 0 5% 0); transform: translate(-2px, -3px); filter: hue-rotate(90deg); }
+  25%  { clip-path: inset(0); transform: translate(0); filter: none; }
+  33%  { clip-path: inset(10% 0 60% 0); transform: translate(4px, 1px) skewX(-2deg); }
+  38%  { clip-path: inset(0); transform: translate(-3px, 2px); filter: none; }
+  46%  { clip-path: inset(50% 0 15% 0); transform: translate(2px, -2px) skewX(3deg); filter: hue-rotate(180deg) saturate(2); opacity: 0.8; }
+  52%  { clip-path: inset(0); transform: translate(0); filter: none; }
+  60%  { clip-path: inset(25% 0 40% 0); transform: translate(-4px, 3px); opacity: 0.5; }
+  70%  { clip-path: inset(0); transform: translate(3px, -1px); opacity: 0.3; }
+  80%  { clip-path: inset(60% 0 10% 0); transform: translate(-2px, 2px); opacity: 0.1; }
+  90%  { opacity: 0; }
+  100% { clip-path: inset(0); transform: translate(0); opacity: 0; }
+}
+
+.hero-img-light.glitch-out {
+  animation: glitch 0.8s steps(1, end) forwards;
 }
 
 .hero-content {
