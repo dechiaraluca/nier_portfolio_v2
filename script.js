@@ -24,6 +24,10 @@ toggle.addEventListener('click', () => {
     } else {
         heroDark.classList.remove('visible');
         heroLight.classList.remove('hidden');
+        heroLight.classList.add('glitch-in');
+        heroLight.addEventListener('animationend', () => {
+            heroLight.classList.remove('glitch-in');
+        }, { once: true });
     }
 });
 
