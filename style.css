@@ -183,20 +183,21 @@ body.dark-mode header {
 
 .lang-current {
   background: none;
-  border: 1px solid var(--color-accent);
+  border: none;
   color: var(--color-text);
   font-family: "Cinzel", serif;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
 }
 
 .lang-current .arrow {
   display: inline-block;
   transition: transform 0.3s ease;
+  font-size: 0.7rem;
 }
 
 .lang-current.open .arrow {
@@ -204,32 +205,38 @@ body.dark-mode header {
 }
 
 .lang-current:hover {
-  border-color: var(--color-text);
+  opacity: 1;
 }
 
 .lang-menu {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--color-bg);
-  border: 1px solid var(--color-accent);
-  border-radius: 4px;
-  margin-top: 4px;
+  border: 1px solid transparent;
+  border-radius: 6px;
   z-index: 100;
-  min-width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  border-width: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  box-shadow: none;
 }
 
 .lang-menu.open {
   max-height: 150px;
   opacity: 1;
-  border-width: 1px;
+  padding: 6px 0;
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark-mode .lang-menu.open {
+  box-shadow: 0 4px 12px rgba(255, 220, 220, 0.08);
 }
 
 .lang-option {
@@ -237,13 +244,13 @@ body.dark-mode header {
   border: none;
   color: var(--color-text);
   font-family: "Cinzel", serif;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  padding: 6px 10px;
+  padding: 4px 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  opacity: 0.5;
-  text-align: left;
+  transition: opacity 0.2s ease;
+  opacity: 0.4;
+  text-align: center;
 }
 
 .lang-option:hover {
@@ -830,8 +837,10 @@ h2 {
 
   .lang-menu {
     position: static;
+    transform: none;
     margin-top: 6px;
     text-align: center;
+    border-radius: 6px;
   }
 
   .hero-content {
