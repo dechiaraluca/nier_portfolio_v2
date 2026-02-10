@@ -170,6 +170,11 @@ body.dark-mode header {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* LANGUAGE SWITCH TRANSITION */
+[data-i18n] {
+  transition: opacity 0.2s ease;
+}
+
 /* LANGUAGE DROPDOWN */
 .lang-dropdown {
   position: relative;
@@ -497,7 +502,6 @@ h2 {
   background: var(--color-accent);
   cursor: pointer;
   transition: all 0.3s ease;
-  /* Reset styles bouton */
   border: none;
   padding: 0;
   margin: 0;
@@ -714,14 +718,12 @@ h2 {
   font-size: 1rem;
 }
 
-/* Indicateurs mobile - masqués par défaut */
 .carousel-indicators-mobile {
   display: none;
 }
 
 /* MODE MOBILE - Une card scrollable à la fois */
 @media (max-width: 768px) {
-  /* Masquer les contrôles */
   .carousel-nav,
   .carousel-indicators {
     display: none;
@@ -732,7 +734,6 @@ h2 {
     overflow: hidden;
   }
 
-  /* Transformer le wrapper en scroll horizontal */
   .carousel-wrapper {
     display: flex;
     flex-direction: row;
@@ -748,12 +749,10 @@ h2 {
     display: none;
   }
 
-  /* Chaque slide devient une card unique */
   .carousel-slide {
-    display: contents; /* Ignore le wrapper slide */
+    display: contents;
   }
 
-  /* Chaque card prend 80% de la largeur de l'écran */
   .card {
     min-width: 80vw;
     max-width: 80vw;
@@ -761,12 +760,10 @@ h2 {
     flex-shrink: 0;
   }
 
-  /* Désactiver le zoom image au hover sur mobile (tactile) */
   .card:hover .card-image img {
     transform: none;
   }
 
-  /* Afficher les indicateurs mobile */
   .carousel-indicators-mobile {
     display: flex;
     justify-content: center;
@@ -986,5 +983,3 @@ body.dark-mode footer {
   opacity: 1;
   transform: translateY(0);
 }
-
-

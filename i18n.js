@@ -39,7 +39,7 @@ const translations = {
         "footer.service2": "Applications Laravel / PHP",
         "footer.service3": "API & Intégrations",
         "footer.service4": "UI/UX Design",
-        "footer.copyright": "© 2026 De Chiara Luca. Tous droits réservés."
+        "footer.copyright": "© 2025 De Chiara Luca. Tous droits réservés."
     },
     en: {
         skipLink: "Skip to main content",
@@ -81,7 +81,7 @@ const translations = {
         "footer.service2": "Laravel / PHP Applications",
         "footer.service3": "API & Integrations",
         "footer.service4": "UI/UX Design",
-        "footer.copyright": "© 2026 De Chiara Luca. All rights reserved."
+        "footer.copyright": "© 2025 De Chiara Luca. All rights reserved."
     },
     it: {
         skipLink: "Vai al contenuto principale",
@@ -123,29 +123,46 @@ const translations = {
         "footer.service2": "Applicazioni Laravel / PHP",
         "footer.service3": "API & Integrazioni",
         "footer.service4": "UI/UX Design",
-        "footer.copyright": "© 2026 De Chiara Luca. Tutti i diritti riservati."
+        "footer.copyright": "© 2025 De Chiara Luca. Tutti i diritti riservati."
     }
 };
 
 const langToggle = document.getElementById('langToggle');
 const langMenu = document.getElementById('langMenu');
 
-function setLanguage(lang) {
+function setLanguage(lang, animate = true) {
     const t = translations[lang];
     if (!t) return;
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    if (animate) {
+        elements.forEach(el => el.style.opacity = '0');
+
+        setTimeout(() => {
+            applyTranslations(t, elements);
+            updateLangUI(lang);
+            elements.forEach(el => el.style.opacity = '1');
+        }, 200);
+    } else {
+        applyTranslations(t, elements);
+        updateLangUI(lang);
+    }
+}
+
+function applyTranslations(t, elements) {
+    elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key]) {
             el.textContent = t[key];
         }
     });
+}
 
+function updateLangUI(lang) {
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
-
     langToggle.innerHTML = lang.toUpperCase() + ' <span class="arrow">▾</span>';
-
     document.querySelectorAll('.lang-option').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
     });
@@ -157,21 +174,18 @@ function closeLangMenu() {
     langToggle.setAttribute('aria-expanded', 'false');
 }
 
-// Toggle dropdown
 langToggle.addEventListener('click', () => {
     const isOpen = langMenu.classList.toggle('open');
     langToggle.classList.toggle('open');
     langToggle.setAttribute('aria-expanded', isOpen);
 });
 
-// Fermer au clic extérieur
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.lang-dropdown')) {
         closeLangMenu();
     }
 });
 
-// Choix de langue
 document.querySelectorAll('.lang-option').forEach(btn => {
     btn.addEventListener('click', () => {
         setLanguage(btn.dataset.lang);
@@ -179,8 +193,7 @@ document.querySelectorAll('.lang-option').forEach(btn => {
     });
 });
 
-// Init: langue sauvegardée ou français par défaut
 const savedLang = localStorage.getItem('lang') || 'fr';
 if (savedLang !== 'fr') {
-    setLanguage(savedLang);
+    setLanguage(savedLang, false);
 }
