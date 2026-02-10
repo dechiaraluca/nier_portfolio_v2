@@ -21,10 +21,18 @@ burgerBtn.addEventListener('click', () => {
 });
 
 mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        const wasOpen = mainNav.classList.contains('open');
         mainNav.classList.remove('open');
         burgerBtn.classList.remove('active');
         burgerBtn.setAttribute('aria-expanded', 'false');
+        if (wasOpen) {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
     });
 });
 

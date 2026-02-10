@@ -143,6 +143,10 @@ body.dark-mode header {
   cursor: pointer;
   padding: 8px;
   z-index: 1001;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .burger-line {
@@ -733,6 +737,10 @@ h2 {
     display: block;
     padding: 12px 20px;
     font-size: 14px;
+  }
+
+  nav a::after {
+    display: none;
   }
 
   .hero-content {
