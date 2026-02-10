@@ -54,6 +54,48 @@ scrollToTopBtn.addEventListener('click', function () {
     });
 });
 
+// Formulaire contact - envoi AJAX + feedback
+const contactForm = document.querySelector('.contact-form');
+const formSuccess = document.getElementById('formSuccess');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(contactForm);
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+        }).then((res) => {
+            if (!res.ok) throw new Error(res.status);
+            contactForm.reset();
+            formSuccess.hidden = false;
+            setTimeout(() => { formSuccess.hidden = true; }, 5000);
+        }).catch(() => {
+            formSuccess.style.color = '#c0392b';
+            formSuccess.textContent = 'Erreur, veuillez réessayer.';
+            formSuccess.hidden = false;
+            setTimeout(() => { formSuccess.hidden = true; formSuccess.style.color = ''; }, 5000);
+        });
+    });
+}
+
+// Nav active au scroll
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+        }
+    });
+}, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+document.querySelectorAll('main section[id]').forEach(section => {
+    navObserver.observe(section);
+});
+
 // Animation scroll
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');

@@ -32,6 +32,10 @@ const translations = {
         "contact.labelEmail": "Email",
         "contact.labelMessage": "Message",
         "contact.submit": "Envoyer",
+        "contact.placeholderName": "Votre nom",
+        "contact.placeholderEmail": "votre@email.com",
+        "contact.placeholderMessage": "Votre message...",
+        "contact.success": "Merci ! Votre message a bien été envoyé.",
         "footer.coordinates": "Coordonnées",
         "footer.networks": "Réseaux",
         "footer.services": "Services",
@@ -74,6 +78,10 @@ const translations = {
         "contact.labelEmail": "Email",
         "contact.labelMessage": "Message",
         "contact.submit": "Send",
+        "contact.placeholderName": "Your name",
+        "contact.placeholderEmail": "your@email.com",
+        "contact.placeholderMessage": "Your message...",
+        "contact.success": "Thank you! Your message has been sent.",
         "footer.coordinates": "Contact Info",
         "footer.networks": "Social",
         "footer.services": "Services",
@@ -116,6 +124,10 @@ const translations = {
         "contact.labelEmail": "Email",
         "contact.labelMessage": "Messaggio",
         "contact.submit": "Invia",
+        "contact.placeholderName": "Il tuo nome",
+        "contact.placeholderEmail": "tua@email.com",
+        "contact.placeholderMessage": "Il tuo messaggio...",
+        "contact.success": "Grazie! Il tuo messaggio è stato inviato.",
         "footer.coordinates": "Recapiti",
         "footer.networks": "Social",
         "footer.services": "Servizi",
@@ -155,6 +167,12 @@ function applyTranslations(t, elements) {
         const key = el.getAttribute('data-i18n');
         if (t[key]) {
             el.textContent = t[key];
+        }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key]) {
+            el.placeholder = t[key];
         }
     });
 }
