@@ -82,32 +82,58 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Indicateurs mobile (détection scroll)
-if (window.innerWidth <= 768) {
+// Indicateurs mobile (détection scroll + clic)
+function setupMobileDots() {
     const wrapper = document.getElementById('carouselWrapper');
     const mobileDots = document.querySelectorAll('.mobile-dot');
     let scrollTimeout;
 
+    function updateMobileDots() {
+        const scrollLeft = wrapper.scrollLeft;
+        const cardWidth = wrapper.querySelector('.card').offsetWidth;
+        const gap = 16;
+        const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+        mobileDots.forEach((dot, index) => {
+            const isActive = index === activeIndex;
+            dot.classList.toggle('active', isActive);
+            dot.setAttribute('aria-selected', isActive);
+        });
+    }
+
     wrapper.addEventListener('scroll', function() {
         clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function() {
-            const scrollLeft = wrapper.scrollLeft;
+        scrollTimeout = setTimeout(updateMobileDots, 30);
+    });
+
+    // Clic sur les dots mobile
+    mobileDots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const cardIndex = Number(this.dataset.card);
             const cardWidth = wrapper.querySelector('.card').offsetWidth;
             const gap = 16;
-            const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
-            mobileDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === activeIndex);
+            wrapper.scrollTo({
+                left: cardIndex * (cardWidth + gap),
+                behavior: 'smooth'
             });
-        }, 100);
+        });
     });
 }
 
+if (window.innerWidth <= 768) {
+    setupMobileDots();
+}
+
 // Réinitialiser dots mobile au resize
+let mobileDotsInitialized = window.innerWidth <= 768;
 window.addEventListener('resize', function() {
     if (window.innerWidth <= 768) {
         const mobileDots = document.querySelectorAll('.mobile-dot');
         mobileDots.forEach((dot, index) => {
             dot.classList.toggle('active', index === 0);
         });
+        if (!mobileDotsInitialized) {
+            setupMobileDots();
+            mobileDotsInitialized = true;
+        }
     }
 });

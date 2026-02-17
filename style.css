@@ -626,6 +626,8 @@ h2 {
   background: rgba(255, 255, 255, 0.9);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -670,6 +672,17 @@ h2 {
 
 .card-content {
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-description {
+  flex: 1;
+}
+
+.card-technologies {
+  margin-top: auto;
 }
 
 .card-title {
@@ -872,8 +885,16 @@ h2 {
     flex-shrink: 0;
   }
 
+  .card:hover {
+    transform: none;
+  }
+
   .card:hover .card-image img {
     transform: none;
+  }
+
+  .card:hover .card-overlay {
+    opacity: 0;
   }
 
   .carousel-indicators-mobile {
@@ -890,8 +911,14 @@ h2 {
     height: 8px;
     border-radius: 50%;
     background: var(--color-accent);
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
     opacity: 0.4;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
   }
 
   .mobile-dot.active {
