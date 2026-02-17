@@ -781,6 +781,12 @@ h2 {
   transform: translateY(-2px);
 }
 
+.card-link.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* CONTACT FORM */
 .contact-form {
   max-width: 600px;
