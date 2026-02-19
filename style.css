@@ -355,11 +355,12 @@ main section {
 }
 
 #apropos,
-#contact {
+#technologies {
   background-color: #ececec;
 }
 
 .dark-mode #apropos,
+.dark-mode #technologies,
 .dark-mode #contact {
   background-color: #1a1a1a;
 }
@@ -1212,4 +1213,151 @@ body.dark-mode footer {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* TECHNOLOGIES — 3D cards */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px 30px;
+  padding: 3rem 2rem 6rem;
+  list-style: none;
+  margin: 0;
+}
+
+.tech-card {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 180px;
+  height: 70px;
+  background: var(--color-white);
+  padding-left: 16px;
+  transform: rotate(-30deg) skew(25deg) translate(0, 0);
+  transition: 0.5s;
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.dark-mode .tech-card {
+  background: #2a2a2a;
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.6);
+}
+
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: #b1b1b1;
+  transform: rotate(0deg) skewY(-45deg);
+  transition: 0.5s;
+}
+
+.tech-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -10px;
+  height: 20px;
+  width: 100%;
+  background: #b1b1b1;
+  transform: rotate(0deg) skewX(-45deg);
+  transition: 0.5s;
+}
+
+.dark-mode .tech-card::before,
+.dark-mode .tech-card::after {
+  background: #1a1a1a;
+}
+
+.tech-card:hover {
+  transform: rotate(-30deg) skew(25deg) translate(20px, -15px);
+  box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
+}
+
+.tech-icon {
+  font-size: 36px;
+  color: var(--color-text);
+  transition: 0.5s;
+  flex-shrink: 0;
+}
+
+.tech-name {
+  color: var(--color-text);
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  transition: 0.5s;
+}
+
+.tech-item:hover .tech-icon,
+.tech-item:hover .tech-name {
+  color: #fff;
+}
+
+/* HTML5 */
+.tech-item:hover:nth-child(1) .tech-card          { background: #e34f26; }
+.tech-item:hover:nth-child(1) .tech-card::before  { background: #b83c1c; }
+.tech-item:hover:nth-child(1) .tech-card::after   { background: #f06040; }
+
+/* CSS3 */
+.tech-item:hover:nth-child(2) .tech-card          { background: #264de4; }
+.tech-item:hover:nth-child(2) .tech-card::before  { background: #1a35a0; }
+.tech-item:hover:nth-child(2) .tech-card::after   { background: #4d6eee; }
+
+/* JavaScript */
+.tech-item:hover:nth-child(3) .tech-card          { background: #c5ac00; }
+.tech-item:hover:nth-child(3) .tech-card::before  { background: #957f00; }
+.tech-item:hover:nth-child(3) .tech-card::after   { background: #e8cc10; }
+
+/* PHP */
+.tech-item:hover:nth-child(4) .tech-card          { background: #777bb4; }
+.tech-item:hover:nth-child(4) .tech-card::before  { background: #55588a; }
+.tech-item:hover:nth-child(4) .tech-card::after   { background: #9598c8; }
+
+/* Laravel */
+.tech-item:hover:nth-child(5) .tech-card          { background: #ff2d20; }
+.tech-item:hover:nth-child(5) .tech-card::before  { background: #c01e14; }
+.tech-item:hover:nth-child(5) .tech-card::after   { background: #ff6b61; }
+
+/* Sass */
+.tech-item:hover:nth-child(6) .tech-card          { background: #cc6699; }
+.tech-item:hover:nth-child(6) .tech-card::before  { background: #a04a78; }
+.tech-item:hover:nth-child(6) .tech-card::after   { background: #dd88b0; }
+
+/* Git */
+.tech-item:hover:nth-child(7) .tech-card          { background: #f05032; }
+.tech-item:hover:nth-child(7) .tech-card::before  { background: #b83a23; }
+.tech-item:hover:nth-child(7) .tech-card::after   { background: #f47860; }
+
+/* Tailwind CSS */
+.tech-item:hover:nth-child(8) .tech-card          { background: #06b6d4; }
+.tech-item:hover:nth-child(8) .tech-card::before  { background: #0591aa; }
+.tech-item:hover:nth-child(8) .tech-card::after   { background: #38d1eb; }
+
+@media (max-width: 768px) {
+  .tech-list {
+    gap: 45px 20px;
+    padding: 2rem 1rem 5rem;
+  }
+
+  .tech-card {
+    width: 150px;
+    height: 60px;
+  }
+
+  .tech-icon {
+    font-size: 28px;
+  }
+
+  .tech-name {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
 }
