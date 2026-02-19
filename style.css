@@ -360,8 +360,7 @@ main section {
 }
 
 .dark-mode #apropos,
-.dark-mode #technologies,
-.dark-mode #contact {
+.dark-mode #technologies {
   background-color: #1a1a1a;
 }
 
@@ -1280,6 +1279,11 @@ body.dark-mode footer {
   box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
 }
 
+.tech-item {
+  cursor: default;
+  user-select: none;
+}
+
 .tech-icon {
   font-size: 36px;
   color: var(--color-text);
@@ -1343,21 +1347,23 @@ body.dark-mode footer {
 
 @media (max-width: 768px) {
   .tech-list {
-    gap: 45px 20px;
-    padding: 2rem 1rem 5rem;
+    gap: 50px 10px;
+    padding: 2rem 0 5rem;
   }
 
   .tech-card {
-    width: 150px;
-    height: 60px;
+    width: 130px;
+    height: 58px;
+    gap: 8px;
+    padding-left: 10px;
   }
 
   .tech-icon {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .tech-name {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 1px;
   }
 }
