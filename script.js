@@ -140,17 +140,24 @@ document.addEventListener('DOMContentLoaded', function() {
         section.classList.add('fade-in');
     });
 
-    const observer = new IntersectionObserver((entries) => {
+    const observerIn = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, {
-        threshold: 0.2
-    });
+    }, { threshold: 0.2 });
+
+    const observerOut = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, { threshold: 0.05 });
 
     sections.forEach(section => {
-        observer.observe(section);
+        observerIn.observe(section);
+        observerOut.observe(section);
     });
 });

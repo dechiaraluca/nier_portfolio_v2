@@ -354,7 +354,6 @@ main section {
   padding: 4rem 2rem;
 }
 
-/* ===== OPTION 1 : Fonds alternés ===== */
 #apropos,
 #contact {
   background-color: #ececec;
@@ -365,18 +364,20 @@ main section {
   background-color: #1a1a1a;
 }
 
-/* ===== OPTION 3 : Glyphe NieR séparateur ===== */
+/* Glyphe NieR separator */
 
 main section + section::before {
-  content: "◆———————◆";
+  content: "❖ ❖";
   display: block;
-  text-align: center;
+  text-align: justify;
+  text-align-last: justify;
   color: var(--color-accent);
-  font-size: 0.85rem;
-  letter-spacing: 4px;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 0.5;
+  margin: 0 auto 2rem;
+  max-width: 200px;
+  background: linear-gradient(var(--color-accent), var(--color-accent)) no-repeat center / calc(100% - 2em) 1px;
 }
-
 .dark-mode .hero-text h1,
 .dark-mode .hero-text p {
   color: var(--color-text);
@@ -600,10 +601,11 @@ h2 {
 
 .carousel-slide {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   min-width: 100%;
-  padding: 10px 0;
+  box-sizing: border-box;
+  padding: 10px max(0px, calc((100% - 1200px) / 2));
 }
 
 .carousel-nav {
