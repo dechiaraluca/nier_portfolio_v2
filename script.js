@@ -326,7 +326,8 @@ mainNav.querySelectorAll('a').forEach(link => {
         if (wasOpen) {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute('href'));
-            target.scrollIntoView({ behavior: 'smooth' });
+            const headerH = document.querySelector('header')?.offsetHeight ?? 0;
+            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - headerH, behavior: 'smooth' });
         }
     });
 });
