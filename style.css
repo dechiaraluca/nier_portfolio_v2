@@ -123,8 +123,13 @@ body.dark-mode header {
   filter: invert(1);
 }
 
-#darkModeToggle:hover {
-  transform: rotate(360deg);
+@keyframes toggle-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+#darkModeToggle.spinning {
+  animation: toggle-spin 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #darkModeToggle:focus-visible {

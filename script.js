@@ -274,7 +274,13 @@ function stopDarkAmbience() {
 }
 
 toggle.addEventListener('click', () => {
-    if (!isMobile) startNierTextGlitch();
+    // Spin à chaque clic (reset + reflow pour relancer l'animation)
+    toggle.classList.remove('spinning');
+    void toggle.offsetWidth;
+    toggle.classList.add('spinning');
+    toggle.addEventListener('animationend', () => toggle.classList.remove('spinning'), { once: true });
+
+    startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
