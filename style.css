@@ -1356,6 +1356,53 @@ body.dark-mode footer {
 .tech-item:hover:nth-child(10) .tech-card::before { background: #2e5578; }
 .tech-item:hover:nth-child(10) .tech-card::after  { background: #6699bb; }
 
+/* ============================================================
+   GLITCH TITLE — Dark mode system corruption
+   Chaque h2 de section pulse brièvement (split RGB + jitter)
+   toutes les 12s, décalé entre sections pour ne pas tout glitcher en même temps
+   ============================================================ */
+
+@keyframes title-corrupt {
+  /* État normal : 0% → 79.9% */
+  0%, 79.9%, 80.5%, 82.9%, 83.5%, 85.9%, 86.5%, 88.9%, 89.5%, 100% {
+    text-shadow: none;
+    transform: translateX(0);
+    filter: none;
+  }
+  /* Burst 1 — split gauche */
+  80%, 80.4% {
+    text-shadow: -3px 0 rgba(255, 50, 50, 0.9), 3px 0 rgba(0, 220, 255, 0.9);
+    transform: translateX(-3px);
+  }
+  /* Burst 2 — split droite + brightness */
+  83%, 83.4% {
+    text-shadow: 3px 0 rgba(255, 50, 50, 0.9), -3px 0 rgba(0, 220, 255, 0.9);
+    transform: translateX(3px);
+    filter: brightness(1.15);
+  }
+  /* Burst 3 — hue shift */
+  86%, 86.4% {
+    text-shadow: -4px 0 rgba(255, 50, 50, 0.7), 4px 0 rgba(0, 220, 255, 0.7);
+    transform: translateX(-2px);
+    filter: hue-rotate(12deg);
+  }
+  /* Burst 4 — résidu subtil */
+  89%, 89.4% {
+    text-shadow: 1px 0 rgba(255, 50, 50, 0.4), -1px 0 rgba(0, 220, 255, 0.4);
+    transform: translateX(1px);
+  }
+}
+
+.dark-mode section h2 {
+  animation: title-corrupt 12s linear infinite;
+}
+
+/* Décalage par section : chaque h2 corrompt ~3s après le précédent */
+.dark-mode #apropos      h2 { animation-delay:  0s; }
+.dark-mode #projets      h2 { animation-delay: -3s; }
+.dark-mode #technologies h2 { animation-delay: -6s; }
+.dark-mode #contact      h2 { animation-delay: -9s; }
+
 @media (max-width: 768px) {
   .tech-list {
     gap: 50px 10px;

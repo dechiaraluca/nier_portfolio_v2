@@ -9,12 +9,47 @@ if (localStorage.getItem('dark-mode') === 'true') {
     heroDark.classList.add('visible');
 }
 
+// === SON GLITCH (MP3) ===
+const GLITCH_SOUND = './glitch.mp3';
+
+function playGlitchSound() {
+    try {
+        const audio = new Audio(GLITCH_SOUND);
+        audio.volume = 0.3;
+        audio.play().catch(() => {});
+    } catch (e) {
+        // Audio non disponible, on passe
+    }
+}
+
+// === FLASH DE CORRUPTION — overlay blanc séquencé ===
+function triggerCorruptionFlash() {
+    const flash = document.createElement('div');
+    flash.style.cssText = [
+        'position:fixed', 'inset:0', 'z-index:9999',
+        'background:white', 'opacity:0', 'pointer-events:none',
+        'mix-blend-mode:overlay'
+    ].join(';');
+    document.body.appendChild(flash);
+
+    const frames = [0.85, 0.3, 0.7, 0.1, 0.5, 0, 0.2, 0];
+    let i = 0;
+    const step = () => {
+        if (i >= frames.length) { flash.remove(); return; }
+        flash.style.opacity = frames[i++];
+        setTimeout(step, 45);
+    };
+    step();
+}
+
 toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
 
     if (isDark) {
+        playGlitchSound();
+        triggerCorruptionFlash();
         heroLight.classList.add('glitch-out');
         heroLight.addEventListener('animationend', () => {
             heroLight.classList.add('hidden');
