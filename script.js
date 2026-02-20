@@ -1,3 +1,6 @@
+// Détection mobile (touch + pas de hover) — réduit les effets lourds sur CPU
+const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
 // Dark mode avec persistance localStorage
 const toggle = document.getElementById('darkModeToggle');
 const heroLight = document.querySelector('.hero-img-light');
@@ -113,8 +116,8 @@ function startNierTextGlitch(duration = 1000) {
     const els = Array.from(document.querySelectorAll('.nier-glitch'));
     const logo = document.querySelector('.logo');
 
-    // Snapshot du texte propre APRÈS restauration
-    els.forEach(el => { el.dataset.originalText = el.textContent.trim(); });
+    // Snapshot du texte propre — priorité à cleanText (source de vérité immuable)
+    els.forEach(el => { el.dataset.originalText = el.dataset.cleanText || el.textContent.trim(); });
     if (logo) logo.classList.add('is-glitching');
 
     const t0 = performance.now();
@@ -149,8 +152,13 @@ function startNierTextGlitch(duration = 1000) {
 
 // === AMBIANCE DARK MODE — carrés glitch + corruption aléatoire des caractères ===
 
+function isInViewport(el) {
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.top < window.innerHeight && r.bottom > 0;
+}
+
 function spawnGlitchArtifact() {
-    const targets = Array.from(document.querySelectorAll('.nier-glitch'));
+    const targets = Array.from(document.querySelectorAll('.nier-glitch')).filter(isInViewport);
     if (!targets.length) return;
     const target = targets[Math.floor(Math.random() * targets.length)];
     const rect = target.getBoundingClientRect();
@@ -160,14 +168,19 @@ function spawnGlitchArtifact() {
     const small = Math.random() < 0.65;
     const w = small ? 2 + Math.random() * 20  : 20 + Math.random() * 80;
     const h = small ? 2 + Math.random() * 6   :  3 + Math.random() * 10;
-    const opacity = (0.7 + Math.random() * 0.3).toFixed(2);
     const duration = 45 + Math.random() * 160;
     // Position aléatoire à l'intérieur du bounding box du texte cible
     const left = rect.left + Math.random() * rect.width;
     const top  = rect.top  + Math.random() * rect.height;
+    // Trois variantes : blanc, gris, transparent
+    const variant = Math.random();
+    let bg;
+    if (variant < 0.33)      bg = `rgba(255,255,255,${(0.55 + Math.random() * 0.35).toFixed(2)})`; // blanc
+    else if (variant < 0.66) bg = `rgba(160,160,160,${(0.25 + Math.random() * 0.35).toFixed(2)})`; // gris
+    else                     bg = `rgba(220,220,220,${(0.06 + Math.random() * 0.12).toFixed(2)})`; // transparent
     art.style.cssText =
         `position:fixed;z-index:9500;pointer-events:none;mix-blend-mode:screen;` +
-        `background:rgba(255,255,255,${opacity});` +
+        `background:${bg};` +
         `width:${w.toFixed(0)}px;height:${h.toFixed(0)}px;` +
         `left:${left.toFixed(1)}px;top:${top.toFixed(1)}px`;
     document.body.appendChild(art);
@@ -178,10 +191,10 @@ let artifactTid = null;
 function scheduleArtifact() {
     if (!document.body.classList.contains('dark-mode')) return;
     artifactTid = setTimeout(() => {
-        const burst = Math.random() < 0.25 ? 1 + Math.floor(Math.random() * 3) : 1;
-        for (let i = 0; i < burst; i++) setTimeout(spawnGlitchArtifact, Math.random() * 250);
+        const burst = Math.random() < 0.45 ? 2 + Math.floor(Math.random() * 4) : 1;
+        for (let i = 0; i < burst; i++) setTimeout(spawnGlitchArtifact, Math.random() * 200);
         scheduleArtifact();
-    }, 350 + Math.random() * 1300);
+    }, isMobile ? 600 + Math.random() * 1200 : 200 + Math.random() * 700);
 }
 
 let ambientTid = null;
@@ -190,15 +203,15 @@ function ambientLetterCorrupt() {
         scheduleAmbientCorrupt(); return;
     }
     const candidates = Array.from(document.querySelectorAll('.nier-glitch'))
-        .filter(el => !el.dataset.originalText && !el.dataset.ambientLock);
+        .filter(el => !el.dataset.originalText && !el.dataset.ambientLock && isInViewport(el));
     if (!candidates.length) { scheduleAmbientCorrupt(); return; }
 
     const el = candidates[Math.floor(Math.random() * candidates.length)];
-    const clean = el.textContent;
+    const clean = el.dataset.cleanText || el.textContent;
     el.dataset.ambientLock = '1';
 
     const chars = [...clean];
-    const count = 1 + Math.floor(Math.random() * 2);
+    const count = 2 + Math.floor(Math.random() * 3);
     for (let i = 0; i < count; i++) {
         const idx = Math.floor(Math.random() * chars.length);
         if (chars[idx] && chars[idx].trim()) {
@@ -218,7 +231,7 @@ function ambientLetterCorrupt() {
 
 function scheduleAmbientCorrupt() {
     if (!document.body.classList.contains('dark-mode')) return;
-    ambientTid = setTimeout(ambientLetterCorrupt, 200 + Math.random() * 600);
+    ambientTid = setTimeout(ambientLetterCorrupt, isMobile ? 350 + Math.random() * 500 : 150 + Math.random() * 400);
 }
 
 function randomizeAnimationDelays() {
@@ -243,6 +256,10 @@ function clearAnimationDelays() {
 }
 
 function startDarkAmbience() {
+    // Snapshot de vérité du texte propre pour toute la session dark mode
+    document.querySelectorAll('.nier-glitch').forEach(el => {
+        el.dataset.cleanText = el.textContent.trim();
+    });
     randomizeAnimationDelays();
     scheduleArtifact();
     scheduleAmbientCorrupt();
@@ -253,11 +270,14 @@ function stopDarkAmbience() {
     clearTimeout(ambientTid);
     artifactTid = null;
     ambientTid = null;
+    document.querySelectorAll('.nier-glitch').forEach(el => {
+        delete el.dataset.cleanText;
+    });
     clearAnimationDelays();
 }
 
 toggle.addEventListener('click', () => {
-    startNierTextGlitch();
+    if (!isMobile) startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
@@ -274,6 +294,7 @@ toggle.addEventListener('click', () => {
         }, { once: true });
     } else {
         stopDarkAmbience();
+        playGlitchSound();
         heroDark.classList.remove('visible');
         heroLight.classList.remove('hidden');
         heroLight.classList.add('glitch-in');

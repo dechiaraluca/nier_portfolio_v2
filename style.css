@@ -1492,20 +1492,8 @@ a.nier-glitch {
 }
 
 /* ============================================================
-   CORRUPTION CONTINUE dark mode — couvre TOUT le contenu
+   CORRUPTION CONTINUE dark mode — texte uniquement (pas de bouge d'écran)
    ============================================================ */
-
-/* --- Container-level : filtre sur toutes les zones (couvre tout le contenu) --- */
-@keyframes container-noise {
-  0%, 80%, 82.5%, 85%, 100% { filter: none; transform: none; }
-  80.5%, 82%  { filter: contrast(1.04) brightness(1.02); transform: translateX(1px); }
-  85.5%, 87%  { filter: contrast(0.96) brightness(0.98) hue-rotate(1deg); transform: translateX(-1px); }
-  87%         { filter: none; transform: none; }
-}
-
-.dark-mode main   { animation: container-noise 4s linear infinite; }
-.dark-mode header { animation: container-noise 5s linear infinite; animation-delay: -2s; }
-.dark-mode footer { animation: container-noise 6s linear infinite; animation-delay: -3.5s; }
 
 /* --- h1 spans : cycle 3.5s, délais randomisés par JS --- */
 .dark-mode h1 .nier-glitch {
