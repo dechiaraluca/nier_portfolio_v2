@@ -166,10 +166,10 @@ function spawnGlitchArtifact() {
 
     const art = document.createElement('div');
     const small = Math.random() < 0.65;
-    const w = small ? 2 + Math.random() * 20  : 20 + Math.random() * 80;
-    const h = small ? 2 + Math.random() * 6   :  3 + Math.random() * 10;
+    const w = small ? 2 + Math.random() * 10  : 8 + Math.random() * 30;
+    const h = small ? 2 + Math.random() * 5   : 3 + Math.random() * 8;
     const duration = 45 + Math.random() * 160;
-    // Position aléatoire à l'intérieur du bounding box du texte cible
+    // Position strictement dans les bornes du texte
     const left = rect.left + Math.random() * rect.width;
     const top  = rect.top  + Math.random() * rect.height;
     // Trois variantes : blanc, gris, transparent
@@ -179,7 +179,7 @@ function spawnGlitchArtifact() {
     else if (variant < 0.66) bg = `rgba(160,160,160,${(0.25 + Math.random() * 0.35).toFixed(2)})`; // gris
     else                     bg = `rgba(220,220,220,${(0.06 + Math.random() * 0.12).toFixed(2)})`; // transparent
     art.style.cssText =
-        `position:fixed;z-index:9500;pointer-events:none;mix-blend-mode:screen;` +
+        `position:fixed;z-index:9500;pointer-events:none;` +
         `background:${bg};` +
         `width:${w.toFixed(0)}px;height:${h.toFixed(0)}px;` +
         `left:${left.toFixed(1)}px;top:${top.toFixed(1)}px`;

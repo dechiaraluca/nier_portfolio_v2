@@ -22,7 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Supprimer le tap highlight sur mobile pour tous les éléments interactifs */
 button,
 a,
 input,
@@ -1491,9 +1490,9 @@ a.nier-glitch {
   75% { filter: invert(0.4) saturate(2); clip-path: none; transform: translateX(2px); }
 }
 
-/* ============================================================
-   CORRUPTION CONTINUE dark mode — texte uniquement (pas de bouge d'écran)
-   ============================================================ */
+/* =============================
+   CORRUPTION CONTINUE dark mode
+   ============================= */
 
 /* --- h1 spans : cycle 3.5s, délais randomisés par JS --- */
 .dark-mode h1 .nier-glitch {
@@ -1503,6 +1502,10 @@ a.nier-glitch {
 /* --- Nav links : cycle 3s, délais randomisés par JS --- */
 .dark-mode nav a.nier-glitch {
   animation: nier-noise 3s linear infinite;
+}
+.dark-mode nav a.nier-glitch:hover,
+.dark-mode nav a.nier-glitch:focus-visible {
+  animation-play-state: paused;
 }
 
 /* --- Footer h3 : cycle 4s, délais randomisés par JS --- */
