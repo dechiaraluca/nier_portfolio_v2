@@ -326,9 +326,7 @@ mainNav.querySelectorAll('a').forEach(link => {
         if (wasOpen) {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute('href'));
-            setTimeout(() => {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
