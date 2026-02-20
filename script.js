@@ -280,7 +280,7 @@ toggle.addEventListener('click', () => {
     toggle.classList.add('spinning');
     toggle.addEventListener('animationend', () => toggle.classList.remove('spinning'), { once: true });
 
-    startNierTextGlitch();
+    if (!isMobile) startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
