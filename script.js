@@ -7,6 +7,9 @@ if (localStorage.getItem('dark-mode') === 'true') {
     document.body.classList.add('dark-mode');
     heroLight.classList.add('hidden');
     heroDark.classList.add('visible');
+    // Démarre l'ambiance au chargement si déjà en dark mode
+    // (délai pour laisser le DOM être prêt)
+    setTimeout(startDarkAmbience, 500);
 }
 
 // === SON GLITCH (MP3) ===
@@ -18,11 +21,11 @@ function playGlitchSound() {
         audio.volume = 0.3;
         audio.play().catch(() => {});
     } catch (e) {
-        // Audio non disponible, on passe
+
     }
 }
 
-// === FLASH DE CORRUPTION — overlay blanc séquencé ===
+// === FLASH DE CORRUPTION ===
 function triggerCorruptionFlash() {
     const flash = document.createElement('div');
     flash.style.cssText = [
@@ -42,12 +45,225 @@ function triggerCorruptionFlash() {
     step();
 }
 
+// === TEXTE "NieR" (reverse + scramble + upside-down + letter spread) ===
+const GLITCH_CHARS = "⟡⟠⟣⟢⟰⟱⌁⌇⌿<>/\\|=+*#@!?∅∇∆≠≡∞";
+
+const FLIP_MAP = {
+    a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ƃ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',
+    l:'ʅ',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',y:'ʎ',
+    A:'∀',C:'Ɔ',E:'Ǝ',F:'Ⅎ',H:'H',I:'I',J:'ſ',L:'⅂',M:'W',N:'N',O:'O',
+    P:'Ԁ',T:'⊥',U:'∩',V:'Λ',W:'M',Y:'⅄'
+};
+
+function reverseString(str) {
+    return [...str].reverse().join('');
+}
+
+// Construit le HTML avec chaque lettre dans un <span> déplacé aléatoirement
+function buildGlitchedHTML(str, intensity) {
+    let html = '';
+    for (const ch of [...str]) {
+        if (ch === ' ' || ch === '\n' || ch === '\t') {
+            html += ' ';
+            continue;
+        }
+        // Choix du caractère : glitch / retourné / original
+        let c = ch;
+        const r = Math.random();
+        if (r < intensity * 0.5) {
+            c = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+        } else if (r < intensity * 0.72) {
+            c = FLIP_MAP[ch] || ch;
+        }
+        // Échappement HTML sécurisé
+        const safe = c.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const dx = ((Math.random() - 0.5) * intensity * 24).toFixed(1);
+        const dy = ((Math.random() - 0.5) * intensity * 11).toFixed(1);
+        // Taille aléatoire — grande variance au pic (0.55→1.45em), revient à ~1 en fin
+        const v = intensity * 0.6;
+        const fs = (1 - v / 2 + Math.random() * v).toFixed(2);
+        html += `<span style="display:inline-block;transform:translate(${dx}px,${dy}px);font-size:${fs}em;line-height:1">${safe}</span>`;
+    }
+    return html;
+}
+
+let glitchRafId = null;
+
+function restoreGlitchEls() {
+    document.querySelectorAll('.nier-glitch').forEach(el => {
+        if (el.dataset.originalText !== undefined) {
+            el.innerHTML = '';
+            el.textContent = el.dataset.originalText;
+            el.dataset.text = el.dataset.originalText;
+            delete el.dataset.originalText;
+        }
+        el.classList.remove('is-glitching');
+    });
+    document.querySelector('.logo')?.classList.remove('is-glitching');
+}
+
+function startNierTextGlitch(duration = 1000) {
+    // Annule et restore proprement avant de relancer
+    if (glitchRafId !== null) {
+        cancelAnimationFrame(glitchRafId);
+        glitchRafId = null;
+        restoreGlitchEls();
+    }
+
+    const els = Array.from(document.querySelectorAll('.nier-glitch'));
+    const logo = document.querySelector('.logo');
+
+    // Snapshot du texte propre APRÈS restauration
+    els.forEach(el => { el.dataset.originalText = el.textContent.trim(); });
+    if (logo) logo.classList.add('is-glitching');
+
+    const t0 = performance.now();
+    let lastUpdate = 0;
+
+    function frame(now) {
+        const p = Math.min(1, (now - t0) / duration);
+        const intensity = 0.88 - (0.6 * p);
+
+        // Throttle DOM à ~16fps (60ms) pour éviter de recalculer trop souvent
+        if (now - lastUpdate >= 60) {
+            lastUpdate = now;
+            els.forEach(el => {
+                const original = el.dataset.originalText || el.textContent;
+                el.innerHTML = buildGlitchedHTML(reverseString(original), intensity);
+                el.dataset.text = el.textContent;
+                el.classList.add('is-glitching');
+            });
+        }
+
+        if (p < 1) {
+            glitchRafId = requestAnimationFrame(frame);
+        } else {
+            restoreGlitchEls();
+            if (logo) logo.classList.remove('is-glitching');
+            glitchRafId = null;
+        }
+    }
+
+    glitchRafId = requestAnimationFrame(frame);
+}
+
+// === AMBIANCE DARK MODE — carrés glitch + corruption aléatoire des caractères ===
+
+function spawnGlitchArtifact() {
+    const targets = Array.from(document.querySelectorAll('.nier-glitch'));
+    if (!targets.length) return;
+    const target = targets[Math.floor(Math.random() * targets.length)];
+    const rect = target.getBoundingClientRect();
+    if (rect.width === 0) return;
+
+    const art = document.createElement('div');
+    const small = Math.random() < 0.65;
+    const w = small ? 2 + Math.random() * 20  : 20 + Math.random() * 80;
+    const h = small ? 2 + Math.random() * 6   :  3 + Math.random() * 10;
+    const opacity = (0.7 + Math.random() * 0.3).toFixed(2);
+    const duration = 45 + Math.random() * 160;
+    // Position aléatoire à l'intérieur du bounding box du texte cible
+    const left = rect.left + Math.random() * rect.width;
+    const top  = rect.top  + Math.random() * rect.height;
+    art.style.cssText =
+        `position:fixed;z-index:9500;pointer-events:none;mix-blend-mode:screen;` +
+        `background:rgba(255,255,255,${opacity});` +
+        `width:${w.toFixed(0)}px;height:${h.toFixed(0)}px;` +
+        `left:${left.toFixed(1)}px;top:${top.toFixed(1)}px`;
+    document.body.appendChild(art);
+    setTimeout(() => art.remove(), duration);
+}
+
+let artifactTid = null;
+function scheduleArtifact() {
+    if (!document.body.classList.contains('dark-mode')) return;
+    artifactTid = setTimeout(() => {
+        const burst = Math.random() < 0.25 ? 1 + Math.floor(Math.random() * 3) : 1;
+        for (let i = 0; i < burst; i++) setTimeout(spawnGlitchArtifact, Math.random() * 250);
+        scheduleArtifact();
+    }, 350 + Math.random() * 1300);
+}
+
+let ambientTid = null;
+function ambientLetterCorrupt() {
+    if (!document.body.classList.contains('dark-mode') || glitchRafId !== null) {
+        scheduleAmbientCorrupt(); return;
+    }
+    const candidates = Array.from(document.querySelectorAll('.nier-glitch'))
+        .filter(el => !el.dataset.originalText && !el.dataset.ambientLock);
+    if (!candidates.length) { scheduleAmbientCorrupt(); return; }
+
+    const el = candidates[Math.floor(Math.random() * candidates.length)];
+    const clean = el.textContent;
+    el.dataset.ambientLock = '1';
+
+    const chars = [...clean];
+    const count = 1 + Math.floor(Math.random() * 2);
+    for (let i = 0; i < count; i++) {
+        const idx = Math.floor(Math.random() * chars.length);
+        if (chars[idx] && chars[idx].trim()) {
+            chars[idx] = Math.random() < 0.55
+                ? GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
+                : (FLIP_MAP[chars[idx]] || GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]);
+        }
+    }
+    el.textContent = chars.join('');
+    setTimeout(() => {
+        el.textContent = clean;
+        delete el.dataset.ambientLock;
+    }, 55 + Math.random() * 130);
+
+    scheduleAmbientCorrupt();
+}
+
+function scheduleAmbientCorrupt() {
+    if (!document.body.classList.contains('dark-mode')) return;
+    ambientTid = setTimeout(ambientLetterCorrupt, 200 + Math.random() * 600);
+}
+
+function randomizeAnimationDelays() {
+    document.querySelectorAll('nav a.nier-glitch').forEach(el => {
+        el.style.animationDelay = `-${(Math.random() * 3).toFixed(2)}s`;
+    });
+    document.querySelectorAll('section h2.nier-glitch').forEach(el => {
+        el.style.animationDelay = `-${(Math.random() * 3).toFixed(2)}s`;
+    });
+    document.querySelectorAll('h1 .nier-glitch').forEach(el => {
+        el.style.animationDelay = `-${(Math.random() * 3.5).toFixed(2)}s`;
+    });
+    document.querySelectorAll('footer h3.nier-glitch').forEach(el => {
+        el.style.animationDelay = `-${(Math.random() * 4).toFixed(2)}s`;
+    });
+}
+
+function clearAnimationDelays() {
+    document.querySelectorAll('.nier-glitch').forEach(el => {
+        el.style.animationDelay = '';
+    });
+}
+
+function startDarkAmbience() {
+    randomizeAnimationDelays();
+    scheduleArtifact();
+    scheduleAmbientCorrupt();
+}
+
+function stopDarkAmbience() {
+    clearTimeout(artifactTid);
+    clearTimeout(ambientTid);
+    artifactTid = null;
+    ambientTid = null;
+    clearAnimationDelays();
+}
+
 toggle.addEventListener('click', () => {
+    startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
 
     if (isDark) {
+        startDarkAmbience();
         playGlitchSound();
         triggerCorruptionFlash();
         heroLight.classList.add('glitch-out');
@@ -57,6 +273,7 @@ toggle.addEventListener('click', () => {
             heroDark.classList.add('visible');
         }, { once: true });
     } else {
+        stopDarkAmbience();
         heroDark.classList.remove('visible');
         heroLight.classList.remove('hidden');
         heroLight.classList.add('glitch-in');
