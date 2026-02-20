@@ -1222,7 +1222,8 @@ body.dark-mode footer {
   gap: 60px 30px;
   padding: 3rem 2rem 6rem;
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1120px;
 }
 
 .tech-card {
@@ -1344,6 +1345,16 @@ body.dark-mode footer {
 .tech-item:hover:nth-child(8) .tech-card          { background: #06b6d4; }
 .tech-item:hover:nth-child(8) .tech-card::before  { background: #0591aa; }
 .tech-item:hover:nth-child(8) .tech-card::after   { background: #38d1eb; }
+
+/* Alpine.js */
+.tech-item:hover:nth-child(9) .tech-card          { background: #77c1d2; }
+.tech-item:hover:nth-child(9) .tech-card::before  { background: #4fa3b8; }
+.tech-item:hover:nth-child(9) .tech-card::after   { background: #a0d8e5; }
+
+/* MySQL */
+.tech-item:hover:nth-child(10) .tech-card         { background: #4479a1; }
+.tech-item:hover:nth-child(10) .tech-card::before { background: #2e5578; }
+.tech-item:hover:nth-child(10) .tech-card::after  { background: #6699bb; }
 
 @media (max-width: 768px) {
   .tech-list {
