@@ -326,8 +326,9 @@ mainNav.querySelectorAll('a').forEach(link => {
         if (wasOpen) {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute('href'));
-            const headerH = document.querySelector('header')?.offsetHeight ?? 0;
-            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - headerH, behavior: 'smooth' });
+            // Compenser la hauteur de la nav qui va se refermer (contenu remontera de navH px)
+            const navH = mainNav.offsetHeight;
+            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
         }
     });
 });
