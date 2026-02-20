@@ -211,27 +211,24 @@ function ambientLetterCorrupt() {
     el.dataset.ambientLock = '1';
 
     const chars = [...clean];
-    const count = 2 + Math.floor(Math.random() * 3);
-    for (let i = 0; i < count; i++) {
-        const idx = Math.floor(Math.random() * chars.length);
-        if (chars[idx] && chars[idx].trim()) {
-            chars[idx] = Math.random() < 0.55
-                ? GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
-                : (FLIP_MAP[chars[idx]] || GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]);
-        }
+    // Un seul caractère, uniquement upside-down (FLIP_MAP) — plus lisible, plus NieR
+    const flippableIdxs = chars.reduce((acc, c, i) => { if (FLIP_MAP[c]) acc.push(i); return acc; }, []);
+    if (flippableIdxs.length) {
+        const idx = flippableIdxs[Math.floor(Math.random() * flippableIdxs.length)];
+        chars[idx] = FLIP_MAP[chars[idx]];
     }
     el.textContent = chars.join('');
     setTimeout(() => {
         el.textContent = clean;
         delete el.dataset.ambientLock;
-    }, 55 + Math.random() * 130);
+    }, 80 + Math.random() * 180);
 
     scheduleAmbientCorrupt();
 }
 
 function scheduleAmbientCorrupt() {
     if (!document.body.classList.contains('dark-mode')) return;
-    ambientTid = setTimeout(ambientLetterCorrupt, isMobile ? 350 + Math.random() * 500 : 150 + Math.random() * 400);
+    ambientTid = setTimeout(ambientLetterCorrupt, isMobile ? 500 + Math.random() * 600 : 350 + Math.random() * 450);
 }
 
 function randomizeAnimationDelays() {
