@@ -112,7 +112,9 @@ function startNierTextGlitch(duration = 1000, throttle = 60) {
         restoreGlitchEls();
     }
 
-    const els = Array.from(document.querySelectorAll('.nier-glitch'));
+    // Sur mobile : uniquement les éléments visibles dans le viewport
+    const allEls = Array.from(document.querySelectorAll('.nier-glitch'));
+    const els = isMobile ? allEls.filter(isInViewport) : allEls;
     const logo = document.querySelector('.logo');
 
     // Snapshot du texte propre — priorité à cleanText (source de vérité immuable)
@@ -278,8 +280,8 @@ toggle.addEventListener('click', () => {
     toggle.classList.add('spinning');
     toggle.addEventListener('animationend', () => toggle.classList.remove('spinning'), { once: true });
 
-    // Mobile : durée 500ms, throttle 120ms (8fps) — allégé mais présent
-    isMobile ? startNierTextGlitch(500, 120) : startNierTextGlitch();
+    // Mobile : durée 800ms, throttle 150ms (~6fps) — éléments viewport seulement
+    isMobile ? startNierTextGlitch(800, 150) : startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
