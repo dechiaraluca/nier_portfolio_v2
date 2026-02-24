@@ -280,8 +280,8 @@ toggle.addEventListener('click', () => {
     toggle.classList.add('spinning');
     toggle.addEventListener('animationend', () => toggle.classList.remove('spinning'), { once: true });
 
-    // Mobile : durée 800ms, throttle 150ms (~6fps) — éléments viewport seulement
-    isMobile ? startNierTextGlitch(800, 150) : startNierTextGlitch();
+    // Mobile : durée 800ms, throttle 200ms
+    isMobile ? startNierTextGlitch(800, 200) : startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
