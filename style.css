@@ -140,6 +140,35 @@ body.dark-mode header {
   filter: invert(0);
 }
 
+#muteToggle {
+  position: absolute;
+  top: 1.75rem;
+  right: 5.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+#muteToggle:hover {
+  opacity: 1;
+}
+
+#muteToggle.muted {
+  opacity: 0.3;
+}
+
+#muteToggle:focus-visible {
+  outline: none;
+}
+
 /* BURGER MENU */
 .burger {
   display: none;

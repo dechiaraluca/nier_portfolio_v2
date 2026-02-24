@@ -1,5 +1,7 @@
 // Détection mobile (touch + pas de hover) — réduit les effets lourds sur CPU
 const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+// Respect prefers-reduced-motion (accessibilité)
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Dark mode avec persistance localStorage
 const toggle = document.getElementById('darkModeToggle');
@@ -29,6 +31,7 @@ function playGlitchSound() {
 
 // === FLASH DE CORRUPTION ===
 function triggerCorruptionFlash() {
+    if (prefersReducedMotion) return;
     const flash = document.createElement('div');
     flash.style.cssText = [
         'position:fixed', 'inset:0', 'z-index:9999',
@@ -105,6 +108,7 @@ function restoreGlitchEls() {
 }
 
 function startNierTextGlitch(duration = 1000, throttle = 60) {
+    if (prefersReducedMotion) return;
     // Annule et restore proprement avant de relancer
     if (glitchRafId !== null) {
         cancelAnimationFrame(glitchRafId);
@@ -189,7 +193,7 @@ function spawnGlitchArtifact() {
 
 let artifactTid = null;
 function scheduleArtifact() {
-    if (!document.body.classList.contains('dark-mode')) return;
+    if (!document.body.classList.contains('dark-mode') || prefersReducedMotion) return;
     artifactTid = setTimeout(() => {
         const burst = Math.random() < 0.45 ? 2 + Math.floor(Math.random() * 4) : 1;
         for (let i = 0; i < burst; i++) setTimeout(spawnGlitchArtifact, Math.random() * 200);
@@ -227,7 +231,7 @@ function ambientLetterCorrupt() {
 }
 
 function scheduleAmbientCorrupt() {
-    if (!document.body.classList.contains('dark-mode')) return;
+    if (!document.body.classList.contains('dark-mode') || prefersReducedMotion) return;
     ambientTid = setTimeout(ambientLetterCorrupt, isMobile ? 500 + Math.random() * 600 : 350 + Math.random() * 450);
 }
 
@@ -377,6 +381,26 @@ if (contactForm) {
         });
     });
 }
+
+// === MUTE TOGGLE ===
+const muteBtn = document.getElementById('muteToggle');
+let isMuted = localStorage.getItem('muted') === 'true';
+
+function applyMuteState() {
+    glitchAudio.muted = isMuted;
+    muteBtn.setAttribute('aria-label', isMuted ? 'Rétablir le son' : 'Couper le son');
+    muteBtn.classList.toggle('muted', isMuted);
+    muteBtn.querySelector('.icon-sound-on').style.display = isMuted ? 'none' : '';
+    muteBtn.querySelector('.icon-sound-off').style.display = isMuted ? '' : 'none';
+}
+
+applyMuteState();
+
+muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    localStorage.setItem('muted', isMuted);
+    applyMuteState();
+});
 
 // Nav active au scroll
 const navLinks = document.querySelectorAll('nav a[href^="#"]');
