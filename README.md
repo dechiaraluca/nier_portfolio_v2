@@ -37,6 +37,8 @@ nier_portfolio_v2/
 
 **Effets NieR (dark mode)**
 → Animation glitch, flash de corruption, son d'ambiance et effet scramble sur le logo NieR.
+→ Bouton mute pour couper/rétablir le son, avec persistance via `localStorage`.
+→ Effets désactivés automatiquement si `prefers-reduced-motion` est activé (accessibilité).
 
 **Internationalisation (i18n)**
 → Support FR / EN / IT avec détection automatique de la langue du navigateur.
