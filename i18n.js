@@ -173,6 +173,10 @@ function applyTranslations(t, elements) {
         const key = el.getAttribute('data-i18n');
         if (t[key]) {
             el.textContent = t[key];
+            // Si dark mode actif : mettre à jour cleanText pour que le glitch utilise la nouvelle langue
+            if (el.dataset.cleanText !== undefined) {
+                el.dataset.cleanText = t[key];
+            }
         }
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
