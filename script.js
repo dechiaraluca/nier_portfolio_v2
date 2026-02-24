@@ -113,7 +113,7 @@ function startNierTextGlitch(duration = 1000, throttle = 60) {
     }
 
     // Sur mobile : uniquement les éléments visibles dans le viewport
-    const allEls = Array.from(document.querySelectorAll('.nier-glitch'));
+    const allEls = Array.from(document.querySelectorAll('.nier-glitch:not(p)'));
     const els = isMobile ? allEls.filter(isInViewport) : allEls;
     const logo = document.querySelector('.logo');
 
@@ -158,7 +158,7 @@ function isInViewport(el) {
 }
 
 function spawnGlitchArtifact() {
-    const targets = Array.from(document.querySelectorAll('.nier-glitch')).filter(isInViewport);
+    const targets = Array.from(document.querySelectorAll('.nier-glitch:not(p)')).filter(isInViewport);
     if (!targets.length) return;
     const target = targets[Math.floor(Math.random() * targets.length)];
     const rect = target.getBoundingClientRect();
@@ -202,7 +202,7 @@ function ambientLetterCorrupt() {
     if (!document.body.classList.contains('dark-mode') || glitchRafId !== null) {
         scheduleAmbientCorrupt(); return;
     }
-    const candidates = Array.from(document.querySelectorAll('.nier-glitch'))
+    const candidates = Array.from(document.querySelectorAll('.nier-glitch:not(p)'))
         .filter(el => !el.dataset.originalText && !el.dataset.ambientLock && isInViewport(el));
     if (!candidates.length) { scheduleAmbientCorrupt(); return; }
 
@@ -254,7 +254,7 @@ function clearAnimationDelays() {
 
 function startDarkAmbience() {
     // Snapshot de vérité du texte propre pour toute la session dark mode
-    document.querySelectorAll('.nier-glitch').forEach(el => {
+    document.querySelectorAll('.nier-glitch:not(p)').forEach(el => {
         el.dataset.cleanText = el.textContent.trim();
     });
     randomizeAnimationDelays();
