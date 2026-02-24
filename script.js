@@ -16,16 +16,15 @@ if (localStorage.getItem('dark-mode') === 'true') {
 }
 
 // === SON GLITCH (MP3) ===
-const GLITCH_SOUND = './glitch.mp3';
+const glitchAudio = new Audio('./glitch.mp3');
+glitchAudio.volume = 0.3;
+glitchAudio.load();
 
 function playGlitchSound() {
     try {
-        const audio = new Audio(GLITCH_SOUND);
-        audio.volume = 0.3;
-        audio.play().catch(() => {});
-    } catch (e) {
-
-    }
+        glitchAudio.currentTime = 0;
+        glitchAudio.play().catch(() => {});
+    } catch (e) {}
 }
 
 // === FLASH DE CORRUPTION ===
@@ -105,7 +104,7 @@ function restoreGlitchEls() {
     document.querySelector('.logo')?.classList.remove('is-glitching');
 }
 
-function startNierTextGlitch(duration = 1000) {
+function startNierTextGlitch(duration = 1000, throttle = 60) {
     // Annule et restore proprement avant de relancer
     if (glitchRafId !== null) {
         cancelAnimationFrame(glitchRafId);
@@ -127,8 +126,7 @@ function startNierTextGlitch(duration = 1000) {
         const p = Math.min(1, (now - t0) / duration);
         const intensity = 0.88 - (0.6 * p);
 
-        // Throttle DOM à ~16fps (60ms) pour éviter de recalculer trop souvent
-        if (now - lastUpdate >= 60) {
+        if (now - lastUpdate >= throttle) {
             lastUpdate = now;
             els.forEach(el => {
                 const original = el.dataset.originalText || el.textContent;
@@ -280,7 +278,8 @@ toggle.addEventListener('click', () => {
     toggle.classList.add('spinning');
     toggle.addEventListener('animationend', () => toggle.classList.remove('spinning'), { once: true });
 
-    if (!isMobile) startNierTextGlitch();
+    // Mobile : durée 500ms, throttle 120ms (8fps) — allégé mais présent
+    isMobile ? startNierTextGlitch(500, 120) : startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
