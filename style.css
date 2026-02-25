@@ -229,6 +229,7 @@ body.dark-mode header {
   cursor: pointer;
   transition: opacity 0.3s ease;
   opacity: 0.7;
+  white-space: nowrap;
 }
 
 .lang-current .arrow {
@@ -318,6 +319,7 @@ nav a {
   padding: 8px 16px;
   transition: color 0.3s;
   z-index: 1;
+  white-space: nowrap;
 }
 
 nav a::before {
@@ -953,6 +955,17 @@ h2 {
 
 .carousel-indicators-mobile {
   display: none;
+}
+
+/* NAV intermédiaire - réduit gap/padding entre 769px et 960px */
+@media (min-width: 769px) and (max-width: 960px) {
+  nav ul {
+    gap: 1rem;
+  }
+
+  nav a {
+    padding: 8px 10px;
+  }
 }
 
 /* MODE MOBILE - Une card scrollable à la fois */
