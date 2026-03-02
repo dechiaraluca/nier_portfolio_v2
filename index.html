@@ -1,31 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Portfolio de De Chiara Luca - Développeur web spécialisé et web mobile. Découvrez mes projets, mon parcours et contactez-moi.">
+        content="Portfolio de De Chiara Luca - Développeur web spécialisé et web mobile. Découvrez mes projets, mon parcours et contactez-moi." />
     <!-- Open Graph (LinkedIn, Discord, etc.) -->
-    <meta property="og:title" content="Portfolio - De Chiara Luca">
-    <meta property="og:description" content="Développeur Web et Web Mobile. Découvrez mes projets et mon parcours.">
-    <meta property="og:image" content="assets/images/luca.webp">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:url" content="https://ldcportfolio.netlify.app/">
+    <meta property="og:title" content="Portfolio - De Chiara Luca" />
+    <meta property="og:description" content="Développeur Web et Web Mobile. Découvrez mes projets et mon parcours." />
+    <meta property="og:image" content="assets/images/luca.webp" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://ldcportfolio.netlify.app/" />
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <title>Portfolio - De Chiara Luca</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
-    <link rel="preload" href="assets/images/luca.webp" as="image" type="image/webp" fetchpriority="high">
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+    <link rel="preload" href="assets/images/luca.webp" as="image" type="image/webp" fetchpriority="high" />
 </head>
 
 <body>
@@ -34,7 +34,8 @@
     <!-- HEADER -->
     <header>
         <div class="logo-container">
-            <img src="assets/images/logo.webp" width="105" height="105" alt="Logo Portfolio De Chiara Luca" class="logo">
+            <img src="assets/images/logo.webp" width="105" height="105" alt="Logo Portfolio De Chiara Luca"
+                class="logo" />
         </div>
         <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
             <span class="burger-line"></span>
@@ -43,13 +44,25 @@
         </button>
         <nav id="mainNav">
             <ul>
-                <li><a href="#accueil" class="nier-glitch" data-i18n="nav.home">Accueil</a></li>
-                <li><a href="#apropos" class="nier-glitch" data-i18n="nav.about">À propos</a></li>
-                <li><a href="#projets" class="nier-glitch" data-i18n="nav.projects">Projets</a></li>
-                <li><a href="#technologies" class="nier-glitch" data-i18n="nav.tech">Compétences</a></li>
-                <li><a href="#contact" class="nier-glitch" data-i18n="nav.contact">Contact</a></li>
+                <li>
+                    <a href="#accueil" class="nier-glitch" data-i18n="nav.home">Accueil</a>
+                </li>
+                <li>
+                    <a href="#apropos" class="nier-glitch" data-i18n="nav.about">À propos</a>
+                </li>
+                <li>
+                    <a href="#projets" class="nier-glitch" data-i18n="nav.projects">Projets</a>
+                </li>
+                <li>
+                    <a href="#technologies" class="nier-glitch" data-i18n="nav.tech">Compétences</a>
+                </li>
+                <li>
+                    <a href="#contact" class="nier-glitch" data-i18n="nav.contact">Contact</a>
+                </li>
                 <li class="lang-dropdown">
-                    <button class="lang-current" id="langToggle" aria-expanded="false">FR <span class="arrow">▾</span></button>
+                    <button class="lang-current" id="langToggle" aria-expanded="false">
+                        FR <span class="arrow">▾</span>
+                    </button>
                     <div class="lang-menu" id="langMenu">
                         <button class="lang-option active" data-lang="fr">FR</button>
                         <button class="lang-option" data-lang="en">EN</button>
@@ -58,14 +71,20 @@
                 </li>
             </ul>
         </nav>
-        <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre"><img src="assets/images/switch3.webp" width="150" height="150" alt=""></button>
+        <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre">
+            <img src="assets/images/switch3.webp" width="150" height="150" alt="" />
+        </button>
         <button id="muteToggle" aria-label="Couper le son">
-            <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                 <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
             </svg>
-            <svg class="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+            <svg class="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true" style="display: none">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                 <line x1="23" y1="9" x2="17" y2="15"></line>
                 <line x1="17" y1="9" x2="23" y2="15"></line>
@@ -75,7 +94,7 @@
 
     <button id="scrollToTop" aria-label="Retour en haut">
         <img src="assets/images/usb-01_generated-removebg-preview.webp" width="100" height="100"
-            alt="Retour en haut de page" loading="lazy">
+            alt="Retour en haut de page" loading="lazy" />
     </button>
 
     <!-- HOME -->
@@ -85,12 +104,12 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <h1>
-                            <span class="nier-glitch" data-i18n="hero.title1">Bienvenue, je suis</span><br>
+                            <span class="nier-glitch" data-i18n="hero.title1">Bienvenue, je suis</span><br />
                             <span class="nier-glitch" data-i18n="hero.title2">Développeur Web</span>
                         </h1>
                         <p data-i18n="hero.subtitle">
-                            Je conçois mes premiers projets web avec passion et rigueur, en alliant apprentissage et
-                            créativité.
+                            Je conçois mes premiers projets web avec passion et rigueur, en
+                            alliant apprentissage et créativité.
                         </p>
                         <div class="hero-buttons">
                             <a href="#projets" class="btn-primary" data-i18n="hero.btnProjects">Voir mes projets</a>
@@ -98,8 +117,10 @@
                         </div>
                     </div>
                     <div class="hero-visual">
-                        <img class="hero-img-light" src="assets/images/luca.webp" width="600" height="600" alt="Photo de profil de Luca De Chiara, développeur web">
-                        <img class="hero-img-dark" src="assets/images/withoutluca.webp" width="600" height="600" alt="Espace de travail de Luca De Chiara en mode sombre" loading="lazy">
+                        <img class="hero-img-light" src="assets/images/luca.webp" width="600" height="600"
+                            alt="Photo de profil de Luca De Chiara, développeur web" />
+                        <img class="hero-img-dark" src="assets/images/withoutluca.webp" width="600" height="600"
+                            alt="Espace de travail de Luca De Chiara en mode sombre" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -110,19 +131,31 @@
             <h2 class="nier-glitch" data-i18n="about.title">À propos</h2>
             <div class="apropos-container">
                 <div class="bio">
-                    <p data-i18n="about.bio1">Je suis Luca, développeur Web et Web Mobile en formation. Né à Rome, en Italie, j'ai grandi dans
-                        un environnement où l'ordinateur faisait déjà partie de mon quotidien. Très jeune, j'ai été
-                        fasciné par le potentiel du numérique, ce qui m'a naturellement amené à explorer, tester, créer…
-                        et finalement me passionner pour le développement web.</p>
-                    <p data-i18n="about.bio2">Installé en France depuis maintenant 8 ans, j'ai progressivement orienté mon parcours vers le
-                        monde du web, attiré par la richesse de cet univers en constante évolution. Curieux de nature,
-                        j'aime comprendre comment les choses fonctionnent, résoudre des problèmes, et surtout concevoir
-                        des solutions simples, accessibles et efficaces.</p>
-                    <p data-i18n="about.bio3">Aujourd'hui, je me forme aux métiers du développement web et web mobile pour transformer cette
-                        passion en compétence professionnelle.</p>
+                    <p data-i18n="about.bio1">
+                        Je suis Luca, développeur Web et Web Mobile en formation. Né à
+                        Rome, en Italie, j'ai grandi dans un environnement où l'ordinateur
+                        faisait déjà partie de mon quotidien. Très jeune, j'ai été fasciné
+                        par le potentiel du numérique, ce qui m'a naturellement amené à
+                        explorer, tester, créer… et finalement me passionner pour le
+                        développement web.
+                    </p>
+                    <p data-i18n="about.bio2">
+                        Installé en France depuis maintenant 8 ans, j'ai progressivement
+                        orienté mon parcours vers le monde du web, attiré par la richesse
+                        de cet univers en constante évolution. Curieux de nature, j'aime
+                        comprendre comment les choses fonctionnent, résoudre des
+                        problèmes, et surtout concevoir des solutions simples, accessibles
+                        et efficaces.
+                    </p>
+                    <p data-i18n="about.bio3">
+                        Aujourd'hui, je me forme aux métiers du développement web et web
+                        mobile pour transformer cette passion en compétence
+                        professionnelle.
+                    </p>
                 </div>
                 <div class="cv">
-                    <a href="documents/dev-web-et-web-mobile.pdf" download class="btn-cv" data-i18n="about.cvBtn">Télécharger mon CV</a>
+                    <a href="documents/dev-web-et-web-mobile.pdf" download class="btn-cv"
+                        data-i18n="about.cvBtn">Télécharger mon CV</a>
                 </div>
             </div>
         </section>
@@ -130,86 +163,108 @@
         <!-- PROJECTS -->
         <section id="projets">
             <h2 class="nier-glitch" data-i18n="projects.title">Mes Projets</h2>
-            <p data-i18n="projects.subtitle">Ci-dessous, quelques exemples de réalisations effectuées durant la formation, le stage et plus encore :</p>
+            <p data-i18n="projects.subtitle">
+                Ci-dessous, quelques exemples de réalisations effectuées durant la
+                formation, le stage et plus encore :
+            </p>
 
             <div class="carousel-container" role="region" aria-label="Carrousel de projets">
                 <button class="carousel-nav prev" id="prevBtn" aria-label="Projet précédent">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
                 </button>
                 <button class="carousel-nav next" id="nextBtn" aria-label="Projet suivant">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 6 15 12 9 18"></polyline>
+                    </svg>
                 </button>
 
                 <div class="carousel-wrapper" id="carouselWrapper">
-
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
                         <div class="card">
                             <div class="card-image">
-                                <img src="assets/images/1.webp" width="700" height="322" alt="Capture d'écran du site Voxade - Site Livres Audio"
-                                    loading="lazy">
+                                <img src="assets/images/1.webp" width="700" height="322"
+                                    alt="Capture d'écran du site Voxade - Site Livres Audio" loading="lazy" />
                                 <div class="card-overlay">
                                     <span data-i18n="projects.overlay">Voir le projet</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">Voxade</h3>
-                                <p class="card-description" data-i18n="project.voxade.desc">Site de livres audio interactifs avec choix narratifs. Projet en développement.</p>
+                                <p class="card-description" data-i18n="project.voxade.desc">
+                                    Site de livres audio interactifs avec choix narratifs.
+                                    Projet en développement.
+                                </p>
                                 <div class="card-technologies">
                                     <span class="tech-tag">Laravel</span>
                                     <span class="tech-tag">Blade</span>
                                     <span class="tech-tag">Tailwind</span>
                                 </div>
                                 <div class="card-links">
-                                    <span class="card-link primary disabled" data-i18n="projects.viewSite">Voir le site</span>
-                                    <span class="card-link secondary disabled" data-i18n="projects.sourceCode">Code source</span>
+                                    <span class="card-link primary disabled" data-i18n="projects.viewSite">Voir le
+                                        site</span>
+                                    <span class="card-link secondary disabled" data-i18n="projects.sourceCode">Code
+                                        source</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-image">
-                                <img src="assets/images/2.webp" width="700" height="319" alt="Capture d'écran du site Yokoso - Airbnb"
-                                    loading="lazy">
+                                <img src="assets/images/2.webp" width="700" height="319"
+                                    alt="Capture d'écran du site Yokoso - Airbnb" loading="lazy" />
                                 <div class="card-overlay">
                                     <span data-i18n="projects.overlay">Voir le projet</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">Yokoso</h3>
-                                <p class="card-description" data-i18n="project.yokoso.desc">Site de location de logements inspiré d'Airbnb. Projet en développement.</p>
+                                <p class="card-description" data-i18n="project.yokoso.desc">
+                                    Site de location de logements inspiré d'Airbnb. Projet en
+                                    développement.
+                                </p>
                                 <div class="card-technologies">
                                     <span class="tech-tag">PHP</span>
                                     <span class="tech-tag">SCSS</span>
                                 </div>
                                 <div class="card-links">
-                                    <span class="card-link primary disabled" data-i18n="projects.viewSite">Voir le site</span>
-                                    <span class="card-link secondary disabled" data-i18n="projects.sourceCode">Code source</span>
+                                    <a href="https://yokoso.infinityfree.me/" class="card-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/Yokoso" class="card-link secondary"
+                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
+                                        source</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-image">
-                                <img src="assets/images/3.webp" width="700" height="347" alt="Capture d'écran du site Detect - Évènement détection métaux"
-                                    loading="lazy">
+                                <img src="assets/images/3.webp" width="700" height="347"
+                                    alt="Capture d'écran du site Detect - Évènement détection métaux" loading="lazy" />
                                 <div class="card-overlay">
                                     <span data-i18n="projects.overlay">Voir le projet</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">Detect</h3>
-                                <p class="card-description" data-i18n="project.detect.desc">Site évènementiel sur la détection de métaux.</p>
+                                <p class="card-description" data-i18n="project.detect.desc">
+                                    Site évènementiel sur la détection de métaux.
+                                </p>
                                 <div class="card-technologies">
                                     <span class="tech-tag">HTML</span>
                                     <span class="tech-tag">CSS</span>
                                     <span class="tech-tag">JS</span>
                                 </div>
                                 <div class="card-links">
-                                    <a href="https://detectevent.netlify.app/" class="card-link primary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <a href="https://detectevent.netlify.app/" class="card-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
                                     <a href="https://github.com/dechiaraluca/Site-Event" class="card-link secondary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
+                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
+                                        source</a>
                                 </div>
                             </div>
                         </div>
@@ -219,15 +274,18 @@
                     <div class="carousel-slide">
                         <div class="card">
                             <div class="card-image">
-                                <img src="assets/images/4.webp" width="700" height="394" alt="Capture d'écran du site Nelumbo Blooms - Site fleuriste"
-                                    loading="lazy">
+                                <img src="assets/images/4.webp" width="700" height="394"
+                                    alt="Capture d'écran du site Nelumbo Blooms - Site fleuriste" loading="lazy" />
                                 <div class="card-overlay">
                                     <span data-i18n="projects.overlay">Voir le projet</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">Nelumbo Blooms</h3>
-                                <p class="card-description" data-i18n="project.nelumbo.desc">Mon tout premier site vitrine! Site fleuriste avec un style japonisant.</p>
+                                <p class="card-description" data-i18n="project.nelumbo.desc">
+                                    Mon tout premier site vitrine! Site fleuriste avec un style
+                                    japonisant.
+                                </p>
                                 <div class="card-technologies">
                                     <span class="tech-tag">HTML</span>
                                     <span class="tech-tag">CSS</span>
@@ -235,47 +293,57 @@
                                 </div>
                                 <div class="card-links">
                                     <a href="https://nelumbosite2.netlify.app/" class="card-link primary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le
+                                        site</a>
                                     <a href="https://github.com/dechiaraluca/ProjectFlower_v2"
-                                        class="card-link secondary" target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
+                                        class="card-link secondary" target="_blank" rel="noopener noreferrer"
+                                        data-i18n="projects.sourceCode">Code source</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-image">
-                                <img src="assets/images/5.webp" width="700" height="396" alt="Capture d'écran du projet Bouncing Logo"
-                                    loading="lazy">
+                                <img src="assets/images/5.webp" width="700" height="396"
+                                    alt="Capture d'écran du projet Bouncing Logo" loading="lazy" />
                                 <div class="card-overlay">
                                     <span data-i18n="projects.overlay">Voir le projet</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">Bouncing Logo</h3>
-                                <p class="card-description" data-i18n="project.bouncing.desc">Classic screensaver logo.</p>
+                                <p class="card-description" data-i18n="project.bouncing.desc">
+                                    Classic screensaver logo.
+                                </p>
                                 <div class="card-technologies">
                                     <span class="tech-tag">HTML</span>
                                     <span class="tech-tag">CSS</span>
                                     <span class="tech-tag">JS</span>
                                 </div>
                                 <div class="card-links">
-                                    <a href="https://bouncinglogo.netlify.app/" class="card-link primary" target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
-                                    <a href="https://github.com/dechiaraluca/BouncingLogo" class="card-link secondary" target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
+                                    <a href="https://bouncinglogo.netlify.app/" class="card-link primary"
+                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le
+                                        site</a>
+                                    <a href="https://github.com/dechiaraluca/BouncingLogo" class="card-link secondary"
+                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
+                                        source</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-image">
-                                <img src="assets/images/6.webp" width="700" height="347" alt="Capture d'écran du Blog G33K - Projet collectif Firebase"
-                                    loading="lazy">
+                                <img src="assets/images/6.webp" width="700" height="347"
+                                    alt="Capture d'écran du Blog G33K - Projet collectif Firebase" loading="lazy" />
                                 <div class="card-overlay">
                                     <span data-i18n="projects.overlay">Voir le projet</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <h3 class="card-title">Blog G33K</h3>
-                                <p class="card-description" data-i18n="project.blog.desc">Projet élaboré collectivement avec Firebase.</p>
+                                <p class="card-description" data-i18n="project.blog.desc">
+                                    Projet élaboré collectivement avec Firebase.
+                                </p>
                                 <div class="card-technologies">
                                     <span class="tech-tag">HTML</span>
                                     <span class="tech-tag">CSS</span>
@@ -283,27 +351,37 @@
                                     <span class="tech-tag">NoSQL</span>
                                 </div>
                                 <div class="card-links">
-                                    <a href="https://blog-g33k.web.app/" class="card-link primary" target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
-                                    <a href="https://github.com/Damota38/blog-g33k" class="card-link secondary" target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
+                                    <a href="https://blog-g33k.web.app/" class="card-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <a href="https://github.com/Damota38/blog-g33k" class="card-link secondary"
+                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
+                                        source</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="carousel-indicators" role="tablist" aria-label="Indicateurs de carousel">
-                    <button class="carousel-dot active" data-slide="0" role="tab" aria-label="Aller au slide 1" aria-selected="true"></button>
-                    <button class="carousel-dot" data-slide="1" role="tab" aria-label="Aller au slide 2" aria-selected="false"></button>
+                    <button class="carousel-dot active" data-slide="0" role="tab" aria-label="Aller au slide 1"
+                        aria-selected="true"></button>
+                    <button class="carousel-dot" data-slide="1" role="tab" aria-label="Aller au slide 2"
+                        aria-selected="false"></button>
                 </div>
 
                 <!-- Indicateurs mobile (6 dots pour 6 cards) -->
                 <div class="carousel-indicators-mobile" role="tablist" aria-label="Indicateurs mobile">
-                    <button class="mobile-dot active" data-card="0" role="tab" aria-label="Carte 1" aria-selected="true"></button>
-                    <button class="mobile-dot" data-card="1" role="tab" aria-label="Carte 2" aria-selected="false"></button>
-                    <button class="mobile-dot" data-card="2" role="tab" aria-label="Carte 3" aria-selected="false"></button>
-                    <button class="mobile-dot" data-card="3" role="tab" aria-label="Carte 4" aria-selected="false"></button>
-                    <button class="mobile-dot" data-card="4" role="tab" aria-label="Carte 5" aria-selected="false"></button>
-                    <button class="mobile-dot" data-card="5" role="tab" aria-label="Carte 6" aria-selected="false"></button>
+                    <button class="mobile-dot active" data-card="0" role="tab" aria-label="Carte 1"
+                        aria-selected="true"></button>
+                    <button class="mobile-dot" data-card="1" role="tab" aria-label="Carte 2"
+                        aria-selected="false"></button>
+                    <button class="mobile-dot" data-card="2" role="tab" aria-label="Carte 3"
+                        aria-selected="false"></button>
+                    <button class="mobile-dot" data-card="3" role="tab" aria-label="Carte 4"
+                        aria-selected="false"></button>
+                    <button class="mobile-dot" data-card="4" role="tab" aria-label="Carte 5"
+                        aria-selected="false"></button>
+                    <button class="mobile-dot" data-card="5" role="tab" aria-label="Carte 6"
+                        aria-selected="false"></button>
                 </div>
             </div>
         </section>
@@ -379,22 +457,29 @@
         <section id="contact">
             <h2 class="nier-glitch" data-i18n="contact.title">Me contacter</h2>
             <form name="contact" method="POST" data-netlify="true" class="contact-form">
-                <input type="hidden" name="form-name" value="contact">
+                <input type="hidden" name="form-name" value="contact" />
                 <div class="form-group">
                     <label for="name" data-i18n="contact.labelName">Nom</label>
-                    <input type="text" id="name" name="name" autocomplete="name" required placeholder="Votre nom" data-i18n-placeholder="contact.placeholderName">
+                    <input type="text" id="name" name="name" autocomplete="name" required placeholder="Votre nom"
+                        data-i18n-placeholder="contact.placeholderName" />
                 </div>
                 <div class="form-group">
                     <label for="email" data-i18n="contact.labelEmail">Email</label>
-                    <input type="email" id="email" name="email" autocomplete="email" required placeholder="votre@email.com" data-i18n-placeholder="contact.placeholderEmail">
+                    <input type="email" id="email" name="email" autocomplete="email" required
+                        placeholder="votre@email.com" data-i18n-placeholder="contact.placeholderEmail" />
                 </div>
                 <div class="form-group">
                     <label for="message" data-i18n="contact.labelMessage">Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Votre message..." data-i18n-placeholder="contact.placeholderMessage"></textarea>
+                    <textarea id="message" name="message" rows="5" required placeholder="Votre message..."
+                        data-i18n-placeholder="contact.placeholderMessage"></textarea>
                 </div>
-                <button type="submit" class="btn-primary" data-i18n="contact.submit">Envoyer</button>
+                <button type="submit" class="btn-primary" data-i18n="contact.submit">
+                    Envoyer
+                </button>
             </form>
-            <p class="form-success" id="formSuccess" data-i18n="contact.success" hidden>Merci ! Votre message a bien été envoyé.</p>
+            <p class="form-success" id="formSuccess" data-i18n="contact.success" hidden>
+                Merci ! Votre message a bien été envoyé.
+            </p>
         </section>
     </main>
 
@@ -402,9 +487,13 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3 class="nier-glitch" data-i18n="footer.coordinates">Coordonnées</h3>
+                <h3 class="nier-glitch" data-i18n="footer.coordinates">
+                    Coordonnées
+                </h3>
                 <ul>
-                    <li><a href="mailto:l.dechiara.dev@gmail.com">l.dechiara.dev@gmail.com</a></li>
+                    <li>
+                        <a href="mailto:l.dechiara.dev@gmail.com">l.dechiara.dev@gmail.com</a>
+                    </li>
                     <li>+33 6 02 73 91 06</li>
                     <li>Grenoble, France</li>
                 </ul>
@@ -412,8 +501,13 @@
             <div class="footer-section">
                 <h3 class="nier-glitch" data-i18n="footer.networks">Réseaux</h3>
                 <ul>
-                    <li><a href="https://www.linkedin.com/in/luca-de-chiara-7b054433a/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                    <li><a href="https://github.com/dechiaraluca" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/luca-de-chiara-7b054433a/" target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/dechiaraluca" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -427,7 +521,9 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-i18n="footer.copyright">&copy; 2025 De Chiara Luca. Tous droits réservés.</p>
+            <p data-i18n="footer.copyright">
+                &copy; 2025 De Chiara Luca. Tous droits réservés.
+            </p>
         </div>
     </footer>
     <script src="i18n.js" defer></script>
