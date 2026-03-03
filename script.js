@@ -192,6 +192,7 @@ function spawnGlitchArtifact() {
 }
 
 let artifactTid = null;
+let logoArtifactTid = null;
 function scheduleArtifact() {
     if (!document.body.classList.contains('dark-mode') || prefersReducedMotion) return;
     artifactTid = setTimeout(() => {
@@ -202,6 +203,45 @@ function scheduleArtifact() {
 }
 
 let ambientTid = null;
+
+// Artefacts autour du logo en light mode
+function spawnLogoArtifact() {
+    if (prefersReducedMotion) return;
+    const logo = document.getElementById('darkModeToggle');
+    if (!logo) return;
+    const rect = logo.getBoundingClientRect();
+    if (rect.width === 0) return;
+
+    const art = document.createElement('div');
+    const small = Math.random() < 0.6;
+    const w = small ? 2 + Math.random() * 8 : 6 + Math.random() * 20;
+    const h = small ? 1 + Math.random() * 4 : 2 + Math.random() * 6;
+    const duration = 40 + Math.random() * 140;
+    // Zone élargie de 30% autour du logo
+    const pad = 0.3;
+    const left = rect.left - rect.width * pad / 2 + Math.random() * rect.width * (1 + pad);
+    const top  = rect.top  - rect.height * pad / 2 + Math.random() * rect.height * (1 + pad);
+    const variant = Math.random();
+    let bg;
+    if (variant < 0.33)      bg = `rgba(17,17,17,${(0.5 + Math.random() * 0.4).toFixed(2)})`;
+    else if (variant < 0.66) bg = `rgba(80,80,80,${(0.2 + Math.random() * 0.3).toFixed(2)})`;
+    else                     bg = `rgba(40,40,40,${(0.04 + Math.random() * 0.08).toFixed(2)})`;
+    art.style.cssText =
+        `position:fixed;z-index:9500;pointer-events:none;` +
+        `background:${bg};width:${w.toFixed(0)}px;height:${h.toFixed(0)}px;` +
+        `left:${left.toFixed(1)}px;top:${top.toFixed(1)}px`;
+    document.body.appendChild(art);
+    setTimeout(() => art.remove(), duration);
+}
+
+function scheduleLogoArtifact() {
+    if (document.body.classList.contains('dark-mode') || prefersReducedMotion) return;
+    logoArtifactTid = setTimeout(() => {
+        const burst = Math.random() < 0.4 ? 2 + Math.floor(Math.random() * 3) : 1;
+        for (let i = 0; i < burst; i++) setTimeout(spawnLogoArtifact, Math.random() * 150);
+        scheduleLogoArtifact();
+    }, isMobile ? 700 + Math.random() * 1400 : 300 + Math.random() * 800);
+}
 function ambientLetterCorrupt() {
     if (!document.body.classList.contains('dark-mode') || glitchRafId !== null) {
         scheduleAmbientCorrupt(); return;
@@ -248,12 +288,16 @@ function randomizeAnimationDelays() {
     document.querySelectorAll('footer h3.nier-glitch').forEach(el => {
         el.style.animationDelay = `-${(Math.random() * 4).toFixed(2)}s`;
     });
+    const logoImg = document.querySelector('#darkModeToggle img');
+    if (logoImg) logoImg.style.animationDelay = `-${(Math.random() * 3).toFixed(2)}s`;
 }
 
 function clearAnimationDelays() {
     document.querySelectorAll('.nier-glitch').forEach(el => {
         el.style.animationDelay = '';
     });
+    const logoImg = document.querySelector('#darkModeToggle img');
+    if (logoImg) logoImg.style.animationDelay = '';
 }
 
 function startDarkAmbience() {
@@ -291,6 +335,8 @@ toggle.addEventListener('click', () => {
     localStorage.setItem('dark-mode', isDark);
 
     if (isDark) {
+        clearTimeout(logoArtifactTid);
+        logoArtifactTid = null;
         startDarkAmbience();
         playGlitchSound();
         triggerCorruptionFlash();
@@ -302,6 +348,7 @@ toggle.addEventListener('click', () => {
         }, { once: true });
     } else {
         stopDarkAmbience();
+        scheduleLogoArtifact();
         playGlitchSound();
         heroDark.classList.remove('visible');
         heroLight.classList.remove('hidden');
@@ -356,13 +403,52 @@ scrollToTopBtn.addEventListener('click', function () {
     });
 });
 
-// Formulaire contact - envoi AJAX + feedback
+// Formulaire contact - validation custom + envoi AJAX + feedback
 const contactForm = document.querySelector('.contact-form');
 const formSuccess = document.getElementById('formSuccess');
 
+function showFormError(input, errorId) {
+    input.classList.add('invalid');
+    document.getElementById(errorId).classList.add('visible');
+}
+
+function hideFormError(input, errorId) {
+    input.classList.remove('invalid');
+    document.getElementById(errorId).classList.remove('visible');
+}
+
+function validateForm() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    let valid = true;
+
+    if (!nameInput.value.trim()) {
+        showFormError(nameInput, 'name-error'); valid = false;
+    } else { hideFormError(nameInput, 'name-error'); }
+
+    const emailOk = emailInput.value.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+    if (!emailOk) {
+        showFormError(emailInput, 'email-error'); valid = false;
+    } else { hideFormError(emailInput, 'email-error'); }
+
+    if (!messageInput.value.trim()) {
+        showFormError(messageInput, 'message-error'); valid = false;
+    } else { hideFormError(messageInput, 'message-error'); }
+
+    return valid;
+}
+
 if (contactForm) {
+    // Effacer l'erreur dès que l'utilisateur tape
+    ['name', 'email', 'message'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', () => hideFormError(el, id + '-error'));
+    });
+
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        if (!validateForm()) return;
         const data = new FormData(contactForm);
         fetch(contactForm.getAttribute('action') || location.pathname, {
             method: 'POST',
@@ -371,6 +457,10 @@ if (contactForm) {
         }).then((res) => {
             if (!res.ok) throw new Error(res.status);
             contactForm.reset();
+            ['name', 'email', 'message'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) hideFormError(el, id + '-error');
+            });
             formSuccess.hidden = false;
             setTimeout(() => { formSuccess.hidden = true; }, 5000);
         }).catch(() => {
@@ -433,6 +523,7 @@ document.querySelectorAll('main section[id]').forEach(section => {
     navObserver.observe(section);
 });
 
+
 // Animation scroll
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');
@@ -462,3 +553,10 @@ document.addEventListener('DOMContentLoaded', function() {
         observerOut.observe(section);
     });
 });
+
+// Init corruption logo au chargement
+if (!prefersReducedMotion) {
+    const logoImgInit = document.querySelector('#darkModeToggle img');
+    if (logoImgInit) logoImgInit.style.animationDelay = `-${(Math.random() * 3).toFixed(2)}s`;
+    if (!document.body.classList.contains('dark-mode')) scheduleLogoArtifact();
+}

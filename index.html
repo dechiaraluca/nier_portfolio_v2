@@ -13,7 +13,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:url" content="https://ldcportfolio.netlify.app/" />
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
@@ -33,10 +35,9 @@
 
     <!-- HEADER -->
     <header>
-        <div class="logo-container">
-            <img src="assets/images/logo.webp" width="105" height="105" alt="Logo Portfolio De Chiara Luca"
-                class="logo" />
-        </div>
+        <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre">
+            <img src="assets/images/switch3.webp" width="85" height="85" alt="Logo Portfolio De Chiara Luca" />
+        </button>
         <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
@@ -71,9 +72,6 @@
                 </li>
             </ul>
         </nav>
-        <button id="darkModeToggle" aria-label="Activer/désactiver le mode sombre">
-            <img src="assets/images/switch3.webp" width="150" height="150" alt="" />
-        </button>
         <button id="muteToggle" aria-label="Couper le son">
             <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -456,22 +454,25 @@
         <!-- CONTACT -->
         <section id="contact">
             <h2 class="nier-glitch" data-i18n="contact.title">Me contacter</h2>
-            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+            <form name="contact" method="POST" data-netlify="true" class="contact-form" novalidate>
                 <input type="hidden" name="form-name" value="contact" />
                 <div class="form-group">
                     <label for="name" data-i18n="contact.labelName">Nom</label>
                     <input type="text" id="name" name="name" autocomplete="name" required placeholder="Votre nom"
                         data-i18n-placeholder="contact.placeholderName" />
+                    <span class="form-error" id="name-error" aria-live="polite" data-i18n="contact.errorName">[ NOM REQUIS ]</span>
                 </div>
                 <div class="form-group">
                     <label for="email" data-i18n="contact.labelEmail">Email</label>
                     <input type="email" id="email" name="email" autocomplete="email" required
                         placeholder="votre@email.com" data-i18n-placeholder="contact.placeholderEmail" />
+                    <span class="form-error" id="email-error" aria-live="polite" data-i18n="contact.errorEmail">[ EMAIL INVALIDE ]</span>
                 </div>
                 <div class="form-group">
                     <label for="message" data-i18n="contact.labelMessage">Message</label>
                     <textarea id="message" name="message" rows="5" required placeholder="Votre message..."
                         data-i18n-placeholder="contact.placeholderMessage"></textarea>
+                    <span class="form-error" id="message-error" aria-live="polite" data-i18n="contact.errorMessage">[ MESSAGE REQUIS ]</span>
                 </div>
                 <button type="submit" class="btn-primary" data-i18n="contact.submit">
                     Envoyer
