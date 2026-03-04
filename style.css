@@ -100,7 +100,7 @@ body.dark-mode header {
   position: relative;
 }
 
-/* Idle : breathing glow — lignes blanches sur fond sombre, drop-shadow blanc visible */
+/* IDLE : breathing glow */
 @keyframes circuitBreath {
   0%, 100% {
     filter: invert(0)
@@ -117,13 +117,7 @@ body.dark-mode header {
   }
 }
 
-#darkModeToggle img {
-  width: 85px;
-  height: auto;
-  filter: invert(0);
-  animation: circuitBreath 2s ease-in-out infinite;
-}
-
+/* HOVER : plus intense */
 @keyframes circuitBreathHover {
   0%, 100% {
     filter: invert(0)
@@ -141,10 +135,26 @@ body.dark-mode header {
   }
 }
 
-/* Hover : animation plus rapide et intense, sans freeze */
-#darkModeToggle:hover img {
+#darkModeToggle img {
+  width: 85px;
+  height: auto;
+  filter: invert(0);
+  animation: circuitBreath 2s ease-in-out infinite;
+}
+
+#darkModeToggle:hover img,
+.dark-mode #darkModeToggle:hover img {
   animation: circuitBreathHover 1s ease-in-out infinite;
 }
+
+/* Mobile : désactive le :hover CSS pour éviter que l'animation reste rapide après tap */
+@media (hover: none) {
+  #darkModeToggle:hover img,
+  .dark-mode #darkModeToggle:hover img {
+    animation: circuitBreath 2s ease-in-out infinite;
+  }
+}
+
 
 @keyframes toggle-spin {
   from { transform: rotate(0deg); }
@@ -157,15 +167,6 @@ body.dark-mode header {
 
 #darkModeToggle:focus-visible {
   outline: none;
-}
-
-.dark-mode #darkModeToggle img {
-  filter: invert(0);
-  animation: circuitBreath 2s ease-in-out infinite;
-}
-
-.dark-mode #darkModeToggle:hover img {
-  animation: circuitBreathHover 1s ease-in-out infinite;
 }
 
 #muteToggle {

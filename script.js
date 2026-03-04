@@ -282,13 +282,11 @@ function stopDarkAmbience() {
 }
 
 toggle.addEventListener('click', () => {
-    // Spin à chaque clic (reset + reflow pour relancer l'animation)
     toggle.classList.remove('spinning');
     void toggle.offsetWidth;
     toggle.classList.add('spinning');
     toggle.addEventListener('animationend', () => toggle.classList.remove('spinning'), { once: true });
 
-    // Mobile : durée 800ms, throttle 200ms
     isMobile ? startNierTextGlitch(800, 200) : startNierTextGlitch();
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
@@ -514,5 +512,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // Init breathing glow logo au chargement
 if (!prefersReducedMotion) {
     const logoImgInit = document.querySelector('#darkModeToggle img');
-    if (logoImgInit) logoImgInit.style.animationDelay = `-${(Math.random() * 2.5).toFixed(2)}s`;
+    if (logoImgInit) logoImgInit.style.animationDelay = `-${(Math.random() * 2).toFixed(2)}s`;
 }
