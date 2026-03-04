@@ -77,18 +77,21 @@ header {
   text-align: center;
   padding: 1rem;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--color-primary);
+  /* Force les variables dans le header pour que nav/burger/lang héritent du blanc */
+  --color-text: #f6f6f6;
+  --color-bg: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   margin: 0;
 }
 
 body.dark-mode header {
-  box-shadow: 0 2px 6px rgb(255, 220, 220);
+  box-shadow: 0 2px 6px rgba(255, 220, 220, 0.3);
 }
 
 #darkModeToggle {
   background: none;
   border: none;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   padding: 0;
   display: inline-flex;
@@ -97,12 +100,50 @@ body.dark-mode header {
   position: relative;
 }
 
+/* Idle : breathing glow — lignes blanches sur fond sombre, drop-shadow blanc visible */
+@keyframes circuitBreath {
+  0%, 100% {
+    filter: invert(0)
+      drop-shadow(0 0 3px rgba(255,255,255,0.5))
+      drop-shadow(0 0 7px rgba(255,255,255,0.2));
+    transform: scale(1);
+  }
+  50% {
+    filter: invert(0)
+      drop-shadow(0 0 8px rgba(255,255,255,1))
+      drop-shadow(0 0 18px rgba(255,255,255,0.65))
+      drop-shadow(0 0 32px rgba(255,255,255,0.3));
+    transform: scale(1.04);
+  }
+}
 
 #darkModeToggle img {
   width: 85px;
   height: auto;
-  filter: invert(1);
-  animation: logo-corrupt-light 3s linear infinite;
+  filter: invert(0);
+  animation: circuitBreath 2s ease-in-out infinite;
+}
+
+@keyframes circuitBreathHover {
+  0%, 100% {
+    filter: invert(0)
+      drop-shadow(0 0 8px rgba(255,255,255,0.9))
+      drop-shadow(0 0 18px rgba(255,255,255,0.55))
+      drop-shadow(0 0 32px rgba(255,255,255,0.25));
+    transform: perspective(400px) rotateY(4deg) scale(1.05);
+  }
+  50% {
+    filter: invert(0)
+      drop-shadow(0 0 14px rgba(255,255,255,1))
+      drop-shadow(0 0 28px rgba(255,255,255,0.8))
+      drop-shadow(0 0 48px rgba(255,255,255,0.45));
+    transform: perspective(400px) rotateY(4deg) scale(1.08);
+  }
+}
+
+/* Hover : animation plus rapide et intense, sans freeze */
+#darkModeToggle:hover img {
+  animation: circuitBreathHover 1s ease-in-out infinite;
 }
 
 @keyframes toggle-spin {
@@ -118,51 +159,13 @@ body.dark-mode header {
   outline: none;
 }
 
-/* Logo corruption — cycle 3s, même pattern que nier-noise */
-@keyframes logo-corrupt-light {
-  0%, 79.9%, 82%, 84.9%, 87%, 89.9%, 100% {
-    filter: invert(1);
-    transform: none;
-  }
-  80%, 81.9% {
-    filter: invert(1) hue-rotate(30deg) saturate(4) brightness(1.3);
-    transform: translateX(-2px);
-  }
-  85%, 86.9% {
-    filter: invert(1) hue-rotate(-30deg) saturate(3) brightness(0.9) contrast(1.5);
-    transform: translateX(2px);
-  }
-  90%, 89.9% {
-    filter: invert(1) saturate(5) brightness(1.1);
-    transform: translateX(-1px);
-  }
-}
-
-@keyframes logo-corrupt-dark {
-  0%, 79.9%, 82%, 84.9%, 87%, 89.9%, 100% {
-    filter: invert(0);
-    transform: none;
-  }
-  /* Burst 1 — décalage gauche + teinte */
-  80%, 81.9% {
-    filter: invert(0) hue-rotate(30deg) saturate(4) brightness(1.3);
-    transform: translateX(-2px);
-  }
-  /* Burst 2 — décalage droite + contraste */
-  85%, 86.9% {
-    filter: invert(0) hue-rotate(-30deg) saturate(3) brightness(0.9) contrast(1.5);
-    transform: translateX(2px);
-  }
-  /* Burst 3 — résidu subtil */
-  90%, 89.9% {
-    filter: invert(0) saturate(5) brightness(1.1);
-    transform: translateX(-1px);
-  }
-}
-
 .dark-mode #darkModeToggle img {
   filter: invert(0);
-  animation: logo-corrupt-dark 3s linear infinite;
+  animation: circuitBreath 2s ease-in-out infinite;
+}
+
+.dark-mode #darkModeToggle:hover img {
+  animation: circuitBreathHover 1s ease-in-out infinite;
 }
 
 #muteToggle {
@@ -1268,6 +1271,7 @@ footer {
   background: var(--color-primary);
   color: var(--color-white);
   padding: 1rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.35);
 }
 
 body.dark-mode footer {

@@ -192,7 +192,6 @@ function spawnGlitchArtifact() {
 }
 
 let artifactTid = null;
-let logoArtifactTid = null;
 function scheduleArtifact() {
     if (!document.body.classList.contains('dark-mode') || prefersReducedMotion) return;
     artifactTid = setTimeout(() => {
@@ -203,45 +202,6 @@ function scheduleArtifact() {
 }
 
 let ambientTid = null;
-
-// Artefacts autour du logo en light mode
-function spawnLogoArtifact() {
-    if (prefersReducedMotion) return;
-    const logo = document.getElementById('darkModeToggle');
-    if (!logo) return;
-    const rect = logo.getBoundingClientRect();
-    if (rect.width === 0) return;
-
-    const art = document.createElement('div');
-    const small = Math.random() < 0.6;
-    const w = small ? 2 + Math.random() * 8 : 6 + Math.random() * 20;
-    const h = small ? 1 + Math.random() * 4 : 2 + Math.random() * 6;
-    const duration = 40 + Math.random() * 140;
-    // Zone élargie de 30% autour du logo
-    const pad = 0.3;
-    const left = rect.left - rect.width * pad / 2 + Math.random() * rect.width * (1 + pad);
-    const top  = rect.top  - rect.height * pad / 2 + Math.random() * rect.height * (1 + pad);
-    const variant = Math.random();
-    let bg;
-    if (variant < 0.33)      bg = `rgba(17,17,17,${(0.5 + Math.random() * 0.4).toFixed(2)})`;
-    else if (variant < 0.66) bg = `rgba(80,80,80,${(0.2 + Math.random() * 0.3).toFixed(2)})`;
-    else                     bg = `rgba(40,40,40,${(0.04 + Math.random() * 0.08).toFixed(2)})`;
-    art.style.cssText =
-        `position:fixed;z-index:9500;pointer-events:none;` +
-        `background:${bg};width:${w.toFixed(0)}px;height:${h.toFixed(0)}px;` +
-        `left:${left.toFixed(1)}px;top:${top.toFixed(1)}px`;
-    document.body.appendChild(art);
-    setTimeout(() => art.remove(), duration);
-}
-
-function scheduleLogoArtifact() {
-    if (document.body.classList.contains('dark-mode') || prefersReducedMotion) return;
-    logoArtifactTid = setTimeout(() => {
-        const burst = Math.random() < 0.4 ? 2 + Math.floor(Math.random() * 3) : 1;
-        for (let i = 0; i < burst; i++) setTimeout(spawnLogoArtifact, Math.random() * 150);
-        scheduleLogoArtifact();
-    }, isMobile ? 700 + Math.random() * 1400 : 300 + Math.random() * 800);
-}
 function ambientLetterCorrupt() {
     if (!document.body.classList.contains('dark-mode') || glitchRafId !== null) {
         scheduleAmbientCorrupt(); return;
@@ -335,8 +295,6 @@ toggle.addEventListener('click', () => {
     localStorage.setItem('dark-mode', isDark);
 
     if (isDark) {
-        clearTimeout(logoArtifactTid);
-        logoArtifactTid = null;
         startDarkAmbience();
         playGlitchSound();
         triggerCorruptionFlash();
@@ -348,7 +306,6 @@ toggle.addEventListener('click', () => {
         }, { once: true });
     } else {
         stopDarkAmbience();
-        scheduleLogoArtifact();
         playGlitchSound();
         heroDark.classList.remove('visible');
         heroLight.classList.remove('hidden');
@@ -554,9 +511,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Init corruption logo au chargement
+// Init breathing glow logo au chargement
 if (!prefersReducedMotion) {
     const logoImgInit = document.querySelector('#darkModeToggle img');
-    if (logoImgInit) logoImgInit.style.animationDelay = `-${(Math.random() * 3).toFixed(2)}s`;
-    if (!document.body.classList.contains('dark-mode')) scheduleLogoArtifact();
+    if (logoImgInit) logoImgInit.style.animationDelay = `-${(Math.random() * 2.5).toFixed(2)}s`;
 }
