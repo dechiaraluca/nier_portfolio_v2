@@ -98,6 +98,8 @@ body.dark-mode header {
   align-items: center;
   justify-content: center;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
 }
 
 /* IDLE : breathing glow */
