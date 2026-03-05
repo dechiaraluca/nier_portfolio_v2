@@ -281,6 +281,8 @@ function stopDarkAmbience() {
     clearAnimationDelays();
 }
 
+let heroGen = 0;
+
 toggle.addEventListener('click', () => {
     toggle.classList.remove('spinning');
     void toggle.offsetWidth;
@@ -292,12 +294,19 @@ toggle.addEventListener('click', () => {
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
 
+    heroGen++;
+    const gen = heroGen;
+    heroLight.classList.remove('glitch-out', 'glitch-in');
+    heroLight.classList.remove('hidden');
+    heroDark.classList.remove('visible');
+
     if (isDark) {
         startDarkAmbience();
         playGlitchSound();
         triggerCorruptionFlash();
         heroLight.classList.add('glitch-out');
         heroLight.addEventListener('animationend', () => {
+            if (heroGen !== gen) return;
             heroLight.classList.add('hidden');
             heroLight.classList.remove('glitch-out');
             heroDark.classList.add('visible');
@@ -305,10 +314,9 @@ toggle.addEventListener('click', () => {
     } else {
         stopDarkAmbience();
         playGlitchSound();
-        heroDark.classList.remove('visible');
-        heroLight.classList.remove('hidden');
         heroLight.classList.add('glitch-in');
         heroLight.addEventListener('animationend', () => {
+            if (heroGen !== gen) return;
             heroLight.classList.remove('glitch-in');
         }, { once: true });
     }
