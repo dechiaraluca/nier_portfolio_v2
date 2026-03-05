@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ldcportfolio.netlify.app/
+Sitemap: https://ldcportfolio.netlify.app/sitemap.xml
