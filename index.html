@@ -203,8 +203,8 @@
 
                 <div class="carousel-wrapper" id="carouselWrapper">
                     <!-- Slide 1 -->
-                    <div class="carousel-slide">
-                        <div class="card">
+                    <div class="carousel-slide" id="slide-0" role="tabpanel" aria-label="Slide 1">
+                        <div class="card" id="card-0" role="tabpanel" aria-label="Carte 1">
                             <div class="card-image">
                                 <img src="assets/images/1.webp" width="700" height="322"
                                     alt="Capture d'écran du site Voxade - Site Livres Audio" loading="lazy" />
@@ -230,7 +230,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card" id="card-1" role="tabpanel" aria-label="Carte 2">
                             <div class="card-image">
                                 <img src="assets/images/2.webp" width="700" height="319"
                                     alt="Capture d'écran du site Yokoso - Airbnb" loading="lazy" />
@@ -256,7 +256,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card" id="card-2" role="tabpanel" aria-label="Carte 3">
                             <div class="card-image">
                                 <img src="assets/images/3.webp" width="700" height="347"
                                     alt="Capture d'écran du site Detect - Évènement détection métaux" loading="lazy" />
@@ -284,8 +284,8 @@
                     </div>
 
                     <!-- Slide 2 -->
-                    <div class="carousel-slide">
-                        <div class="card">
+                    <div class="carousel-slide" id="slide-1" role="tabpanel" aria-label="Slide 2">
+                        <div class="card" id="card-3" role="tabpanel" aria-label="Carte 4">
                             <div class="card-image">
                                 <img src="assets/images/4.webp" width="700" height="394"
                                     alt="Capture d'écran du site Nelumbo Blooms - Site fleuriste" loading="lazy" />
@@ -313,7 +313,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card" id="card-4" role="tabpanel" aria-label="Carte 5">
                             <div class="card-image">
                                 <img src="assets/images/5.webp" width="700" height="396"
                                     alt="Capture d'écran du projet Bouncing Logo" loading="lazy" />
@@ -340,7 +340,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card" id="card-5" role="tabpanel" aria-label="Carte 6">
                             <div class="card-image">
                                 <img src="assets/images/6.webp" width="700" height="347"
                                     alt="Capture d'écran du Blog G33K - Projet collectif Firebase" loading="lazy" />
@@ -370,25 +370,25 @@
                 </div>
                 <div class="carousel-indicators" role="tablist" aria-label="Indicateurs de carousel">
                     <button class="carousel-dot active" data-slide="0" role="tab" aria-label="Aller au slide 1"
-                        aria-selected="true"></button>
+                        aria-selected="true" aria-controls="slide-0"></button>
                     <button class="carousel-dot" data-slide="1" role="tab" aria-label="Aller au slide 2"
-                        aria-selected="false"></button>
+                        aria-selected="false" aria-controls="slide-1"></button>
                 </div>
 
                 <!-- Indicateurs mobile (6 dots pour 6 cards) -->
                 <div class="carousel-indicators-mobile" role="tablist" aria-label="Indicateurs mobile">
                     <button class="mobile-dot active" data-card="0" role="tab" aria-label="Carte 1"
-                        aria-selected="true"></button>
+                        aria-selected="true" aria-controls="card-0"></button>
                     <button class="mobile-dot" data-card="1" role="tab" aria-label="Carte 2"
-                        aria-selected="false"></button>
+                        aria-selected="false" aria-controls="card-1"></button>
                     <button class="mobile-dot" data-card="2" role="tab" aria-label="Carte 3"
-                        aria-selected="false"></button>
+                        aria-selected="false" aria-controls="card-2"></button>
                     <button class="mobile-dot" data-card="3" role="tab" aria-label="Carte 4"
-                        aria-selected="false"></button>
+                        aria-selected="false" aria-controls="card-3"></button>
                     <button class="mobile-dot" data-card="4" role="tab" aria-label="Carte 5"
-                        aria-selected="false"></button>
+                        aria-selected="false" aria-controls="card-4"></button>
                     <button class="mobile-dot" data-card="5" role="tab" aria-label="Carte 6"
-                        aria-selected="false"></button>
+                        aria-selected="false" aria-controls="card-5"></button>
                 </div>
             </div>
         </section>
