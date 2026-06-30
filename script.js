@@ -437,7 +437,8 @@ if (contactForm) {
 
 // === MUTE TOGGLE ===
 const muteBtn = document.getElementById('muteToggle');
-let isMuted = localStorage.getItem('muted') === 'true';
+const _storedMuted = localStorage.getItem('muted');
+let isMuted = _storedMuted === null ? true : _storedMuted === 'true';
 
 function applyMuteState() {
     glitchAudio.muted = isMuted;
