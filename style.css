@@ -1639,3 +1639,13 @@ a.nier-glitch {
 .dark-mode footer h3.nier-glitch {
   animation: nier-noise 4s linear infinite;
 }
+.footer-bottom a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.footer-bottom a:hover {
+  color: var(--color-white);
+}
