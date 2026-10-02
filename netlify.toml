@@ -1,3 +1,10 @@
+# redirige l'ancienne adresse vers le domaine principal
+[[redirects]]
+  from = "https://ldcportfolio.netlify.app/*"
+  to = "https://lucadechiara.fr/:splat"
+  status = 301
+  force = true
+
 [[plugins]]
 package = "@netlify/plugin-lighthouse"
 
