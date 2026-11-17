@@ -111,10 +111,13 @@
         </button>
     </header>
 
-    <button id="scrollToTop" aria-label="Retour en haut">
-        <img src="assets/images/usb-01_generated-removebg-preview.webp" width="100" height="100"
-            alt="Retour en haut de page" loading="lazy" />
-    </button>
+    <div class="scroll-top" id="scrollTopWidget">
+        <div class="scroll-top-progress" aria-hidden="true">
+            <span class="scroll-top-progress-fill"></span>
+            <span class="scroll-top-progress-marker"></span>
+        </div>
+        <button id="scrollToTop" class="scroll-top-btn" type="button" aria-label="Retour en haut"></button>
+    </div>
 
     <!-- HOME -->
     <main>
@@ -147,6 +150,7 @@
 
         <!-- ABOUT -->
         <section id="apropos">
+            <div class="section-label"><span data-i18n="section.about">01 // Profil</span></div>
             <h2 class="nier-glitch" data-i18n="about.title">À propos</h2>
             <div class="apropos-container">
                 <div class="bio">
@@ -178,224 +182,347 @@
 
         <!-- PROJECTS -->
         <section id="projets">
+            <div class="section-label"><span data-i18n="section.projects">02 // Archives</span></div>
             <h2 class="nier-glitch" data-i18n="projects.title">Mes Projets</h2>
             <p data-i18n="projects.subtitle">
                 Une sélection de projets réalisés au cours de mon parcours : sites
                 vitrines, applications web et projets personnels.
             </p>
 
-            <div class="carousel-container" role="region" aria-label="Carrousel de projets">
-                <button class="carousel-nav prev" id="prevBtn" aria-label="Projet précédent">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="carousel-nav next" id="nextBtn" aria-label="Projet suivant">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 6 15 12 9 18"></polyline>
-                    </svg>
-                </button>
+            <div class="projects-archive">
+                <div class="projects-archive-head">
+                    <span class="projects-archive-label" data-i18n="projects.archive">Index</span>
+                    <span><span data-i18n="projects.entries">Entrées</span> : 08</span>
+                </div>
+                <div class="projects-rule" aria-hidden="true"></div>
 
-                <div class="carousel-wrapper" id="carouselWrapper">
-                    <!-- Slide 1 -->
-                    <div class="carousel-slide" id="slide-0" role="tabpanel" aria-label="Slide 1">
-                        <div class="card" id="card-0" role="tabpanel" aria-label="Carte 1">
-                            <div class="card-image">
+                <ul class="projects-list" id="projectsList" style="--count: 8">
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-hmusic" type="button"
+                            aria-expanded="true" aria-controls="project-panel-hmusic">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">01</span>
+                            <span class="project-tab-name">hmusic</span>
+                            <span class="project-tab-kind" data-i18n="kind.desktop">App desktop</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-hmusic" role="region"
+                            aria-labelledby="project-tab-hmusic">
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">hmusic</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 01 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
+                                <img src="assets/images/hmusic.webp" width="1600" height="900"
+                                    alt="Captures de l'application hmusic - Musique générative selon l'humeur" loading="lazy" />
+                            </div>
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.desktop">App desktop</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.hmusic.desc">
+                                    Application desktop qui compose de la musique en temps réel selon ton humeur, avec playlists Jamendo générées par IA et journal d'humeur.
+                                </p>
+                                <ul class="project-tags">
+                                    <li>Java</li>
+                                    <li>Swing</li>
+                                    <li>MIDI</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://hmusic-mood.netlify.app/" class="project-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewApp">Voir l'application</a>
+                                    <span class="project-link disabled" data-i18n="projects.privateCode">Code privé</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-voctale" type="button"
+                            aria-expanded="false" aria-controls="project-panel-voctale">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">02</span>
+                            <span class="project-tab-name">Voctale</span>
+                            <span class="project-tab-kind" data-i18n="kind.webapp">App web</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-voctale" role="region"
+                            aria-labelledby="project-tab-voctale" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">Voctale</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 02 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
+                                <img src="assets/images/voctale.webp" width="1600" height="800"
+                                    alt="Capture d'écran du site Voctale - Livres audio interactifs" loading="lazy" />
+                            </div>
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.webapp">App web</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.voctale.desc">
+                                    Application web de livres audio interactifs à choix narratifs : interface, logique applicative et gestion des données.
+                                </p>
+                                <ul class="project-tags">
+                                    <li>Laravel</li>
+                                    <li>Blade</li>
+                                    <li>Tailwind</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://voctale.com/" class="project-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <span class="project-link disabled" data-i18n="projects.privateCode">Code privé</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-pur" type="button"
+                            aria-expanded="false" aria-controls="project-panel-pur">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">03</span>
+                            <span class="project-tab-name">PUR</span>
+                            <span class="project-tab-kind" data-i18n="kind.showcase">Site vitrine</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-pur" role="region"
+                            aria-labelledby="project-tab-pur" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">PUR</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 03 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
+                                <img src="assets/images/pur.webp" width="1600" height="1000"
+                                    alt="Captures du site PUR - Laveur de vitres éco-responsable" loading="lazy" />
+                            </div>
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.showcase">Site vitrine</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.pur.desc">
+                                    Site vitrine pour un laveur de vitres éco-responsable à Grenoble : méthode, prestations, galerie et formulaire de devis interactif.
+                                </p>
+                                <ul class="project-tags">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JS</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://pur-site.netlify.app/" class="project-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <span class="project-link disabled" data-i18n="projects.privateCode">Code privé</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-lcz" type="button"
+                            aria-expanded="false" aria-controls="project-panel-lcz">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">04</span>
+                            <span class="project-tab-name">L.C.Z Couverture</span>
+                            <span class="project-tab-kind" data-i18n="kind.showcase">Site vitrine</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-lcz" role="region"
+                            aria-labelledby="project-tab-lcz" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">L.C.Z Couverture</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 04 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
                                 <img src="assets/images/lcz.webp" width="1585" height="774"
                                     alt="Capture d'écran du site L.C.Z Couverture Zinguerie" loading="lazy" />
-                                <div class="card-overlay"></div>
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">L.C.Z Couverture</h3>
-                                <p class="card-description" data-i18n="project.lcz.desc">
-                                    Site vitrine pour une entreprise de couverture et zinguerie
-                                    près de Grenoble : prestations, galerie de chantiers, avis
-                                    clients et référencement local.
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.showcase">Site vitrine</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.lcz.desc">
+                                    Site vitrine pour une entreprise de couverture et zinguerie près de Grenoble : prestations, galerie de chantiers, avis clients et référencement local.
                                 </p>
-                                <div class="card-technologies">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">JS</span>
-                                </div>
-                                <div class="card-links">
-                                    <a href="https://lcz-couverture.fr/" class="card-link primary" target="_blank"
+                                <ul class="project-tags">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JS</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://lcz-couverture.fr/" class="project-link primary" target="_blank"
                                         rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
-                                    <span class="card-link secondary disabled" data-i18n="projects.sourceCode">Code
-                                        source</span>
+                                    <span class="project-link disabled" data-i18n="projects.privateCode">Code privé</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card" id="card-1" role="tabpanel" aria-label="Carte 2">
-                            <div class="card-image">
-                                <img src="assets/images/1.webp" width="700" height="322"
-                                    alt="Capture d'écran du site Voctale - Livres audio interactifs" loading="lazy" />
-                                <div class="card-overlay"></div>
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-yokoso" type="button"
+                            aria-expanded="false" aria-controls="project-panel-yokoso">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">05</span>
+                            <span class="project-tab-name">Yokoso</span>
+                            <span class="project-tab-kind" data-i18n="kind.webapp">App web</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-yokoso" role="region"
+                            aria-labelledby="project-tab-yokoso" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">Yokoso</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 05 / 08 ]</span>
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Voctale</h3>
-                                <p class="card-description" data-i18n="project.voctale.desc">
-                                    Application web de livres audio interactifs à choix
-                                    narratifs : interface, logique applicative et gestion des
-                                    données.
-                                </p>
-                                <div class="card-technologies">
-                                    <span class="tech-tag">Laravel</span>
-                                    <span class="tech-tag">Blade</span>
-                                    <span class="tech-tag">Tailwind</span>
-                                </div>
-                                <div class="card-links">
-                                    <a href="https://voctale.com/" class="card-link primary" target="_blank"
-                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
-                                    <span class="card-link secondary disabled" data-i18n="projects.sourceCode">Code
-                                        source</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card" id="card-2" role="tabpanel" aria-label="Carte 3">
-                            <div class="card-image">
+                            <div class="project-panel-image">
                                 <img src="assets/images/2.webp" width="700" height="319"
                                     alt="Capture d'écran du site Yokoso - Airbnb" loading="lazy" />
-                                <div class="card-overlay"></div>
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Yokoso</h3>
-                                <p class="card-description" data-i18n="project.yokoso.desc">
-                                    Plateforme de location de logements inspirée d'Airbnb,
-                                    développée en PHP.
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.webapp">App web</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.yokoso.desc">
+                                    Plateforme de location de logements inspirée d'Airbnb, développée en PHP.
                                 </p>
-                                <div class="card-technologies">
-                                    <span class="tech-tag">PHP</span>
-                                    <span class="tech-tag">SCSS</span>
-                                </div>
-                                <div class="card-links">
-                                    <a href="https://yokoso.infinityfree.me/" class="card-link primary" target="_blank"
+                                <ul class="project-tags">
+                                    <li>PHP</li>
+                                    <li>SCSS</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://yokoso.infinityfree.me/" class="project-link primary" target="_blank"
                                         rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
-                                    <a href="https://github.com/dechiaraluca/Yokoso" class="card-link secondary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
-                                        source</a>
+                                    <a href="https://github.com/dechiaraluca/Yokoso" class="project-link secondary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="carousel-slide" id="slide-1" role="tabpanel" aria-label="Slide 2">
-                        <div class="card" id="card-3" role="tabpanel" aria-label="Carte 4">
-                            <div class="card-image">
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-detect" type="button"
+                            aria-expanded="false" aria-controls="project-panel-detect">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">06</span>
+                            <span class="project-tab-name">Detect</span>
+                            <span class="project-tab-kind" data-i18n="kind.event">Événement</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-detect" role="region"
+                            aria-labelledby="project-tab-detect" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">Detect</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 06 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
                                 <img src="assets/images/3.webp" width="700" height="347"
                                     alt="Capture d'écran du site Detect - Évènement détection métaux" loading="lazy" />
-                                <div class="card-overlay"></div>
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Detect</h3>
-                                <p class="card-description" data-i18n="project.detect.desc">
-                                    Site événementiel autour de la détection de métaux :
-                                    présentation de l'événement, informations pratiques et
-                                    contenus pour les visiteurs.
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.event">Événement</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.detect.desc">
+                                    Site événementiel autour de la détection de métaux : présentation de l'événement, informations pratiques et contenus pour les visiteurs.
                                 </p>
-                                <div class="card-technologies">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">JS</span>
-                                </div>
-                                <div class="card-links">
-                                    <a href="https://detectevent.netlify.app/" class="card-link primary" target="_blank"
+                                <ul class="project-tags">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JS</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://detectevent.netlify.app/" class="project-link primary" target="_blank"
                                         rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
-                                    <a href="https://github.com/dechiaraluca/Site-Event" class="card-link secondary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
-                                        source</a>
+                                    <a href="https://github.com/dechiaraluca/Site-Event" class="project-link secondary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card" id="card-4" role="tabpanel" aria-label="Carte 5">
-                            <div class="card-image">
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-nelumbo" type="button"
+                            aria-expanded="false" aria-controls="project-panel-nelumbo">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">07</span>
+                            <span class="project-tab-name">Nelumbo Blooms</span>
+                            <span class="project-tab-kind" data-i18n="kind.showcase">Site vitrine</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-nelumbo" role="region"
+                            aria-labelledby="project-tab-nelumbo" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">Nelumbo Blooms</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 07 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
                                 <img src="assets/images/4.webp" width="700" height="394"
                                     alt="Capture d'écran du site Nelumbo Blooms - Site fleuriste" loading="lazy" />
-                                <div class="card-overlay"></div>
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Nelumbo Blooms</h3>
-                                <p class="card-description" data-i18n="project.nelumbo.desc">
-                                    Site vitrine pour un fleuriste, avec une identité visuelle
-                                    inspirée de l'univers japonais.
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.showcase">Site vitrine</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.nelumbo.desc">
+                                    Site vitrine pour un fleuriste, avec une identité visuelle inspirée de l'univers japonais.
                                 </p>
-                                <div class="card-technologies">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">JS</span>
-                                </div>
-                                <div class="card-links">
-                                    <a href="https://nelumbosite2.netlify.app/" class="card-link primary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le
-                                        site</a>
-                                    <a href="https://github.com/dechiaraluca/ProjectFlower_v2"
-                                        class="card-link secondary" target="_blank" rel="noopener noreferrer"
-                                        data-i18n="projects.sourceCode">Code source</a>
+                                <ul class="project-tags">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JS</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://nelumbosite2.netlify.app/" class="project-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/ProjectFlower_v2" class="project-link secondary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card" id="card-5" role="tabpanel" aria-label="Carte 6">
-                            <div class="card-image">
+                    </li>
+                    <li class="project-item">
+                        <button class="project-tab" id="project-tab-bouncing" type="button"
+                            aria-expanded="false" aria-controls="project-panel-bouncing">
+                            <span class="project-tab-marker" aria-hidden="true"></span>
+                            <span class="project-tab-num" aria-hidden="true">08</span>
+                            <span class="project-tab-name">Bouncing Logo</span>
+                            <span class="project-tab-kind" data-i18n="kind.personal">Perso</span>
+                        </button>
+                        <div class="project-panel" id="project-panel-bouncing" role="region"
+                            aria-labelledby="project-tab-bouncing" hidden>
+                            <div class="project-panel-bar">
+                                <h3 class="project-panel-title">Bouncing Logo</h3>
+                                <span class="project-panel-index" aria-hidden="true">[ 08 / 08 ]</span>
+                            </div>
+                            <div class="project-panel-image">
                                 <img src="assets/images/5.webp" width="700" height="396"
                                     alt="Capture d'écran du projet Bouncing Logo" loading="lazy" />
-                                <div class="card-overlay"></div>
                             </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Bouncing Logo</h3>
-                                <p class="card-description" data-i18n="project.bouncing.desc">
-                                    Reproduction en JavaScript du célèbre logo rebondissant des
-                                    écrans de veille.
+                            <div class="project-panel-body">
+                                <dl class="project-meta">
+                                    <div><dt data-i18n="projects.type">Type</dt><dd data-i18n="kind.personal">Perso</dd></div>
+                                    <div><dt data-i18n="projects.status">Statut</dt><dd data-i18n="projects.online">En ligne</dd></div>
+                                </dl>
+                                <p class="project-desc" data-i18n="project.bouncing.desc">
+                                    Reproduction en JavaScript du célèbre logo rebondissant des écrans de veille.
                                 </p>
-                                <div class="card-technologies">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">CSS</span>
-                                    <span class="tech-tag">JS</span>
-                                </div>
-                                <div class="card-links">
-                                    <a href="https://bouncinglogo.netlify.app/" class="card-link primary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le
-                                        site</a>
-                                    <a href="https://github.com/dechiaraluca/BouncingLogo" class="card-link secondary"
-                                        target="_blank" rel="noopener noreferrer" data-i18n="projects.sourceCode">Code
-                                        source</a>
+                                <ul class="project-tags">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JS</li>
+                                </ul>
+                                <div class="project-links">
+                                    <a href="https://bouncinglogo.netlify.app/" class="project-link primary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.viewSite">Voir le site</a>
+                                    <a href="https://github.com/dechiaraluca/BouncingLogo" class="project-link secondary" target="_blank"
+                                        rel="noopener noreferrer" data-i18n="projects.sourceCode">Code source</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-indicators" role="tablist" aria-label="Indicateurs de carousel">
-                    <button class="carousel-dot active" data-slide="0" role="tab" aria-label="Aller au slide 1"
-                        aria-selected="true" aria-controls="slide-0"></button>
-                    <button class="carousel-dot" data-slide="1" role="tab" aria-label="Aller au slide 2"
-                        aria-selected="false" aria-controls="slide-1"></button>
-                </div>
+                    </li>
+                </ul>
 
-                <!-- Indicateurs mobile (6 dots pour 6 cards) -->
-                <div class="carousel-indicators-mobile" role="tablist" aria-label="Indicateurs mobile">
-                    <button class="mobile-dot active" data-card="0" role="tab" aria-label="Carte 1"
-                        aria-selected="true" aria-controls="card-0"></button>
-                    <button class="mobile-dot" data-card="1" role="tab" aria-label="Carte 2"
-                        aria-selected="false" aria-controls="card-1"></button>
-                    <button class="mobile-dot" data-card="2" role="tab" aria-label="Carte 3"
-                        aria-selected="false" aria-controls="card-2"></button>
-                    <button class="mobile-dot" data-card="3" role="tab" aria-label="Carte 4"
-                        aria-selected="false" aria-controls="card-3"></button>
-                    <button class="mobile-dot" data-card="4" role="tab" aria-label="Carte 5"
-                        aria-selected="false" aria-controls="card-4"></button>
-                    <button class="mobile-dot" data-card="5" role="tab" aria-label="Carte 6"
-                        aria-selected="false" aria-controls="card-5"></button>
+                <div class="projects-hint" aria-hidden="true">
+                    <span>[ ↑ ↓ ] <span data-i18n="projects.hintNav">Naviguer</span></span>
                 </div>
             </div>
         </section>
 
         <!-- TECHNOLOGIES -->
         <section id="technologies">
+            <div class="section-label"><span data-i18n="section.tech">03 // Système</span></div>
             <h2 class="nier-glitch" data-i18n="tech.title">Technologies</h2>
             <ul class="tech-list">
                 <li class="tech-item">
@@ -430,8 +557,8 @@
                 </li>
                 <li class="tech-item">
                     <div class="tech-card">
-                        <i class="devicon-sass-original tech-icon" aria-hidden="true"></i>
-                        <span class="tech-name">Sass</span>
+                        <i class="devicon-python-plain tech-icon" aria-hidden="true"></i>
+                        <span class="tech-name">Python</span>
                     </div>
                 </li>
                 <li class="tech-item">
@@ -448,8 +575,8 @@
                 </li>
                 <li class="tech-item">
                     <div class="tech-card">
-                        <i class="devicon-alpinejs-plain tech-icon" aria-hidden="true"></i>
-                        <span class="tech-name">Alpine.js</span>
+                        <i class="devicon-java-plain tech-icon" aria-hidden="true"></i>
+                        <span class="tech-name">Java</span>
                     </div>
                 </li>
                 <li class="tech-item">
@@ -463,6 +590,7 @@
 
         <!-- CONTACT -->
         <section id="contact">
+            <div class="section-label"><span data-i18n="section.contact">04 // Transmission</span></div>
             <h2 class="nier-glitch" data-i18n="contact.title">Me contacter</h2>
             <form name="contact" method="POST" data-netlify="true" class="contact-form" novalidate>
                 <input type="hidden" name="form-name" value="contact" />
@@ -543,7 +671,7 @@
     </footer>
     <script src="i18n.js" defer></script>
     <script src="script.js" defer></script>
-    <script src="carousel.js" defer></script>
+    <script src="projects.js" defer></script>
 </body>
 
 </html>

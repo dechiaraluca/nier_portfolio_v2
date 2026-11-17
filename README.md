@@ -19,7 +19,7 @@ nier_portfolio_v2/
 ├── 404.html
 ├── style.css
 ├── script.js
-├── carousel.js
+├── projects.js
 ├── i18n.js
 ├── package.json
 ├── documents/
@@ -43,8 +43,8 @@ nier_portfolio_v2/
 **Internationalisation (i18n)**
 → Support FR / EN / IT avec détection automatique de la langue du navigateur.
 
-**Carousel de projets**
-→ Présentation des projets avec aperçu, description et liens (démo + code source).
+**Archive de projets (style NieR)**
+→ Liste des projets avec panneau de détail sur desktop, accordéon sur mobile (aperçu, description, technos, liens).
 
 **Responsive design**
 → Adapté aux mobiles, tablettes et écrans larges.

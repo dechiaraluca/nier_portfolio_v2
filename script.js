@@ -161,8 +161,15 @@ function isInViewport(el) {
     return r.width > 0 && r.top < window.innerHeight && r.bottom > 0;
 }
 
+// Élément survolé / focus clavier / lien actif : on ne le corrompt pas,
+// sinon sa largeur change (glyphes retournés) et l'animation de survol tremble.
+function isInteracting(el) {
+    return el.matches(':hover, :focus-visible, .active');
+}
+
 function spawnGlitchArtifact() {
-    const targets = Array.from(document.querySelectorAll('.nier-glitch:not(p)')).filter(isInViewport);
+    const targets = Array.from(document.querySelectorAll('.nier-glitch:not(p)'))
+        .filter(el => isInViewport(el) && !isInteracting(el));
     if (!targets.length) return;
     const target = targets[Math.floor(Math.random() * targets.length)];
     const rect = target.getBoundingClientRect();
@@ -207,7 +214,7 @@ function ambientLetterCorrupt() {
         scheduleAmbientCorrupt(); return;
     }
     const candidates = Array.from(document.querySelectorAll('.nier-glitch:not(p)'))
-        .filter(el => !el.dataset.originalText && !el.dataset.ambientLock && isInViewport(el));
+        .filter(el => !el.dataset.originalText && !el.dataset.ambientLock && isInViewport(el) && !isInteracting(el));
     if (!candidates.length) { scheduleAmbientCorrupt(); return; }
 
     const el = candidates[Math.floor(Math.random() * candidates.length)];
@@ -350,14 +357,27 @@ mainNav.querySelectorAll('a').forEach(link => {
 
 // Bouton retour en haut
 const scrollToTopBtn = document.getElementById('scrollToTop');
+const scrollTopWidget = document.getElementById('scrollTopWidget');
+let scrollTopTicking = false;
 
-window.addEventListener('scroll', function () {
-    if (window.scrollY > 100) {
-        scrollToTopBtn.classList.add('show');
-    } else {
-        scrollToTopBtn.classList.remove('show');
-    }
-});
+// Affichage du bouton + progression de lecture (0 → 1) dans --progress
+function updateScrollTop() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    scrollTopWidget.style.setProperty('--progress', progress.toFixed(4));
+    scrollTopWidget.classList.toggle('show', window.scrollY > 100);
+    scrollTopTicking = false;
+}
+
+function requestScrollTopUpdate() {
+    if (scrollTopTicking) return;
+    scrollTopTicking = true;
+    requestAnimationFrame(updateScrollTop);
+}
+
+window.addEventListener('scroll', requestScrollTopUpdate, { passive: true });
+window.addEventListener('resize', requestScrollTopUpdate);
+updateScrollTop();
 
 scrollToTopBtn.addEventListener('click', function () {
     window.scrollTo({
