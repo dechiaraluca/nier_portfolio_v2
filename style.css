@@ -217,25 +217,79 @@ body.dark-mode header {
   justify-content: center;
 }
 
+/* Icône style NieR : barres façon lignes de menu + petit carré marqueur.
+   Ouverture : les barres se rassemblent au centre, puis pivotent en X ;
+   le carré devient un losange au centre (comme le curseur NieR). */
 .burger-line {
-  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 28px;
   height: 2px;
+  margin: -1px 0 0 -14px;
   background: var(--color-text);
-  margin: 6px 0;
-  transition: all 0.3s ease;
+  /* fermeture : on dé-pivote d'abord, puis les barres se séparent */
+  transition:
+    transform 0.2s ease,
+    top 0.2s cubic-bezier(0.08, 0.82, 0.17, 1) 0.18s,
+    width 0.25s cubic-bezier(0.08, 0.82, 0.17, 1),
+    opacity 0.15s ease 0.18s;
 }
 
-.burger.active .burger-line:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+.burger-line:nth-child(1) { top: calc(50% - 8px); }
+.burger-line:nth-child(2) { width: 18px; }
+.burger-line:nth-child(3) { top: calc(50% + 8px); }
+
+/* carré marqueur, à droite de la barre du milieu */
+.burger::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 8px;
+  background: var(--color-text);
+  transition:
+    transform 0.3s cubic-bezier(0.08, 0.82, 0.17, 1),
+    margin 0.3s cubic-bezier(0.08, 0.82, 0.17, 1),
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.burger.active .burger-line:nth-child(2) {
-  opacity: 0;
+@media (hover: hover) {
+  .burger:hover .burger-line:nth-child(2) { width: 28px; }
+  .burger:hover::after { margin-left: 16px; }
 }
 
-.burger.active .burger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+/* ouvert : 1) les barres se rassemblent au centre  2) elles pivotent en X */
+.burger.active .burger-line {
+  top: 50%;
+  transition:
+    top 0.18s cubic-bezier(0.08, 0.82, 0.17, 1),
+    transform 0.25s cubic-bezier(0.08, 0.82, 0.17, 1) 0.18s,
+    width 0.2s ease,
+    opacity 0.1s ease;
+}
+
+.burger.active .burger-line:nth-child(1) { transform: rotate(45deg); }
+.burger.active .burger-line:nth-child(2) { opacity: 0; }
+.burger.active .burger-line:nth-child(3) { transform: rotate(-45deg); }
+
+/* le carré glisse au centre et devient un losange creux */
+.burger.active::after {
+  margin-left: -3px;
+  transform: rotate(45deg);
+  background: var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-text);
+  transition-delay: 0.18s;
+}
+
+@keyframes navItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
 }
 
 /* LANGUAGE SWITCH TRANSITION */
@@ -1236,37 +1290,132 @@ h2 {
     top: 30px;
   }
 
+  /* Menu mobile style NieR : ouverture en balayage, liens en cascade,
+     remplissage de gauche à droite au toucher */
   nav {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    clip-path: inset(0 0 100% 0);
+    transition:
+      max-height 0.35s cubic-bezier(0.08, 0.82, 0.17, 1),
+      clip-path 0.3s ease;
   }
 
   nav.open {
-    max-height: 500px;
+    max-height: 560px;
+    clip-path: inset(0 0 0 0);
+    transition:
+      max-height 0.45s cubic-bezier(0.08, 0.82, 0.17, 1),
+      clip-path 0.45s cubic-bezier(0.08, 0.82, 0.17, 1);
   }
 
   nav ul {
     flex-direction: column;
-    gap: 0;
-    margin-top: 20px;
-    padding: 0;
+    align-items: stretch;
+    gap: 6px;
+    width: min(280px, 100%);
+    margin: 18px auto 6px;
+    padding: 14px 0 16px;
+    position: relative;
+    border-top: 1px solid rgba(246, 246, 246, 0.25);
+  }
+
+  /* règle du bas avec carrés aux extrémités */
+  nav ul::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: rgba(246, 246, 246, 0.25);
+  }
+
+  /* carrés aux deux extrémités de la règle du haut */
+  nav ul::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    top: -4px;
+    height: 7px;
+    background:
+      linear-gradient(var(--color-text), var(--color-text)) left / 7px 7px no-repeat,
+      linear-gradient(var(--color-text), var(--color-text)) right / 7px 7px no-repeat;
+  }
+
+  nav.open li {
+    animation: navItemIn 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) both;
+  }
+
+  nav.open li:nth-child(1) { animation-delay: 0.06s; }
+  nav.open li:nth-child(2) { animation-delay: 0.1s; }
+  nav.open li:nth-child(3) { animation-delay: 0.14s; }
+  nav.open li:nth-child(4) { animation-delay: 0.18s; }
+  nav.open li:nth-child(5) { animation-delay: 0.22s; }
+  nav.open li:nth-child(6) { animation-delay: 0.26s; }
+  nav.open li:nth-child(7) { animation-delay: 0.3s; }
+
+  /* #mainNav : passe devant .nier-glitch (inline-block) pour que le lien prenne toute la largeur */
+  #mainNav a {
+    display: block;
   }
 
   nav a {
-    display: block;
-    padding: 12px 20px;
+    padding: 11px 20px 11px 38px;
     font-size: 14px;
+    text-align: left;
   }
 
-  nav a::before,
+  /* carré marqueur à gauche */
+  nav a::before {
+    display: block;
+    top: 50%;
+    left: 14px;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border: 0;
+    background: var(--color-text);
+    transform: none;
+    opacity: 1;
+    transition: background 0.15s ease;
+  }
+
+  /* remplissage de gauche à droite */
   nav a::after {
-    display: none;
+    display: block;
+    top: 0;
+    background: var(--color-text);
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 1;
+    transition: transform 0.3s cubic-bezier(0.08, 0.82, 0.17, 1);
   }
 
   nav a,
   nav a.active {
     color: var(--color-text);
+  }
+
+  nav a:active,
+  nav a:focus-visible {
+    color: var(--color-bg);
+  }
+
+  nav a:active::after,
+  nav a:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  nav a:active::before,
+  nav a:focus-visible::before {
+    background: var(--color-bg);
+    transform: none;
+  }
+
+  nav a.nav-nier {
+    margin-top: 6px;
   }
 
   .lang-dropdown {
@@ -1821,4 +1970,9 @@ a.nier-glitch {
 
 .footer-bottom a:hover {
   color: var(--color-white);
+}
+
+/* Lien vers l interface NieR (/nier/) */
+nav a.nav-nier {
+  border: 1px dashed var(--color-text);
 }

@@ -7,7 +7,19 @@ Design épuré, mode sombre/clair, responsive et optimisé en performance.
 
 ## Aperçu
 
-![Aperçu du portfolio](./assets/images/screenshot-preview.png)
+Le site existe en deux versions, entre lesquelles on peut basculer à tout moment.
+
+**Interface classique** — [lucadechiara.fr](https://lucadechiara.fr/)
+
+![Interface classique du portfolio](./assets/images/screenshot-classic.webp)
+
+**Interface NieR** — [lucadechiara.fr/nier/](https://lucadechiara.fr/nier/)
+
+![Interface NieR du portfolio, façon menu de jeu](./assets/images/screenshot-nier.webp)
+
+**Sur mobile** — classique, puis NieR (liste et panneau de détail)
+
+![Les deux interfaces sur mobile](./assets/images/screenshot-mobile.webp)
 
 ---
 
@@ -22,8 +34,12 @@ nier_portfolio_v2/
 ├── projects.js
 ├── i18n.js
 ├── package.json
+├── nier/                  # Interface NieR (menu de jeu plein écran)
+│   ├── index.html
+│   ├── nier.css
+│   └── nier.js            # contenu FR / EN / IT + navigation
 ├── documents/
-│   └── dev-web-et-web-mobile.pdf
+│   └── CV Luca De Chiara.pdf
 └── assets/
     └── images/
 ```
@@ -31,6 +47,13 @@ nier_portfolio_v2/
 ---
 
 ## Fonctionnalités
+
+**Deux interfaces au choix**
+→ Le site classique (`/`) et une interface NieR façon menu de jeu (`/nier/`) : une seule page sans défilement, onglets de sections, liste + panneau de détail.
+→ Navigation au clavier (← → sections, ↑ ↓ sélection), à la molette ou en glissant sur mobile.
+→ Bascule dans les deux sens (lien « Interface NieR » / « Interface classique »), choix mémorisé via `localStorage`.
+→ `/nier/` est en `noindex` : seule la page classique est référencée.
+→ Même formulaire Netlify `contact` et même langue enregistrée sur les deux versions.
 
 **Dark / Light mode**
 → Basculement entre les deux thèmes avec persistance via `localStorage`.

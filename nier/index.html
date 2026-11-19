@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio de Luca De Chiara, développeur web à Grenoble, en version interface de jeu.">
+<!-- Version alternative du site : la page principale (/) reste la seule indexée -->
+<meta name="robots" content="noindex, follow">
+<title>Luca De Chiara — Interface NieR</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+<link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+<link rel="stylesheet" href="nier.css">
+</head>
+<body>
+
+<a class="skip" href="#items" id="skip">Aller au contenu</a>
+
+<svg class="deco" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+	<g fill="none" stroke="currentColor" stroke-width="1.2">
+		<circle cx="1480" cy="820" r="420"/>
+		<circle cx="1480" cy="820" r="340" stroke-dasharray="2 9"/>
+		<circle cx="1480" cy="820" r="250"/>
+		<circle cx="90" cy="60" r="300"/>
+		<circle cx="90" cy="60" r="230" stroke-dasharray="2 9"/>
+		<line x1="260" y1="0" x2="1260" y2="900"/>
+		<line x1="560" y1="0" x2="1560" y2="900"/>
+		<line x1="1600" y1="120" x2="820" y2="900"/>
+		<line x1="0" y1="640" x2="1600" y2="640" stroke-dasharray="1 7"/>
+	</g>
+</svg>
+
+<div class="boot" id="boot" aria-hidden="true">
+	<svg class="spin" viewBox="0 0 40 40" fill="currentColor">
+		<rect x="18.5" y="2" width="3" height="9"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(45 20 20)" opacity=".85"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(90 20 20)" opacity=".7"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(135 20 20)" opacity=".6"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(180 20 20)" opacity=".5"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(225 20 20)" opacity=".4"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(270 20 20)" opacity=".3"/>
+		<rect x="18.5" y="2" width="3" height="9" transform="rotate(315 20 20)" opacity=".2"/>
+	</svg>
+	<span id="bootTxt"></span>
+</div>
+
+<div class="app">
+	<header>
+		<div class="top-row">
+			<div class="brand">
+				<img src="../assets/images/logo.webp" alt="" width="150" height="150">
+				<div>
+					<h1>Luca De Chiara</h1>
+					<small data-t="tagline"></small>
+				</div>
+			</div>
+			<div class="sys">
+				<span class="clock" id="clock"></span>
+				<div class="langs" id="langs" role="group" aria-label="Langue / Language">
+					<button type="button" data-lang="fr" lang="fr">FR</button>
+					<button type="button" data-lang="en" lang="en">EN</button>
+					<button type="button" data-lang="it" lang="it">IT</button>
+				</div>
+				<button class="sound" id="sound" type="button" aria-pressed="false"></button>
+				<a class="ui-switch" id="toClassic" href="../"><span class="lbl-l" data-t="classic"></span><span class="lbl-s" data-t="classicShort"></span></a>
+			</div>
+		</div>
+		<!-- onglets présents dès le HTML (évite un décalage de mise en page), libellés traduits par nier.js -->
+		<nav class="tabs" id="tabs" role="tablist" aria-label="Sections">
+			<button class="blk tab" type="button" role="tab" id="tab-profil" data-i="0" aria-controls="stage"><span class="n" aria-hidden="true">01</span><span class="lbl-l">Profil</span><span class="lbl-s">Profil</span></button>
+			<button class="blk tab" type="button" role="tab" id="tab-archives" data-i="1" aria-controls="stage"><span class="n" aria-hidden="true">02</span><span class="lbl-l">Archives</span><span class="lbl-s">Archives</span></button>
+			<button class="blk tab" type="button" role="tab" id="tab-systeme" data-i="2" aria-controls="stage"><span class="n" aria-hidden="true">03</span><span class="lbl-l">Système</span><span class="lbl-s">Système</span></button>
+			<button class="blk tab" type="button" role="tab" id="tab-transmission" data-i="3" aria-controls="stage"><span class="n" aria-hidden="true">04</span><span class="lbl-l">Transmission</span><span class="lbl-s">Contact</span></button>
+		</nav>
+		<div class="rule" aria-hidden="true"></div>
+	</header>
+
+	<main class="stage" id="stage" role="tabpanel">
+		<section class="list-col" aria-labelledby="secTitle">
+			<div class="sec-head">
+				<h2 id="secTitle"></h2>
+				<p><span id="secSubL"></span><span id="secSubR"></span></p>
+			</div>
+			<div class="items-wrap">
+				<ul class="items" id="items"></ul>
+			</div>
+		</section>
+		<section class="panel-col" id="panelCol" aria-live="off">
+			<button class="back" id="back" type="button"></button>
+			<div class="panel-slot" id="slot"></div>
+		</section>
+	</main>
+
+	<footer class="hints">
+		<div class="keys desk">
+			<span><kbd>← →</kbd><span data-t="or"></span> <kbd data-t="wheel"></kbd><span data-t="hSection"></span></span>
+			<span><kbd>↑ ↓</kbd><span data-t="hSelect"></span></span>
+			<span><kbd data-t="enter"></kbd><span data-t="hOpen"></span></span>
+		</div>
+		<div class="keys mob">
+			<span><kbd>⇆</kbd><span data-t="hSwipe"></span></span>
+		</div>
+		<div class="right">
+			<a href="../mentions-legales.html" data-t="legal"></a>
+			<span class="copy">© 2026 L. De Chiara</span>
+		</div>
+	</footer>
+</div>
+
+<script src="nier.js"></script>
+</body>
+</html>

@@ -337,9 +337,10 @@ burgerBtn.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     burgerBtn.classList.toggle('active');
     burgerBtn.setAttribute('aria-expanded', isOpen);
+    burgerBtn.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
 });
 
-mainNav.querySelectorAll('a').forEach(link => {
+mainNav.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
         const wasOpen = mainNav.classList.contains('open');
         mainNav.classList.remove('open');
@@ -508,6 +509,24 @@ document.addEventListener('DOMContentLoaded', function() {
         observerOut.observe(section);
     });
 });
+
+// === BASCULE VERS L'INTERFACE NIER (/nier/) ===
+const nierSwitch = document.getElementById('nierSwitch');
+if (nierSwitch) {
+    const NIER_HASH = { apropos: 'profil', projets: 'archives', technologies: 'systeme', contact: 'transmission' };
+    nierSwitch.addEventListener('click', (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return; // nouvel onglet : comportement normal
+        e.preventDefault();
+        try { localStorage.setItem('ui', 'nier'); } catch (err) {}
+        // On ouvre la v2 sur la section actuellement à l'écran
+        const current = [...document.querySelectorAll('main section[id]')]
+            .filter(s => s.getBoundingClientRect().top <= window.innerHeight / 2).pop();
+        const target = 'nier/' + (current && NIER_HASH[current.id] ? '#' + NIER_HASH[current.id] : '');
+        if (prefersReducedMotion) { location.href = target; return; }
+        triggerCorruptionFlash();
+        setTimeout(() => { location.href = target; }, 380);
+    });
+}
 
 // Init breathing glow logo au chargement
 if (!prefersReducedMotion) {

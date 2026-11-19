@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        // Le visiteur a choisi l'interface NieR : on l'y renvoie avant tout affichage
+        try {
+            if (localStorage.getItem('ui') === 'nier') {
+                var m = { apropos: 'profil', projets: 'archives', technologies: 'systeme', contact: 'transmission' };
+                var h = location.hash.slice(1);
+                location.replace('nier/' + (m[h] ? '#' + m[h] : ''));
+            }
+        } catch (e) {}
+    </script>
     <meta name="description"
         content="Portfolio de De Chiara Luca - Développeur web à Grenoble. Sites vitrines et applications web sur mesure. Découvrez mes projets et contactez-moi." />
     <meta name="author" content="De Chiara Luca">
@@ -80,6 +90,9 @@
                 </li>
                 <li>
                     <a href="#contact" class="nier-glitch" data-i18n="nav.contact">Contact</a>
+                </li>
+                <li>
+                    <a href="nier/" id="nierSwitch" class="nier-glitch nav-nier" data-i18n="nav.nier">Interface NieR</a>
                 </li>
                 <li class="lang-dropdown">
                     <button class="lang-current" id="langToggle" aria-expanded="false">
