@@ -17,7 +17,7 @@ Le site existe en deux versions, entre lesquelles on peut basculer à tout momen
 
 ![Interface NieR du portfolio, façon menu de jeu](./assets/images/screenshot-nier.webp)
 
-**Sur mobile** — classique, puis NieR (liste et panneau de détail)
+**Sur mobile** — classique, puis NieR (liste, puis détail ouvert en accordéon)
 
 ![Les deux interfaces sur mobile](./assets/images/screenshot-mobile.webp)
 

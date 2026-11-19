@@ -150,7 +150,6 @@ a { color: inherit; }
 /* ---------- Colonne panneau ---------- */
 .panel-col { position: relative; min-height: 0; display: flex; flex-direction: column; }
 .panel-slot { min-height: 0; display: flex; flex-direction: column; }
-.back { display: none; }
 .panel { display: flex; flex-direction: column; min-height: 0; max-height: 100%; animation: panelIn .45s var(--ease) both; }
 @keyframes panelIn { from { clip-path: inset(0 0 100% 0); opacity: .3; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
 .p-head {
@@ -266,15 +265,19 @@ kbd { font: inherit; background: var(--fg); color: var(--bg); padding: .2em .55e
 	.sec-head h2 { font-size: 1.5rem; }
 	.items { padding-left: 3.2em; gap: .8em; }
 
-	.panel-col {
-		position: fixed; inset: 0; z-index: 60; background: var(--bg); padding: 1rem;
-		transform: translateX(100%); visibility: hidden;
-		transition: transform .35s var(--ease), visibility 0s .35s;
-	}
-	.panel-col.open { transform: none; visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
-	.back { display: inline-flex; align-self: flex-start; gap: .5em; align-items: center; font-size: .85rem; padding: .4em 0 .9em; cursor: pointer; }
-	.back:hover { text-decoration: underline; }
-	.p-body { padding: 1.1rem 1rem 1.3rem; }
+	/* mobile : pas de colonne panneau, le détail s'ouvre en accordéon sous l'élément */
+	.panel-col { display: none; }
+	.acc { margin: .9em 0 .4em; }
+	.acc .panel { max-height: none; }
+	.acc .p-body { overflow: visible; padding: 1.1rem 1rem 1.3rem; }
+	/* le titre est déjà sur l'élément juste au-dessus */
+	.acc .p-head { display: none; }
+	.item { gap: .6em; padding-right: .9em; }
+	/* le nom reste entier ; c'est le type qui passe sur deux lignes si besoin */
+	.item .nm { flex: 1 0 auto; white-space: nowrap; }
+	.item .kd { letter-spacing: .06em; text-align: right; line-height: 1.3; }
+	.item[aria-expanded="true"] .kd::after { content: ' ▴'; }
+	.item[aria-expanded="false"] .kd::after { content: ' ▾'; }
 	.ident { grid-template-columns: 1fr; }
 	.ident .shot { max-width: 12rem; }
 	.hints .desk { display: none; }
@@ -286,6 +289,10 @@ kbd { font: inherit; background: var(--fg); color: var(--bg); padding: .2em .55e
 @media (hover: none) {
 	.hints .desk { display: none; }
 	.hints .mob { display: flex; }
+}
+
+@media (max-width: 380px) {
+	.item .num { display: none; }
 }
 
 @media (min-width: 761px) {
